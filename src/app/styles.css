@@ -92,7 +92,7 @@ a { color: var(--accent); text-decoration: none; }
 .ranges { display: flex; gap: 2px; border-bottom: 1px solid var(--border); overflow-x: auto; }
 .range {
   background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted);
-  padding: 8px 12px; font: inherit; font-size: 14px; cursor: pointer;
+  padding: 8px 12px; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
 }
 .range.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
 .chart-box { height: 320px; position: relative; margin: 8px 0 16px; }
@@ -107,7 +107,7 @@ a { color: var(--accent); text-decoration: none; }
 @media (max-width: 600px) {
   .price { font-size: 28px; }
   .chart-box { height: 240px; }
-  .range { padding: 8px 9px; }
+  .range { padding: 8px 4px; font-size: 13px; flex-grow: 1; }
 }
 
 .narrow { max-width: 460px; }

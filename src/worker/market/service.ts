@@ -6,7 +6,7 @@ import type { Env } from "../env";
 import { aliasMatches } from "./aliases";
 import { reserve, reserveUpTo, secondsToNextMinute } from "./budget";
 import { cacheGet, cacheGetMany, cachePut, type CacheEntry } from "./cache";
-import { fetchQuotes, fetchSeries, isNotCovered, searchSymbols, TwelveDataError } from "./twelvedata";
+import { fetchQuotes, fetchSeries, isNotCovered, searchSymbols, TwelveDataError, type QuoteResult } from "./twelvedata";
 
 const MIN = 60_000;
 const HOUR = 60 * MIN;
@@ -22,6 +22,11 @@ const SERIES_TTL: Record<Range, number> = {
   "5Y": 24 * HOUR,
   MAX: 24 * HOUR,
 };
+
+// Requests to Twelve Data in flight in this Worker instance, so identical requests that arrive
+// together share one (and its credits) instead of each sending their own.
+const quotesInFlight = new Map<string, Promise<QuoteResult | undefined>>();
+const seriesInFlight = new Map<string, Promise<Series | null>>();
 
 export function quoteTtl(q: Quote): number {
   return q.isMarketOpen ? 5 * MIN : HOUR;
@@ -89,26 +94,46 @@ export async function getQuotes(env: Env, symbols: string[], now = Date.now()): 
     }
     toFetch.push({ symbol, fetchedAt: hit?.fetchedAt ?? 0 });
   }
-  // Missing ones first, then the stalest.
+  // Missing ones first, then the stalest. Symbols another request is already fetching wait for it;
+  // the others are marked as in flight at once, before anything else is awaited.
   toFetch.sort((a, b) => a.fetchedAt - b.fetchedAt);
-  const granted = toFetch.length ? await reserveUpTo(env.DB, toFetch.length, now) : 0;
-  const fetchNow = toFetch.slice(0, granted).map((f) => f.symbol);
-  if (fetchNow.length) {
-    try {
-      const results = await fetchQuotes(fetch, apiKey(env), fetchNow);
-      for (const [symbol, r] of results) {
-        if (r.ok) {
-          await cachePut(env.DB, `q:${symbol}`, { quote: r.quote } satisfies Stored, now);
-          response.quotes[symbol] = { data: r.quote, fetchedAt: new Date(now).toISOString(), stale: false };
-        } else if (isNotCovered(r.code)) {
-          await cachePut(env.DB, `q:${symbol}`, { unavailable: r.message } satisfies Stored, now);
-          response.unavailable.push(symbol);
+  const joined = toFetch.filter((f) => quotesInFlight.has(f.symbol)).map((f) => [f.symbol, quotesInFlight.get(f.symbol)!] as const);
+  const own = toFetch.filter((f) => !quotesInFlight.has(f.symbol)).map((f) => f.symbol);
+  const done = new Map<string, (r: QuoteResult | undefined) => void>();
+  for (const symbol of own) {
+    quotesInFlight.set(symbol, new Promise((resolve) => done.set(symbol, resolve)));
+  }
+  const finish = (symbol: string, r: QuoteResult | undefined) => {
+    done.get(symbol)?.(r);
+    quotesInFlight.delete(symbol);
+  };
+  const ownResults = new Map<string, QuoteResult>();
+  try {
+    const granted = own.length ? await reserveUpTo(env.DB, own.length, now) : 0;
+    const fetchNow = own.slice(0, granted);
+    if (fetchNow.length) {
+      try {
+        for (const [symbol, r] of await fetchQuotes(fetch, apiKey(env), fetchNow)) {
+          if (r.ok) await cachePut(env.DB, `q:${symbol}`, { quote: r.quote } satisfies Stored, now);
+          else if (isNotCovered(r.code)) await cachePut(env.DB, `q:${symbol}`, { unavailable: r.message } satisfies Stored, now);
+          ownResults.set(symbol, r);
         }
+      } catch (e) {
+        if (!(e instanceof TwelveDataError)) throw e;
+        console.warn("Twelve Data quote failed:", e.code, e.message);
       }
-    } catch (e) {
-      if (!(e instanceof TwelveDataError)) throw e;
-      console.warn("Twelve Data quote failed:", e.code, e.message);
     }
+  } finally {
+    for (const symbol of own) finish(symbol, ownResults.get(symbol));
+  }
+  const settled: (readonly [string, QuoteResult | undefined])[] = [
+    ...own.map((symbol) => [symbol, ownResults.get(symbol)] as const),
+    ...(await Promise.all(joined.map(async ([symbol, result]) => [symbol, await result] as const))),
+  ];
+  for (const [symbol, r] of settled) {
+    if (!r) continue;
+    if (r.ok) response.quotes[symbol] = { data: r.quote, fetchedAt: new Date(now).toISOString(), stale: false };
+    else if (isNotCovered(r.code)) response.unavailable.push(symbol);
   }
   // Whatever is still missing: the stale copy when there is one, otherwise later.
   for (const { symbol } of toFetch) {
@@ -135,11 +160,22 @@ export async function getSeries(env: Env, symbol: string, range: Range, now = Da
   const ttl = SERIES_TTL[range];
   const hit = await cacheGet<Series>(env.DB, key);
   if (hit && now - hit.fetchedAt < ttl) return cached(hit, ttl, now);
-  if (await reserve(env.DB, 1, now)) {
-    try {
+  let pending = seriesInFlight.get(key);
+  if (!pending) {
+    // Marked as in flight at once, before the budget is checked.
+    pending = (async () => {
+      if (!(await reserve(env.DB, 1, now))) return null;
       const series = await fetchSeries(fetch, apiKey(env), symbol, range, new Date(now));
       await cachePut(env.DB, key, series, now);
-      return { data: series, fetchedAt: new Date(now).toISOString(), stale: false };
+      return series;
+    })();
+    seriesInFlight.set(key, pending);
+    pending.finally(() => seriesInFlight.delete(key)).catch(() => {});
+  }
+  if (pending) {
+    try {
+      const series = await pending;
+      if (series) return { data: series, fetchedAt: new Date(now).toISOString(), stale: false };
     } catch (e) {
       if (!(e instanceof TwelveDataError)) throw e;
       if (!hit && isNotCovered(e.code)) throw new UnavailableError(symbol);

@@ -9,8 +9,8 @@
 
 **Notes.**
 - Today the app has only `public/favicon.svg`; no manifest, touch icon or service worker.
+- Decided by the approver (2026-10-31): name "Ticker"; icon made from the current `public/favicon.svg` for now (the approver will design a new icon in another session, so keep the icon files easy to swap).
 - Open for the person (what users will see):
-  1. Name under the icon: "Ticker"? Icon: made from the current favicon, or a new design?
-  2. Offline: only make it installable (prices need the network anyway), or also show a cached page / "offline" message when there is no connection?
-- Sign-in links from email open in the phone's browser, not in the installed app (iOS keeps them separate); the human check must confirm the session reaches the home-screen app, or the task must say how a user signs in there.
+  1. No connection: when the phone is offline, opening the home-screen app shows (a) the phone's own blank "can't connect" screen, or (b) a Ticker screen saying "You're offline", or (c) the last prices seen, marked as old.
+  2. Signing in from the home-screen app: on iPhone the email's sign-in link opens in Safari, not the home-screen app, so the app may stay signed out. Choose (a) also put a short code in the sign-in email that the user types into the app (changes A04-goblet948's sign-in), or (b) keep link only and accept that users sign in in Safari before adding the app.
 - Deploying to ticker.allomos.com is an outside effect: it waits for the approver's go-ahead.

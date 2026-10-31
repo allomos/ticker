@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Live email path checked with Resend's test address (see Evidence); the person's own sign-in is their check. No code changes. Next: A01-toy025 (v0.3 check).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "1. Open https://ticker.allomos.com/signin and enter your own email address.\n2. Within a minute an email \"Sign in to Ticker\" arrives from no-reply@ticker.allomos.com\n   (check the spam folder the first time).\n3. Click \"Sign in to Ticker\" in the email, then \"Sign in\" on the page: you are signed in, with a\n   list named Watchlist.\n4. In Resend (resend.com, Emails), the sent email shows as delivered.\n",
   "id": "A06-recipe196",
   "iteration": "I-sweep",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "Sign-in emails are sent from no-reply@ticker.allomos.com through Resend in production"
+  "state": "done",
+  "title": "Sign-in emails are sent from no-reply@ticker.allomos.com through Resend in production",
+  "without_human_check": "Goal run"
 }

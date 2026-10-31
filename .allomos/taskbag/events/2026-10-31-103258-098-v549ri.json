@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T10:32:58Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A06-recipe196",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "Checked.",
+      "to": "Live email path checked with Resend's test address (see Evidence); the person's own sign-in is their check. No code changes. Next: A01-toy025 (v0.3 check)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

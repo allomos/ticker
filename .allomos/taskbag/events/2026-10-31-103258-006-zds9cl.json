@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:32:58Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A06-recipe196",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Checked."
+    },
+    {
+      "field": "description",
+      "from": "**Outcome.** In production, asking for a sign-in link sends a real email through Resend from `no-reply@ticker.allomos.com`.\n\n**Done means.**\n- A test send to Resend's test address `delivered@resend.dev` succeeds through the deployed app's email code.\n- The person signs in with their own address (their check).\n\n**Notes.** Part of goal A01-teapot655. The person added `ticker.allomos.com` to Resend; its DNS records are in Cloudflare.\n",
+      "to": "**Outcome.** In production, asking for a sign-in link sends a real email through Resend from `no-reply@ticker.allomos.com`.\n\n**Done means.**\n- A test send to Resend's test address `delivered@resend.dev` succeeds through the deployed app's email code.\n- The person signs in with their own address (their check).\n\n**Notes.** Part of goal A01-teapot655. The person added `ticker.allomos.com` to Resend; its DNS records are in Cloudflare.\n\n## Evidence\n\n- 2026-10-31, claude-code-10e82e40: 2026-10-31: sent one sign-in email through the live app (POST https://ticker.allomos.com/auth/email) to Resend's test address delivered@resend.dev; Resend accepted it (app answered 200, not 502), so the API key and the ticker.allomos.com sending domain work.\n"
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

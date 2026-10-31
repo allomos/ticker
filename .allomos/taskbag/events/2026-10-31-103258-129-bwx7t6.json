@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:32:58Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A06-recipe196",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "1. Open https://ticker.allomos.com/signin and enter your own email address.\n2. Within a minute an email \"Sign in to Ticker\" arrives from no-reply@ticker.allomos.com\n   (check the spam folder the first time).\n3. Click \"Sign in to Ticker\" in the email, then \"Sign in\" on the page: you are signed in, with a\n   list named Watchlist.\n4. In Resend (resend.com, Emails), the sent email shows as delivered.\n"
+    }
+  ]
+}

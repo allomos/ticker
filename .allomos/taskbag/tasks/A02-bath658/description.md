@@ -26,3 +26,7 @@
 - Set up by the approver on 2026-10-31: `ALPHA_VANTAGE_API_KEY` and `MARKET_OWNER_EMAIL` are in `.dev.vars`; both still have to be set as Worker secrets before production (an outside effect: ask the approver).
 - Market data lives in `src/worker/market/` (Twelve Data client, D1 cache, `api_budget`).
 - The iTick account made on 2026-10-31 is no longer needed (its free key expires 2026-11-07).
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Probe with the real Alpha Vantage key, 2026-11-01 ~00:40 JST, about 11 of the day's 25 requests: GLOBAL_QUOTE 600519.SHH (1392.05, 2026-10-30) and 000002.SHZ (3.19) answer; TIME_SERIES_DAILY compact gives 100 days; 7203.T answers an empty quote and SYMBOL_SEARCH finds no Tokyo listing. Requests closer than 1 s apart get an 'Information' note (1 request per second). Local owner check: 3 more requests (quote, chart; list served from cache)

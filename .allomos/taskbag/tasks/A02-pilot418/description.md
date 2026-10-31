@@ -1,0 +1,12 @@
+**Outcome.** The app's owner, signed in, can search, open and add Tokyo (TSE) stocks, for example 7203 Toyota, and sees their price, day change and chart.
+
+**Done means.**
+- A source is chosen by the approver and its free or paid terms are recorded here.
+- For the owner, Tokyo stocks open from search and show a quote, a chart and list prices, through the shared cache; others see them as not available (same owner-only rule as A02-bath658, if the source's terms need it).
+- Requests are not counted ahead; the source is paused after a limit answer (src/worker/market/pause.ts).
+- Tests with a fake source; checked locally with the real key.
+
+**Notes.**
+- Split from A02-bath658 on 2026-10-31: Alpha Vantage does not cover Tokyo. Checked with the real key: GLOBAL_QUOTE for `7203.T` answers an empty quote, and SYMBOL_SEARCH for "7203" and "toyota" finds no Tokyo listing (only foreign ones such as TDBOY). Twelve Data's free search also returns no XTKS row for "7203" or "Toyota Motor".
+- **Open for the approver: which source, if any.** The choices named in A02-bath658: Marketstack (sign-up asks for a home address; free plan 100 requests a month; Asian coverage unverified) or J-Quants Light (¥1,650 a month). Both are an outside effect or a cost.
+- China (Shanghai, Shenzhen) is done in A02-bath658.

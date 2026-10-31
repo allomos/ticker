@@ -3,9 +3,11 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: China done and merged into master (pushed): src/worker/market/alphavantage.ts and endofday.ts, owner rule in routes.ts, ticker page ranges and close-price line. 117 tests pass. Checked locally as the owner with the real key: search turns 600519 into 600519.SHH, the quote (Kweichow Moutai, 1392.05, +2.81%), a 1M daily chart of 19 points, add to list and the list price from the cache; signed out gets 404. Tokyo is not covered: split into A02-pilot418 (backlog, source choice open for the approver). Branch merged and removed.\nNot done: production. Before deploying: set the Worker secrets ALPHA_VANTAGE_API_KEY and MARKET_OWNER_EMAIL from .dev.vars (npx wrangler secret put, or wrangler deploy --secrets-file), and apply migration 0005 (from A02-hen552) remotely. Waits for the approver.\nNext step: once approved, secrets, migration, deploy; the owner checks a Shanghai stock at ticker.allomos.com; label 'deployed and verified'; finish with alm done --without-human-check and check steps.",
   "holder": "claude-code-29ed5bb1",
   "id": "A02-bath658",
   "iteration": "I-cast",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -14,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "The owner follows China A-share (and, if covered, Tokyo) stocks, with their data from Alpha Vantage"
+  "state": "waiting",
+  "title": "The owner follows China A-share (and, if covered, Tokyo) stocks, with their data from Alpha Vantage",
+  "waiting_on": "Approval to set the Worker secrets ALPHA_VANTAGE_API_KEY and MARKET_OWNER_EMAIL (from .dev.vars), apply migration 0005 to the production database, and deploy master to ticker.allomos.com"
 }

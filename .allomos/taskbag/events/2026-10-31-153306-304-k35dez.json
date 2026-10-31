@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:33:06Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-bath658",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "At most one Alpha Vantage request per server call (the free key allows one a second): a list with several Chinese stocks gets one now and the rest on the app's next poll, 20 s later"
+    }
+  ]
+}

@@ -3,4 +3,7 @@ import { afterEach } from "vitest";
 
 window.scrollTo = () => {};
 
-afterEach(() => cleanup());
+afterEach(() => {
+  cleanup();
+  localStorage.clear();
+});

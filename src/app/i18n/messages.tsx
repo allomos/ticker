@@ -114,6 +114,17 @@ const en = {
   getNewLink: "Get a new link",
   oneMoreClick: "One more click to finish signing in.",
   signingIn: "Signing in…",
+  codeTitle: "Or sign in with the code",
+  codeHelp: "Signing in on your home-screen app? Copy the code from the email and paste it here.",
+  codeLabel: "Sign-in code",
+  paste: "Paste",
+  codeSubmit: "Sign in with code",
+  badCode: (left: number) => `That code does not work. ${left} ${left === 1 ? "try" : "tries"} left.`,
+  codeVoid: "That code no longer works: it was used, it expired, or too many wrong codes were tried. Ask for a new email.",
+  copyHint: "Signing in on your home-screen app? Copy this code and paste it there.",
+  copy: "Copy",
+  copied: "Copied",
+  orThisBrowser: "Or sign in on this browser. Either one uses up the sign-in.",
 };
 
 export type Messages = typeof en;
@@ -228,6 +239,17 @@ const zhHans: Messages = {
   getNewLink: "获取新链接",
   oneMoreClick: "再点一下即可完成登录。",
   signingIn: "正在登录…",
+  codeTitle: "或使用代码登录",
+  codeHelp: "要在主屏幕上的应用中登录？从邮件中复制代码并粘贴到这里。",
+  codeLabel: "登录代码",
+  paste: "粘贴",
+  codeSubmit: "使用代码登录",
+  badCode: (left) => `代码不正确。还可以尝试 ${left} 次。`,
+  codeVoid: "此代码已失效：已被使用、已过期，或错误次数过多。请重新获取邮件。",
+  copyHint: "要在主屏幕上的应用中登录？复制此代码并粘贴到应用中。",
+  copy: "复制",
+  copied: "已复制",
+  orThisBrowser: "或在此浏览器中登录。两者只能使用其一。",
 };
 
 const zhHant: Messages = {
@@ -340,6 +362,17 @@ const zhHant: Messages = {
   getNewLink: "索取新連結",
   oneMoreClick: "再按一下即可完成登入。",
   signingIn: "登入中…",
+  codeTitle: "或使用代碼登入",
+  codeHelp: "要在主畫面上的應用程式登入？從郵件中複製代碼並貼到這裡。",
+  codeLabel: "登入代碼",
+  paste: "貼上",
+  codeSubmit: "使用代碼登入",
+  badCode: (left) => `代碼不正確。還可以嘗試 ${left} 次。`,
+  codeVoid: "此代碼已無法使用：已被使用、已過期，或錯誤次數過多。請重新索取郵件。",
+  copyHint: "要在主畫面上的應用程式登入？複製此代碼並貼到應用程式中。",
+  copy: "複製",
+  copied: "已複製",
+  orThisBrowser: "或在此瀏覽器登入。兩者只能擇一使用。",
 };
 
 const ja: Messages = {
@@ -452,6 +485,17 @@ const ja: Messages = {
   getNewLink: "新しいリンクを請求",
   oneMoreClick: "クリックしてログインを完了してください。",
   signingIn: "ログイン中…",
+  codeTitle: "コードでログイン",
+  codeHelp: "ホーム画面のアプリでログインする場合は、メールのコードをコピーしてここに貼り付けてください。",
+  codeLabel: "ログインコード",
+  paste: "貼り付け",
+  codeSubmit: "コードでログイン",
+  badCode: (left) => `コードが正しくありません。あと ${left} 回試せます。`,
+  codeVoid: "このコードは使用できません（使用済み、期限切れ、または誤入力が多すぎます）。新しいメールを請求してください。",
+  copyHint: "ホーム画面のアプリでログインする場合は、このコードをコピーしてアプリに貼り付けてください。",
+  copy: "コピー",
+  copied: "コピーしました",
+  orThisBrowser: "またはこのブラウザでログインします。どちらか一方しか使えません。",
 };
 
 export const MESSAGES: Record<Locale, Messages> = { en, "zh-Hans": zhHans, "zh-Hant": zhHant, ja };

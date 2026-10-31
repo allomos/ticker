@@ -7,6 +7,7 @@ export class ApiError extends Error {
     readonly status: number,
     readonly code: string,
     readonly retryAfter?: number,
+    readonly triesLeft?: number,
   ) {
     super(code);
   }
@@ -26,7 +27,7 @@ export async function send<T>(method: string, path: string, body: unknown = {}):
     body: JSON.stringify(body),
   });
   const data: any = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter);
+  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter, data.triesLeft);
   return data as T;
 }
 
@@ -38,6 +39,8 @@ export const api = {
   me: () => get<{ user: Me | null }>("/auth/me").then((r) => r.user),
   requestLink: (email: string, lang: Locale) => send<{ ok: true; local: boolean }>("POST", "/auth/email", { email, lang }),
   verify: (token: string, lang: Locale) => send<{ user: Me }>("POST", "/auth/verify", { token, lang }).then((r) => r.user),
+  signInWithCode: (email: string, code: string, lang: Locale) =>
+    send<{ user: Me }>("POST", "/auth/code", { email, code, lang }).then((r) => r.user),
   signOut: () => send<{ ok: true }>("POST", "/auth/signout"),
   lists: () => get<{ lists: WatchList[] }>("/api/lists").then((r) => r.lists),
   createList: (name: string) => send<{ list: WatchList }>("POST", "/api/lists", { name }).then((r) => r.list),

@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:12:46Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A03-film078",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Search box (src/app/components/SearchBox.tsx) with a small History-API router (src/app/router.tsx) and the results page; checked in the browser at desktop and phone width. Next: A03-statue382 (details page)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

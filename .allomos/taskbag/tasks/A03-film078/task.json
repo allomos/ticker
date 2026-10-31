@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Search box (src/app/components/SearchBox.tsx) with a small History-API router (src/app/router.tsx) and the results page; checked in the browser at desktop and phone width. Next: A03-statue382 (details page).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "Run the app (`npm run dev` in `/Users/wanghui/coding/ticker`) and open http://localhost:5173:\n\n1. Type `apple` in the search box: Apple Inc. (NASDAQ) comes first; listings the free data plan\n   does not cover are greyed and marked \"Not on free data\" (at most three in the dropdown).\n2. Type `AAPL`, `bitcoin`, `yen`: Apple, BTC/USD and USD/JPY appear.\n3. Use the arrow keys and Enter, or click: the ticker's page opens (its content comes with the details task).\n4. Type `vanguard` and press Enter: the full results page lists covered symbols first, then the\n   others under \"Not on the free data plan\". Try it at phone width too.\n",
   "id": "A03-film078",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user searches by name or ticker and sees matching symbols, with those not on the free plan marked"
+  "state": "done",
+  "title": "A user searches by name or ticker and sees matching symbols, with those not on the free plan marked",
+  "without_human_check": "Goal run"
 }

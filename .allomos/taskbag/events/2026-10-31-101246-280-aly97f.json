@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T10:12:46Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "label",
+  "kind": "task",
+  "id": "A03-film078",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "label",
+      "to": "locally verified"
+    }
+  ]
+}

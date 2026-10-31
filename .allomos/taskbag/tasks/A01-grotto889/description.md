@@ -23,6 +23,5 @@
 <circle cx="25.5" cy="24.5" r="4" fill="#e9c46a"/>
 </svg>
 ```
-- Still waiting for the approver's go before any work starts.
-- Logo direction chosen (B2, below). Not to be started before the approver says go.
+- Logo direction chosen (B2, below). Approver made the task ready on 2026-10-31: work may start.
 - Feeds the landing-page task (the page before sign-in uses this logo).

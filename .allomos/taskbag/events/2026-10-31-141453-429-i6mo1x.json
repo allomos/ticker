@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:14:53Z",
+  "via": "alm",
+  "command": "ready",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "backlog",
+      "to": "ready"
+    }
+  ]
+}

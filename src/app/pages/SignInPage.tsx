@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { api, ApiError } from "../api";
 import { useAuth } from "../auth";
+import { MailCheckIcon } from "../components/Icons";
+import { LogoMark } from "../components/Logo";
 import { useI18n } from "../i18n";
 import { navigate } from "../router";
 
@@ -84,7 +86,7 @@ function CodeForm({ email }: { email: string }) {
           </button>
         )}
       </div>
-      <button className="button" type="submit" disabled={working}>
+      <button className="button button-block" type="submit" disabled={working}>
         {working ? t.signingIn : t.codeSubmit}
       </button>
       {error && <p className="error">{error.kind === "bad" ? t.badCode(error.left) : error.kind === "void" ? t.codeVoid : t.mailFailed}</p>}
@@ -117,34 +119,36 @@ export function SignInPage() {
 
   if (state === "sent") {
     return (
-      <section className="narrow">
-        <h1 className="page-title">{t.checkEmail}</h1>
-        <p>{t.sentTo(<strong>{email}</strong>)}</p>
+      <section className="auth-card">
+        <span className="auth-badge">
+          <MailCheckIcon />
+        </span>
+        <h1 className="auth-title">{t.checkEmail}</h1>
+        <p className="auth-text muted">{t.sentTo(<strong>{email}</strong>)}</p>
         {local && <p className="notice small">{t.localNotice}</p>}
         <CodeForm email={email} />
-        <p>
-          <button
-            className="link-button"
-            onClick={() => {
-              savePending(null);
-              setState("idle");
-            }}
-          >
-            {t.useAnother}
-          </button>
-        </p>
+        <button
+          className="button button-quiet button-block"
+          onClick={() => {
+            savePending(null);
+            setState("idle");
+          }}
+        >
+          {t.useAnother}
+        </button>
       </section>
     );
   }
 
   return (
-    <section className="narrow">
-      <h1 className="page-title">{t.signInTitle}</h1>
-      <p className="muted">{t.signInIntro}</p>
+    <section className="auth-card">
+      <LogoMark size={40} />
+      <h1 className="auth-title">{t.signInTitle}</h1>
+      <p className="auth-text muted">{t.signInIntro}</p>
       <form onSubmit={submit} className="form">
         <label htmlFor="email">{t.emailLabel}</label>
-        <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <button className="button" type="submit" disabled={state === "sending"}>
+        <input id="email" type="email" required autoComplete="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <button className="button button-block" type="submit" disabled={state === "sending"}>
           {state === "sending" ? t.sending : t.emailMeLink}
         </button>
         {state === "error" && <p className="error">{t[message]}</p>}
@@ -212,23 +216,23 @@ export function VerifyPage({ token }: { token: string }) {
 
   if (state === "bad") {
     return (
-      <section className="narrow">
-        <h1 className="page-title">{t.linkBadTitle}</h1>
-        <p>{t.linkBadText}</p>
-        <p>
-          <a className="button" href="/signin" onClick={(e) => (e.preventDefault(), navigate("/signin"))}>
-            {t.getNewLink}
-          </a>
-        </p>
+      <section className="auth-card">
+        <LogoMark size={40} />
+        <h1 className="auth-title">{t.linkBadTitle}</h1>
+        <p className="auth-text muted">{t.linkBadText}</p>
+        <a className="button button-block" href="/signin" onClick={(e) => (e.preventDefault(), navigate("/signin"))}>
+          {t.getNewLink}
+        </a>
       </section>
     );
   }
   return (
-    <section className="narrow">
-      <h1 className="page-title">{t.signInTitle}</h1>
+    <section className="auth-card">
+      <LogoMark size={40} />
+      <h1 className="auth-title">{t.signInTitle}</h1>
       {code && <CopyCode code={code} />}
-      <p>{code ? t.orThisBrowser : t.oneMoreClick}</p>
-      <button ref={button} className={code ? "button button-quiet" : "button"} onClick={finish} disabled={state === "working"}>
+      <p className="auth-text muted">{code ? t.orThisBrowser : t.oneMoreClick}</p>
+      <button ref={button} className={code ? "button button-quiet button-block" : "button button-block"} onClick={finish} disabled={state === "working"}>
         {state === "working" ? t.signingIn : t.signIn}
       </button>
     </section>

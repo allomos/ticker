@@ -4,6 +4,7 @@ import { LogoMark } from "./components/Logo";
 import { SearchBox } from "./components/SearchBox";
 import { I18nProvider, useI18n } from "./i18n";
 import { ListsProvider } from "./lists";
+import { FrontPage } from "./pages/FrontPage";
 import { ListsPage } from "./pages/ListsPage";
 import { UserMenu } from "./components/UserMenu";
 import { QuotePage } from "./pages/QuotePage";
@@ -13,21 +14,8 @@ import { Link, useLocation } from "./router";
 
 function Home({ selected }: { selected: string | null }) {
   const { user } = useAuth();
-  const { t } = useI18n();
   if (user === undefined) return null;
-  if (!user) {
-    return (
-      <section className="home narrow">
-        <h1 className="page-title">{t.homeTitle}</h1>
-        <p>{t.homeIntro}</p>
-        <p>
-          <Link className="button" href="/signin">
-            {t.homeSignIn}
-          </Link>
-        </p>
-      </section>
-    );
-  }
+  if (!user) return <FrontPage />;
   return <ListsPage selected={selected} />;
 }
 

@@ -1,4 +1,5 @@
-import type { Cached, Quote, QuotesResponse, Range, SearchResult, Series } from "../shared/market";
+import type { WatchList } from "../shared/lists";
+import type { Cached, InstrumentType, Quote, QuotesResponse, Range, SearchResult, Series } from "../shared/market";
 
 export class ApiError extends Error {
   constructor(
@@ -37,6 +38,14 @@ export const api = {
   requestLink: (email: string) => send<{ ok: true; local: boolean }>("POST", "/auth/email", { email }),
   verify: (token: string) => send<{ user: Me }>("POST", "/auth/verify", { token }).then((r) => r.user),
   signOut: () => send<{ ok: true }>("POST", "/auth/signout"),
+  lists: () => get<{ lists: WatchList[] }>("/api/lists").then((r) => r.lists),
+  createList: (name: string) => send<{ list: WatchList }>("POST", "/api/lists", { name }).then((r) => r.list),
+  renameList: (id: string, name: string) => send<{ ok: true }>("PATCH", `/api/lists/${id}`, { name }),
+  deleteList: (id: string) => send<{ ok: true }>("DELETE", `/api/lists/${id}`),
+  orderLists: (ids: string[]) => send<{ lists: WatchList[] }>("POST", "/api/lists/order", { ids }).then((r) => r.lists),
+  addItem: (id: string, item: { symbol: string; name: string; exchange: string; type: InstrumentType }) =>
+    send<{ ok: true }>("POST", `/api/lists/${id}/items`, item),
+  removeItem: (id: string, symbol: string) => send<{ ok: true }>("DELETE", `/api/lists/${id}/items/${encodeURIComponent(symbol)}`),
   search: (q: string, signal?: AbortSignal) =>
     get<{ results: SearchResult[] }>(`/api/search?q=${encodeURIComponent(q)}`, signal).then((r) => r.results),
   quote: (symbol: string, signal?: AbortSignal) =>

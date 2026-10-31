@@ -29,7 +29,7 @@ export default defineConfig({
         plugins: [react()],
         test: {
           name: "app",
-          include: ["test/app/**/*.test.tsx"],
+          include: ["test/app/**/*.test.tsx", "test/app/**/*.test.ts"],
           environment: "jsdom",
           setupFiles: ["./test/app/setup.ts"],
         },

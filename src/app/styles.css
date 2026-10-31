@@ -293,3 +293,11 @@ a { color: var(--accent); text-decoration: none; }
 }
 .button-block { display: block; width: 100%; text-align: center; }
 @media (max-width: 600px) { .auth-card { margin: 8px auto; padding: 22px 16px; } }
+
+/* Standalone (home-screen) app: keep content clear of the notch, rounded corners and home indicator. */
+.topbar { padding-top: max(10px, env(safe-area-inset-top)); padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+.page { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+.footer { padding-bottom: max(24px, calc(env(safe-area-inset-bottom) + 12px)); padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+@media (max-width: 600px) {
+  .page { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+}

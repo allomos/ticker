@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Ticker</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<style>
+  :root { --bg: #fbfcfe; --surface: #ffffff; --text: #12223a; --muted: #55667c; --border: #e2e7ee; --accent: #1f7a6f; --on-accent: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e1726; --surface: #152136; --text: #e8edf4; --muted: #9aa8bb; --border: #26344c; --accent: #5cc8ba; --on-accent: #0e1726; } }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom); box-sizing: border-box; }
+  main { max-width: 360px; text-align: center; padding: 28px 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+  h1 { font-size: 21px; margin: 12px 0 6px; }
+  p { color: var(--muted); line-height: 1.6; margin: 0 0 18px; }
+  button { font: inherit; font-weight: 500; padding: 9px 18px; border-radius: 20px; border: none; background: var(--accent); color: var(--on-accent); cursor: pointer; }
+</style>
+</head>
+<body>
+<main>
+  <img src="/favicon.svg" width="44" height="44" alt="" />
+  <h1>Ticker</h1>
+  <p id="message">You're offline – prices will load when you're back online.</p>
+  <button id="retry" type="button">Try again</button>
+</main>
+<script>
+  // The language the app last used (kept by the app in localStorage), as in src/app/i18n.
+  var TEXT = {
+    en: ["You're offline – prices will load when you're back online.", "Try again"],
+    "zh-Hans": ["你已离线——恢复联网后会自动加载价格。", "重试"],
+    "zh-Hant": ["你已離線——恢復連線後會自動載入價格。", "重試"],
+    ja: ["オフラインです。オンラインに戻ると価格が読み込まれます。", "再試行"]
+  };
+  var lang = "en";
+  try { lang = localStorage.getItem("ticker.lang") || ""; } catch (e) {}
+  if (!TEXT[lang]) {
+    var nav = (navigator.language || "").toLowerCase();
+    lang = nav.indexOf("ja") === 0 ? "ja" : nav.indexOf("zh") === 0 ? (/hant|tw|hk|mo/.test(nav) ? "zh-Hant" : "zh-Hans") : "en";
+  }
+  document.documentElement.lang = lang;
+  document.getElementById("message").textContent = TEXT[lang][0];
+  document.getElementById("retry").textContent = TEXT[lang][1];
+  document.getElementById("retry").onclick = function () { location.reload(); };
+  window.addEventListener("online", function () { location.reload(); });
+</script>
+</body>
+</html>

@@ -8,6 +8,7 @@
   - If Tokyo is not covered, go back to the approver before building the Japan part (choices: Marketstack, which asks for a home address at sign-up, or J-Quants Light, ¥1,650 a month); China goes ahead.
 - Search stays on Twelve Data (approver, 2026-10-31), which already finds these stocks by code and by name, with their exchange (`mic_code`): for the owner, results on `XSHG`, `XSHE` (and `XTKS` if covered) are no longer marked as not on the free plan, and open with Alpha Vantage's symbol (`600519.SHH`, `000002.SHZ`). No Alpha Vantage request is spent on search.
 - The quote and chart pages and the list prices work for them, through the same cache.
+- Charts for these stocks (approver, 2026-10-31): only daily prices for the last 100 trading days are free, so the 1D, 1Y, 5Y and MAX ranges are greyed out, and 5D, 1M, 6M and YTD show the daily prices there are.
 - Requests are not counted ahead of time (approver, 2026-10-31): when Alpha Vantage answers that the daily limit is reached, the app pauses it until the next day and the owner sees "busy"; cached data is still shown.
 - Prices are end-of-day on the free key, so each stock's data is fetched at most once after its market closes and served from the cache until then; the page says the price is from the last close.
 - The owner is the account whose address equals the Worker secret `MARKET_OWNER_EMAIL` (locally in `.dev.vars`); the address is never written in the code, the repository or the taskbag.
@@ -22,8 +23,6 @@
   - `GLOBAL_QUOTE` is "updated at the end of each trading day"; `TIME_SERIES_DAILY` `compact` (last 100 days) is free, while `full`, intraday and adjusted are premium.
   - Terms: "personal, non-commercial use"; giving other people access counts as commercial.
 - Key: Worker secret `ALPHA_VANTAGE_API_KEY` (locally in `.dev.vars`).
-- Open for the approver, before this task is made ready:
-  1. **Account and key.** The approver gets a free key (alphavantage.co/support/#api-key, email only), puts it and `MARKET_OWNER_EMAIL` (the address they sign in with) into `.dev.vars`, and later sets both as Worker secrets.
-  2. **Charts.** Only daily prices, at most the last 100 days, are free. For these stocks the 1D and 1W ranges cannot show intraday prices, and 1Y and longer cannot be shown: hide those ranges, or show what there is.
+- Set up by the approver on 2026-10-31: `ALPHA_VANTAGE_API_KEY` and `MARKET_OWNER_EMAIL` are in `.dev.vars`; both still have to be set as Worker secrets before production (an outside effect: ask the approver).
 - Market data lives in `src/worker/market/` (Twelve Data client, D1 cache, `api_budget`).
 - The iTick account made on 2026-10-31 is no longer needed (its free key expires 2026-11-07).

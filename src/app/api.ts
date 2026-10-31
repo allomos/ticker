@@ -9,7 +9,6 @@ export class ApiError extends Error {
     readonly code: string,
     readonly retryAfter?: number,
     readonly triesLeft?: number,
-    readonly detail?: string,
   ) {
     super(code);
   }
@@ -29,7 +28,7 @@ export async function send<T>(method: string, path: string, body: unknown = {}):
     body: JSON.stringify(body),
   });
   const data: any = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter, data.triesLeft, data.message);
+  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter, data.triesLeft);
   return data as T;
 }
 

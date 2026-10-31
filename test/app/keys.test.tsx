@@ -136,7 +136,7 @@ describe("the keys page", () => {
     fireEvent.click(within(td).getByRole("button", { name: "Add a key" }));
     fireEvent.change(within(td).getByLabelText("API key"), { target: { value: "bad" } });
     fireEvent.click(within(td).getByRole("button", { name: "Check and add" }));
-    expect(await within(card("Twelve Data")).findByText("This key does not work: invalid key")).toBeTruthy();
+    expect(await within(card("Twelve Data")).findByText("Twelve Data does not accept this key. Check that it is copied whole.")).toBeTruthy();
   });
 
   it("is in the account menu", async () => {

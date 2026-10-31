@@ -27,7 +27,7 @@ function KeyForm({ source, where: initialWhere, fixedWhere, onDone }: { source: 
       } else {
         const check = await api.checkKey(source, value);
         if (!check.ok) {
-          setState({ kind: "error", text: t.keyRejected(check.message ?? "") });
+          setState({ kind: "error", text: t.keyRejected(NAMES[source]) });
           return;
         }
         setBrowserKey(source, value);
@@ -36,7 +36,7 @@ function KeyForm({ source, where: initialWhere, fixedWhere, onDone }: { source: 
       setKey("");
       onDone();
     } catch (err) {
-      setState({ kind: "error", text: err instanceof ApiError && err.code === "key_rejected" ? t.keyRejected(err.detail ?? "") : t.keyFailed });
+      setState({ kind: "error", text: err instanceof ApiError && err.code === "key_rejected" ? t.keyRejected(NAMES[source]) : t.keyFailed });
     }
   };
 

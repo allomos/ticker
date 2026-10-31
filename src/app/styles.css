@@ -301,3 +301,4 @@ a { color: var(--accent); text-decoration: none; }
 @media (max-width: 600px) {
   .page { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
 }
+.range:disabled { opacity: 0.4; cursor: not-allowed; }

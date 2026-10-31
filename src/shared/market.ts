@@ -40,10 +40,18 @@ export interface Quote {
   isMarketOpen: boolean;
   /** When the price was last updated at the source (ISO 8601). */
   asOf: string;
+  /** A price from the last close only (Shanghai and Shenzhen stocks, from Alpha Vantage). */
+  endOfDay?: boolean;
 }
 
 export const RANGES = ["1D", "5D", "1M", "6M", "YTD", "1Y", "5Y", "MAX"] as const;
 export type Range = (typeof RANGES)[number];
+
+/** Shanghai and Shenzhen stocks in Alpha Vantage's form (600519.SHH, 000002.SHZ): end-of-day prices only. */
+export const isEndOfDaySymbol = (symbol: string) => /^\d{6}\.(SHH|SHZ)$/.test(symbol);
+
+/** The chart ranges an end-of-day symbol has: its last 100 trading days, one price a day. */
+export const END_OF_DAY_RANGES: readonly Range[] = ["5D", "1M", "6M", "YTD"];
 
 export interface SeriesPoint {
   /** Unix seconds. */

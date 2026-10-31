@@ -14,6 +14,8 @@ export default defineConfig({
               bindings: {
                 TEST_MIGRATIONS: await readD1Migrations("./migrations"),
                 TWELVE_DATA_API_KEY: "test-key",
+                ALPHA_VANTAGE_API_KEY: "test-av-key",
+                MARKET_OWNER_EMAIL: "Owner@Example.com",
                 RESEND_API_KEY: "",
               },
             },

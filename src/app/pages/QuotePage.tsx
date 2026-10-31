@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { INTL_TAG } from "../../shared/locale";
-import { RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
+import { END_OF_DAY_RANGES, isEndOfDaySymbol, RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
 import { AddToList } from "../components/AddToList";
 import { Breadcrumb } from "../components/Breadcrumb";
@@ -80,7 +80,7 @@ function Header({ cached }: { cached: Cached<Quote> }) {
         <span className="change-label muted">{t.today}</span>
       </div>
       <div className="muted small">
-        {q.isMarketOpen ? t.marketOpen : t.marketClosed} · {t.priceAsOf(formatTime(q.asOf, locale))}
+        {q.endOfDay ? t.priceAtClose(formatTime(q.asOf, locale)) : <>{q.isMarketOpen ? t.marketOpen : t.marketClosed} · {t.priceAsOf(formatTime(q.asOf, locale))}</>}
         {cached.stale && ` · ${t.staleCopy}`}
       </div>
     </div>
@@ -89,7 +89,9 @@ function Header({ cached }: { cached: Cached<Quote> }) {
 
 function QuoteDetails({ symbol }: { symbol: string }) {
   const { t, locale } = useI18n();
-  const [range, setRange] = useState<Range>("1D");
+  // Shanghai and Shenzhen stocks have daily prices for their last 100 trading days only.
+  const endOfDay = isEndOfDaySymbol(symbol);
+  const [range, setRange] = useState<Range>(endOfDay ? "1M" : "1D");
   const quote = useLoad<Cached<Quote>>(`q:${symbol}`, (s) => api.quote(symbol, s));
   const chart = useLoad<Cached<Series>>(`c:${symbol}:${range}`, (s) => api.chart(symbol, range, s));
 
@@ -113,7 +115,15 @@ function QuoteDetails({ symbol }: { symbol: string }) {
       <Header cached={quote.value} />
       <div className="ranges" role="tablist" aria-label={t.chartRange}>
         {RANGES.map((r) => (
-          <button key={r} role="tab" aria-selected={r === range} className={r === range ? "range active" : "range"} onClick={() => setRange(r)}>
+          <button
+            key={r}
+            role="tab"
+            aria-selected={r === range}
+            className={r === range ? "range active" : "range"}
+            onClick={() => setRange(r)}
+            disabled={endOfDay && !END_OF_DAY_RANGES.includes(r)}
+            title={endOfDay && !END_OF_DAY_RANGES.includes(r) ? t.dailyOnly : undefined}
+          >
             {t.ranges[r]}
           </button>
         ))}

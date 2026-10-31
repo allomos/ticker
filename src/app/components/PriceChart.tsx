@@ -1,30 +1,32 @@
 import { AreaSeries, createChart, LineStyle, type IChartApi, type UTCTimestamp } from "lightweight-charts";
 import { useEffect, useRef } from "react";
 import { INTL_TAG } from "../../shared/locale";
-import type { Range, Series } from "../../shared/market";
+import type { Series } from "../../shared/market";
 import { useI18n } from "../i18n";
 
 function cssVar(name: string) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
-const intraday = (range: Range) => range === "1D" || range === "5D" || range === "1M";
+/** Points within the day (times shown); daily, weekly or monthly points show dates. */
+const intraday = (series: Series) => !/day|week|month/.test(series.interval);
 
-function formatter(range: Range, timeZone: string, tag: string) {
-  const opts: Intl.DateTimeFormatOptions = intraday(range)
+function formatter(series: Series, timeZone: string, tag: string) {
+  const opts: Intl.DateTimeFormatOptions = intraday(series)
     ? { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone }
     : { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" };
   const fmt = new Intl.DateTimeFormat(tag, opts);
   return (t: number) => fmt.format(new Date(t * 1000));
 }
 
-function tickFormatter(range: Range, timeZone: string, tag: string) {
+function tickFormatter(series: Series, timeZone: string, tag: string) {
+  const range = series.range;
   const time = new Intl.DateTimeFormat(tag, { hour: "numeric", minute: "2-digit", timeZone });
-  const day = new Intl.DateTimeFormat(tag, { month: "short", day: "numeric", timeZone: intraday(range) ? timeZone : "UTC" });
+  const day = new Intl.DateTimeFormat(tag, { month: "short", day: "numeric", timeZone: intraday(series) ? timeZone : "UTC" });
   const year = new Intl.DateTimeFormat(tag, { year: "numeric", timeZone: "UTC" });
   return (t: number) => {
     const d = new Date(t * 1000);
-    if (range === "1D") return time.format(d);
+    if (range === "1D" && intraday(series)) return time.format(d);
     if (range === "5Y" || range === "MAX") return year.format(d);
     return day.format(d);
   };
@@ -50,12 +52,12 @@ export function PriceChart({ series, baseline }: { series: Series; baseline?: nu
       rightPriceScale: { borderVisible: false },
       timeScale: {
         borderVisible: false,
-        timeVisible: intraday(series.range),
+        timeVisible: intraday(series),
         fixLeftEdge: true,
         fixRightEdge: true,
-        tickMarkFormatter: tickFormatter(series.range, series.timezone, INTL_TAG[locale]),
+        tickMarkFormatter: tickFormatter(series, series.timezone, INTL_TAG[locale]),
       },
-      localization: { locale: INTL_TAG[locale], timeFormatter: formatter(series.range, series.timezone, INTL_TAG[locale]) },
+      localization: { locale: INTL_TAG[locale], timeFormatter: formatter(series, series.timezone, INTL_TAG[locale]) },
       crosshair: { horzLine: { visible: false } },
       handleScroll: false,
       handleScale: false,

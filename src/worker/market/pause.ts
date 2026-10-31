@@ -1,9 +1,9 @@
-// The free Twelve Data plan allows 8 requests a minute and 800 a day for the whole app. The app
-// does not count ahead: when Twelve Data answers that a limit is reached (429), it pauses Twelve
-// Data for everyone, in D1, until the next minute or, for the daily limit, the next UTC day.
-// Meanwhile cached data is served and users without a cached copy are told to wait.
+// The app does not count requests ahead. When a data source answers that a limit is reached, it
+// pauses that source for everyone, in D1: Twelve Data (8 a minute, 800 a day) until the next
+// minute or UTC day; Alpha Vantage (1 a second, 25 a day) for two seconds or until the next UTC
+// day. Meanwhile cached data is served and users without a cached copy are told to wait.
 
-const SOURCE = "twelvedata";
+export type Source = "twelvedata" | "alphavantage";
 const MINUTE = 60_000;
 const DAY = 86_400_000;
 
@@ -25,9 +25,16 @@ export function pauseEnd(message: string, now: number): { until: number; reason:
     : { until: Math.floor(now / MINUTE) * MINUTE + MINUTE, reason: "minute" };
 }
 
-/** Pauses Twelve Data after a limit answer; a longer pause already in place is kept. */
-export async function pause(db: D1Database, message: string, now = Date.now()): Promise<number> {
-  const { until, reason } = pauseEnd(message, now);
+/** Alpha Vantage's notes: "1 request per second" (burst), otherwise its 25 a day. */
+export function alphaVantagePauseEnd(message: string, now: number): { until: number; reason: "second" | "day" } {
+  return /per second|sparingly/i.test(message)
+    ? { until: now + 2000, reason: "second" }
+    : { until: Math.floor(now / DAY) * DAY + DAY, reason: "day" };
+}
+
+/** Pauses a source after a limit answer; a longer pause already in place is kept. */
+export async function pause(db: D1Database, message: string, now = Date.now(), source: Source = "twelvedata"): Promise<number> {
+  const { until, reason } = source === "alphavantage" ? alphaVantagePauseEnd(message, now) : pauseEnd(message, now);
   const row = await db
     .prepare(
       `INSERT INTO api_pause (source, until, reason) VALUES (?1, ?2, ?3)
@@ -35,15 +42,15 @@ export async function pause(db: D1Database, message: string, now = Date.now()): 
          reason = CASE WHEN excluded.until > until THEN excluded.reason ELSE reason END
        RETURNING until`,
     )
-    .bind(SOURCE, until, reason)
+    .bind(source, until, reason)
     .first<{ until: number }>();
-  console.warn(`Twelve Data limit reached (${reason}); paused until ${new Date(row!.until).toISOString()}`);
+  console.warn(`${source} limit reached (${reason}); paused until ${new Date(row!.until).toISOString()}`);
   return row!.until;
 }
 
-/** When Twelve Data may be asked again, if it is paused now; otherwise null. */
-export async function pausedUntil(db: D1Database, now = Date.now()): Promise<number | null> {
-  const row = await db.prepare("SELECT until FROM api_pause WHERE source = ?1").bind(SOURCE).first<{ until: number }>();
+/** When the source may be asked again, if it is paused now; otherwise null. */
+export async function pausedUntil(db: D1Database, now = Date.now(), source: Source = "twelvedata"): Promise<number | null> {
+  const row = await db.prepare("SELECT until FROM api_pause WHERE source = ?1").bind(source).first<{ until: number }>();
   return row && row.until > now ? row.until : null;
 }
 

@@ -9,7 +9,7 @@
 - The page's `lang` attribute (`en`, `zh-Hans`, `zh-Hant`, `ja`) and title follow the chosen language.
 - Tests cover the browser-language detection, the switch and the fallback; the app is checked in the browser in all four languages at desktop and phone width, locally and at ticker.allomos.com.
 
-**Notes.** Do not start until the approver gives the go-ahead (asked 2026-10-31).
+**Notes.** Approved to start: the approver made it ready on 2026-10-31.
 
 Decided by the approver (2026-10-31):
 1. Chinese in both Simplified and Traditional.

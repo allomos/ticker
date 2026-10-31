@@ -1,10 +1,16 @@
+/* The Allomos colours (www.allomos.com). --accent is the palette's link teal: it also fills
+   buttons, since white on the main teal (--teal) falls short of WCAG AA for text; --teal marks
+   focus, the chosen tab and the logo. Rises and falls stay green and red. */
 :root {
-  --bg: #ffffff;
-  --surface: #f6f8fb;
-  --text: #1f2328;
-  --muted: #5f6b7a;
-  --border: #dde3ea;
-  --accent: #1a73e8;
+  --bg: #fbfcfe;
+  --surface: #ffffff;
+  --text: #12223a;
+  --muted: #55667c;
+  --border: #e2e7ee;
+  --accent: #1f7a6f;
+  --teal: #2a9d8f;
+  --coral: #e76f51;
+  --gold: #e9c46a;
   --up: #137333;
   --down: #c5221f;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -13,12 +19,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #111418;
-    --surface: #1a1f25;
-    --text: #e6e9ee;
-    --muted: #9aa5b1;
-    --border: #2b323b;
-    --accent: #8ab4f8;
+    --bg: #0e1726;
+    --surface: #152136;
+    --text: #e8edf4;
+    --muted: #9aa8bb;
+    --border: #26344c;
+    --accent: #5cc8ba;
     --up: #81c995;
     --down: #f28b82;
   }
@@ -28,7 +34,7 @@ body { margin: 0; background: var(--bg); }
 a { color: var(--accent); text-decoration: none; }
 .topbar {
   display: flex; align-items: center; gap: 16px;
-  padding: 10px 16px; border-bottom: 1px solid var(--border);
+  padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--surface);
 }
 .brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 20px; color: var(--text); flex-shrink: 0; }
 .logo-mark { display: block; flex-shrink: 0; }
@@ -43,13 +49,13 @@ a { color: var(--accent); text-decoration: none; }
 .search-input {
   width: 100%; padding: 9px 14px; font-size: 15px;
   border: 1px solid var(--border); border-radius: 22px;
-  background: var(--surface); color: var(--text); outline: none;
+  background: var(--bg); color: var(--text); outline: none;
 }
-.search-input:focus { border-color: var(--accent); background: var(--bg); }
+.search-input:focus { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
 .search-results {
   position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px);
   margin: 0; padding: 4px 0; list-style: none;
-  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15); max-height: 70vh; overflow-y: auto;
 }
 .search-note { padding: 8px 14px; color: var(--muted); font-size: 14px; }
@@ -57,7 +63,7 @@ a { color: var(--accent); text-decoration: none; }
   display: grid; grid-template-columns: 6.5em 1fr auto auto; align-items: center; gap: 4px 10px;
   padding: 8px 14px; cursor: pointer;
 }
-.result.active, .result:hover { background: var(--surface); }
+.result.active, .result:hover { background: color-mix(in srgb, var(--teal) 8%, transparent); }
 .result.unavailable { cursor: default; opacity: 0.6; }
 .result-symbol { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
 .result-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -68,7 +74,7 @@ a { color: var(--accent); text-decoration: none; }
   font-size: 12px; padding: 1px 8px; border-radius: 10px;
   background: var(--surface); border: 1px solid var(--border); color: var(--muted); white-space: nowrap;
 }
-.result-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 10px; }
+.result-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
 .result-list .result { border-bottom: 1px solid var(--border); padding: 0; }
 .result-list .result:last-child { border-bottom: none; }
 .result-list .result.unavailable { padding: 8px 14px; }
@@ -95,7 +101,7 @@ a { color: var(--accent); text-decoration: none; }
   background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted);
   padding: 8px 12px; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
 }
-.range.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.range.active { color: var(--accent); border-bottom-color: var(--teal); font-weight: 600; }
 .chart-box { height: 320px; position: relative; margin: 8px 0 16px; }
 .chart { position: absolute; inset: 0; }
 .chart-note { padding-top: 120px; text-align: center; }
@@ -124,9 +130,9 @@ a { color: var(--accent); text-decoration: none; }
 .form label { font-size: 14px; color: var(--muted); }
 .form input {
   padding: 10px 12px; font: inherit; border: 1px solid var(--border); border-radius: 8px;
-  background: var(--bg); color: var(--text);
+  background: var(--surface); color: var(--text);
 }
-.form input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.form input:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
 .form .button { justify-self: start; margin-top: 8px; }
 .user-menu { position: relative; margin-left: auto; min-width: 36px; }
 .avatar {
@@ -135,12 +141,12 @@ a { color: var(--accent); text-decoration: none; }
 }
 .menu {
   position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; min-width: 220px;
-  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15); padding: 4px 0;
 }
 .menu-note { padding: 8px 14px; color: var(--muted); font-size: 13px; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
 .menu-item { display: block; width: 100%; text-align: left; padding: 9px 14px; background: none; border: none; font: inherit; color: var(--text); cursor: pointer; }
-.menu-item:hover { background: var(--surface); }
+.menu-item:hover { background: color-mix(in srgb, var(--teal) 8%, transparent); }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .tabs { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
@@ -148,7 +154,7 @@ a { color: var(--accent); text-decoration: none; }
   background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 14px;
   font: inherit; color: var(--muted); cursor: pointer; white-space: nowrap;
 }
-.tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.tab.active { color: var(--accent); border-bottom-color: var(--teal); font-weight: 600; }
 .tab-count { margin-left: 6px; font-size: 12px; color: var(--muted); font-weight: 400; }
 .tab-new { color: var(--accent); }
 .list-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -156,14 +162,14 @@ a { color: var(--accent); text-decoration: none; }
 .name-form { display: flex; gap: 8px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
 .name-form input {
   flex: 1; min-width: 180px; padding: 8px 12px; font: inherit; font-size: 16px;
-  border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text);
 }
 .empty { padding: 24px 0; color: var(--muted); }
 .list-table { width: 100%; border-collapse: collapse; }
 .list-table th { text-align: left; font-weight: 500; font-size: 13px; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
 .list-table td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 .list-table tbody tr { cursor: pointer; }
-.list-table tbody tr:hover { background: var(--surface); }
+.list-table tbody tr:hover { background: color-mix(in srgb, var(--teal) 6%, transparent); }
 .list-table .num { text-align: right; white-space: nowrap; }
 .row-symbol { font-weight: 600; color: var(--text); }
 .row-name { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 46vw; }
@@ -236,3 +242,6 @@ a { color: var(--accent); text-decoration: none; }
   white-space: nowrap; -webkit-user-select: all; user-select: all;
 }
 @media (max-width: 400px) { .signin-code { font-size: 17px; padding: 8px; } }
+
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.search-input:focus-visible, .form input:focus-visible { outline-offset: -1px; }

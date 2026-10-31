@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T16:22:11Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "A user with their own Twelve Data key may open any search result (a paid plan covers more; the free plan's marks do not apply); a user with their own Alpha Vantage key gets Shanghai and Shenzhen like the owner"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T16:22:11Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "A browser-kept key travels in a request header (x-ticker-key-twelvedata / x-ticker-key-alphavantage) on the app's own API calls; signed out, such a header is ignored"
+    }
+  ]
+}

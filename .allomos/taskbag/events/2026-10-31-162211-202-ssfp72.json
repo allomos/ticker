@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T16:22:11Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Moving a server key to the browser asks for the key again, because the server never sends a stored key back; moving a browser key to the server sends it once and forgets it in the browser"
+    }
+  ]
+}

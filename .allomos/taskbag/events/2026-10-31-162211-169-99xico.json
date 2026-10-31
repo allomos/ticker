@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T16:22:11Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Checking a key: Twelve Data's /api_usage (no credits); Alpha Vantage one GLOBAL_QUOTE for IBM (one of the key's 25 a day). A rejected key shows our own sentence in the user's language, not the source's English message"
+    }
+  ]
+}

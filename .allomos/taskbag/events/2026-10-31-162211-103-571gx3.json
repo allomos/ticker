@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T16:22:11Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Each user key gets its own pause row (source '<provider>:key:<hash of the key>') and the user's own cache space (prefix 'u:<user id>:'), so a user's key never fills or reads the shared cache"
+    }
+  ]
+}

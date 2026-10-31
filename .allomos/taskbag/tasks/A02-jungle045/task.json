@@ -3,9 +3,11 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). Server: migration 0006 (user_keys, cascades with the account), src/worker/keys/ (crypto.ts AES-256-GCM with user id as additional data and key version; store.ts; routes.ts /api/keys), market routes use the user's key with its own pause and cache space. App: /account/keys page, AddKeyPrompt with the approved wording in four languages, browser keys in localStorage sent as headers. 134 tests pass. Checked locally in the browser as a non-owner test user: the prompt on 7203, the keys page at desktop and 375px dark, a wrong Twelve Data key rejected by the real /api_usage. Not checked with a real paid Twelve Data key or a second Alpha Vantage key (none available). Locally KEY_ENCRYPTION_KEY was generated into .dev.vars.\nNot done: production. Before deploying: set the Worker secret KEY_ENCRYPTION_KEY (32 random bytes, base64; a new one for production, kept safe: losing it makes stored keys unreadable) and apply migrations 0005 and 0006 remotely; same deploy as A02-hen552 and A02-bath658. Waits for the approver.\nNext step: once approved, secrets, migrations, deploy; add and remove a key at ticker.allomos.com; label 'deployed and verified'; finish with alm done --without-human-check and check steps.",
   "holder": "claude-code-29ed5bb1",
   "id": "A02-jungle045",
   "iteration": "I-cast",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -14,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user who hits a data limit adds their own Twelve Data or Alpha Vantage key and sees those stocks"
+  "state": "waiting",
+  "title": "A user who hits a data limit adds their own Twelve Data or Alpha Vantage key and sees those stocks",
+  "waiting_on": "Approval to set the Worker secret KEY_ENCRYPTION_KEY (a new random 32-byte key for production), apply migrations 0005 and 0006 to the production database, and deploy master (with A02-hen552 and A02-bath658)"
 }

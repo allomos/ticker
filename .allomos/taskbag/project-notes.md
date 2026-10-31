@@ -9,9 +9,10 @@ What every session must know, whatever its task. Keep it short, and change lines
   Deployed 2026-11-01 ~00:18 JST from master fc11caf (everything up to the home-screen app, A01-kite192),
   Worker version 5d9e3470; remote D1 migrations applied through 0004. Deploy: `npm run build && npx wrangler deploy`; migrations:
   `npx wrangler d1 migrations apply ticker --remote`.
-- Master is ahead of production with A02-hen552 (react to the limit) and A02-bath658 (Shanghai and
-  Shenzhen for the owner): before their deploy, migration 0005 applied remotely and the Worker secrets
-  ALPHA_VANTAGE_API_KEY and MARKET_OWNER_EMAIL set; waits for the approver.
+- Master is ahead of production with A02-hen552 (react to the limit), A02-bath658 (Shanghai and
+  Shenzhen for the owner) and A02-jungle045 (users' own keys): before their deploy, migrations 0005
+  and 0006 applied remotely and the Worker secrets ALPHA_VANTAGE_API_KEY, MARKET_OWNER_EMAIL and
+  KEY_ENCRYPTION_KEY set; waits for the approver.
 - The holder of a task does its deploy (two sessions once deployed the same commit 18 s apart).
 - Nothing runs locally between sessions (`npm run dev` is started per check).
 - Local sign-in: the dev server logs `[sign-in for <address>] code <code> link <link>`; open the
@@ -58,12 +59,15 @@ placeholder such as `<ACCOUNT_EMAIL>` and how to look it up.
 - Local: `.dev.vars` in the project folder (never committed): `TWELVE_DATA_API_KEY` (free key,
   twelvedata.com dashboard of `<TWELVE_DATA_ACCOUNT_EMAIL>`) and `RESEND_API_KEY` (resend.com,
   API Keys, domain `ticker.allomos.com`), `ALPHA_VANTAGE_API_KEY` (alphavantage.co, free key) and
-  `MARKET_OWNER_EMAIL` (the one account that sees Alpha Vantage's stocks). Task worktrees link to it.
+  `MARKET_OWNER_EMAIL` (the one account that sees Alpha Vantage's stocks), `KEY_ENCRYPTION_KEY` (local
+  only, random; encrypts users' API keys in the local D1). Task worktrees link to it.
 - Cloudflare: Wrangler's OAuth login on this Mac (`npx wrangler whoami`), account of
   `<CLOUDFLARE_ACCOUNT_EMAIL>`; zone `allomos.com`.
 - Production secrets on the Worker `ticker`: `TWELVE_DATA_API_KEY`, `RESEND_API_KEY`
   (`npx wrangler secret list`); set from `.dev.vars` with `wrangler deploy --secrets-file .dev.vars`.
-  Still to set (A02-bath658, approver's go): `ALPHA_VANTAGE_API_KEY`, `MARKET_OWNER_EMAIL`.
+  Still to set (approver's go): `ALPHA_VANTAGE_API_KEY`, `MARKET_OWNER_EMAIL` (A02-bath658) and
+  `KEY_ENCRYPTION_KEY` (A02-jungle045: a new random one for production; lose it and stored user keys
+  cannot be read).
 
 ## Agents set up
 

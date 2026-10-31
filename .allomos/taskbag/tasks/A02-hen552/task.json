@@ -14,6 +14,6 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "backlog",
+  "state": "ready",
   "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
 }

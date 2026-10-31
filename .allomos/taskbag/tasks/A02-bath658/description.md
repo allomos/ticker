@@ -3,10 +3,10 @@
 **Done means.**
 - A first check with the real key answers the plan's open points:
   - `GLOBAL_QUOTE` and `TIME_SERIES_DAILY` for `600519.SHH` and a Shenzhen stock.
-  - `SYMBOL_SEARCH` for "moutai" and "toyota", and whether Tokyo is covered at all.
+  - Whether Tokyo is covered at all (for example `7203` on Tokyo), and that Twelve Data's search returns Moutai and Toyota with `XSHG` and `XTKS`.
   - What Alpha Vantage answers when the daily limit is reached.
   - If Tokyo is not covered, go back to the approver before building the Japan part (choices: Marketstack, which asks for a home address at sign-up, or J-Quants Light, ¥1,650 a month); China goes ahead.
-- Search finds these stocks by code (and by name, as decided below), and they are no longer marked as not on the free plan.
+- Search stays on Twelve Data (approver, 2026-10-31), which already finds these stocks by code and by name, with their exchange (`mic_code`): for the owner, results on `XSHG`, `XSHE` (and `XTKS` if covered) are no longer marked as not on the free plan, and open with Alpha Vantage's symbol (`600519.SHH`, `000002.SHZ`). No Alpha Vantage request is spent on search.
 - The quote and chart pages and the list prices work for them, through the same cache.
 - Requests are not counted ahead of time (approver, 2026-10-31): when Alpha Vantage answers that the daily limit is reached, the app pauses it until the next day and the owner sees "busy"; cached data is still shown.
 - Prices are end-of-day on the free key, so each stock's data is fetched at most once after its market closes and served from the cache until then; the page says the price is from the last close.
@@ -25,6 +25,5 @@
 - Open for the approver, before this task is made ready:
   1. **Account and key.** The approver gets a free key (alphavantage.co/support/#api-key, email only), puts it and `MARKET_OWNER_EMAIL` (the address they sign in with) into `.dev.vars`, and later sets both as Worker secrets.
   2. **Charts.** Only daily prices, at most the last 100 days, are free. For these stocks the 1D and 1W ranges cannot show intraday prices, and 1Y and longer cannot be shown: hide those ranges, or show what there is.
-  3. **Search by name** costs a request each time from a budget of 25 a day: search these stocks only by code, or keep a small built-in list of names.
 - Market data lives in `src/worker/market/` (Twelve Data client, D1 cache, `api_budget`).
 - The iTick account made on 2026-10-31 is no longer needed (its free key expires 2026-11-07).

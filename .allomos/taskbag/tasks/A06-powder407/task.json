@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Deployed to https://ticker.allomos.com and checked (see Evidence). Approved outside effects done: D1 database, Worker deploy, custom domain, secrets. Next: A06-recipe196 (real sign-in email through Resend).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "1. Open https://ticker.allomos.com: the Ticker page loads over HTTPS.\n2. Search `apple` and open Apple: price, chart and key figures load.\n3. Open https://ticker.allomos.com/api/health: `{\"ok\":true}`.\n4. In the Cloudflare dashboard, Workers & Pages: the Worker `ticker` with the custom domain\n   ticker.allomos.com; D1: the database `ticker`.\n",
   "id": "A06-powder407",
   "iteration": "I-sweep",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "The app runs on Cloudflare at ticker.allomos.com with its D1 database and secrets"
+  "state": "done",
+  "title": "The app runs on Cloudflare at ticker.allomos.com with its D1 database and secrets",
+  "without_human_check": "Goal run"
 }

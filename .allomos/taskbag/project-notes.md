@@ -4,7 +4,11 @@ What every session must know, whatever its task. Keep it short, and change lines
 
 ## Running
 
-Nothing.
+- Production: https://ticker.allomos.com, Cloudflare Worker `ticker` (custom domain; workers.dev
+  off), D1 database `ticker` (id in wrangler.jsonc), daily cron `17 3 * * *` (clean-up).
+  Deployed 2026-10-31 from master. Deploy: `npm run build && npx wrangler deploy`; migrations:
+  `npx wrangler d1 migrations apply ticker --remote`.
+- Nothing runs locally between sessions (`npm run dev` is started per check).
 
 ## Pitfalls
 
@@ -14,7 +18,9 @@ Nothing.
   `npx wrangler d1 migrations apply ticker --local` before `npm run dev`.
 - Twelve Data's free plan allows 8 requests a minute and 800 a day for the whole app (local dev
   and production share the same key). Tests never call it: they use a fake (test/worker/fake-twelvedata.ts)
-  and the key `test-key`. Avoid scripts that loop over the real API.
+  and the key `test-key`. Avoid scripts that loop over the real API. Production and local dev
+  keep separate budgets in their own D1, but share the one key: heavy local use can make
+  production answer "busy" for a minute.
 - `@cloudflare/vitest-pool-workers` is deprecated; the project uses `@cloudflare/vitest-plugin`.
 
 ## Repositories
@@ -31,7 +37,10 @@ placeholder such as `<ACCOUNT_EMAIL>` and how to look it up.
 - Local: `.dev.vars` in the project folder (never committed): `TWELVE_DATA_API_KEY` (free key,
   twelvedata.com dashboard of `<TWELVE_DATA_ACCOUNT_EMAIL>`) and `RESEND_API_KEY` (resend.com,
   API Keys, domain `ticker.allomos.com`). Task worktrees link to it.
-- Cloudflare: Wrangler's OAuth login on this Mac (`npx wrangler whoami`).
+- Cloudflare: Wrangler's OAuth login on this Mac (`npx wrangler whoami`), account of
+  `<CLOUDFLARE_ACCOUNT_EMAIL>`; zone `allomos.com`.
+- Production secrets on the Worker `ticker`: `TWELVE_DATA_API_KEY`, `RESEND_API_KEY`
+  (`npx wrangler secret list`); set from `.dev.vars` with `wrangler deploy --secrets-file .dev.vars`.
 
 ## Agents set up
 

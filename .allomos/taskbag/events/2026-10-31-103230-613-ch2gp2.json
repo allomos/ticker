@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T10:32:30Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A06-powder407",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "Deployed.",
+      "to": "Deployed to https://ticker.allomos.com and checked (see Evidence). Approved outside effects done: D1 database, Worker deploy, custom domain, secrets. Next: A06-recipe196 (real sign-in email through Resend)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

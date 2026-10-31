@@ -55,6 +55,10 @@ const MAIL_TEXT: Record<Locale, { subject: string; open: string; click: string; 
   },
 };
 
+// The logo for email: its name beside the mark's star and dots, drawn as text in the logo's colours,
+// since many mail apps block images and drop SVG.
+const WORDMARK = `<p style="margin:0 0 16px;font-size:24px;font-weight:700;line-height:1;color:#12223a"><span style="color:#e9c46a">&#10022;</span><span style="color:#2a9d8f;font-size:14px;vertical-align:middle">&#9675;&#9679;</span><span style="color:#e76f51;font-size:18px;vertical-align:middle">&#9679;</span> Ticker</p>`;
+
 export function signInMessage(link: string, code: string, lang: Locale = "en") {
   const m = MAIL_TEXT[lang];
   const subject = m.subject;
@@ -62,6 +66,7 @@ export function signInMessage(link: string, code: string, lang: Locale = "en") {
   // Non-breaking hyphens (U+2011) and user-select: all make a long-press select the whole code.
   const shown = code.replace(/-/g, "\u2011");
   const html = `<div lang="${lang}" style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.5;color:#1f2328">
+${WORDMARK}
 <p>${m.click}</p>
 <p><a href="${escapeHtml(link)}" style="display:inline-block;padding:10px 18px;background:#1a73e8;color:#fff;border-radius:6px;text-decoration:none">${m.button}</a></p>
 <p>${m.codeIntro}</p>

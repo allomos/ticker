@@ -19,6 +19,7 @@ beforeEach(() => {
       signedIn = "ann@example.com";
       return Response.json({ user: { email: signedIn } });
     }
+    if (url.pathname === "/api/lists") return Response.json({ lists: [{ id: "l1", name: "Watchlist", items: [] }] });
     if (url.pathname === "/auth/signout") {
       signedIn = null;
       return Response.json({ ok: true });
@@ -45,7 +46,7 @@ describe("sign-in", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Sign in" }));
     await waitFor(() => expect(window.location.pathname).toBe("/"));
     expect(await screen.findByRole("button", { name: "Account: ann@example.com" })).toBeTruthy();
-    expect(await screen.findByText("Your lists")).toBeTruthy();
+    expect(await screen.findByRole("tab", { name: /Watchlist/ })).toBeTruthy();
   });
 
   it("explains a used or expired link", async () => {

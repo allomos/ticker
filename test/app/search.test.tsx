@@ -64,6 +64,7 @@ describe("search box", () => {
     fireEvent.change(input, { target: { value: "apple" } });
     await screen.findAllByRole("option");
     fireEvent.keyDown(input, { key: "ArrowDown" });
+    await waitFor(() => expect(screen.getAllByRole("option")[0].getAttribute("aria-selected")).toBe("true"));
     await act(async () => fireEvent.keyDown(input, { key: "Enter" }));
     expect(window.location.pathname).toBe("/quote/AAPL");
   });

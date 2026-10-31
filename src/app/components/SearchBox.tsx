@@ -65,7 +65,7 @@ export function SearchBox({ initial = "" }: { initial?: string }) {
   const covered = results.filter((r) => r.available).slice(0, 8);
   const shown = [...covered, ...results.filter((r) => !r.available).slice(0, Math.min(3, 8 - covered.length))];
 
-  useEffect(() => setActive(-1), [results]);
+  useEffect(() => setActive(-1), [query]);
   useEffect(() => {
     const close = (e: MouseEvent) => {
       if (!box.current?.contains(e.target as Node)) setOpen(false);

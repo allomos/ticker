@@ -15,6 +15,9 @@ What every session must know, whatever its task. Keep it short, and change lines
 
 ## Pitfalls
 
+- Deploys: only the session holding the task (`alm show <id>`, holder) deploys it. A session that
+  gets the approver's go-ahead for a task it does not hold messages the holder first; on
+  2026-10-31 two sessions deployed the same commit 18 s apart.
 - npm 10 fails with "Cannot read properties of null (reading 'edgesOut')" on some installs; the
   project's `.npmrc` sets `legacy-peer-deps=true`, which avoids it. Keep it.
 - Each checkout (and each task worktree) has its own local D1 database: run

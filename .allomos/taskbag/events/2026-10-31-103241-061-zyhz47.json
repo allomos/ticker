@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T10:32:41Z",
+  "via": "alm",
+  "command": "unblock",
+  "kind": "task",
+  "id": "A06-recipe196",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "blocked",
+      "to": "ready"
+    },
+    {
+      "field": "blocked_by",
+      "from": [
+        "A06-powder407"
+      ]
+    }
+  ]
+}

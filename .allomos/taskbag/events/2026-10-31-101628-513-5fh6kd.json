@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:16:28Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A03-statue382",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Chart: lightweight-charts (Apache-2.0) area chart, green or red by the change over the range, dashed previous-close line on 1D; zoom and scroll off"
+    }
+  ]
+}

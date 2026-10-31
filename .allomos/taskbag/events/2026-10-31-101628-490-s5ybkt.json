@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:16:28Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A03-statue382",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Key figures: market cap and P/E are left out, since the free plan's quote has neither; average volume shown instead"
+    }
+  ]
+}

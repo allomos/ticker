@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:28:54Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A05-cable879",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Add to list: one button opening a menu with a tick box per list (Google Finance's single-list star was the person's complaint), plus a new-list field; on search results only the full results page has the button, the dropdown stays for quick navigation"
+    }
+  ]
+}

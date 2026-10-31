@@ -1,16 +1,19 @@
 {
   "area": "A01",
-  "blocked_by": [
-    "A04-goblet948",
-    "A05-bird102",
-    "A05-guide010",
-    "A05-cable879"
-  ],
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-10e82e40",
   "id": "A01-whale367",
   "iteration": "I-pick",
-  "state": "blocked",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "v0.2 acceptance check: accounts and private lists work end to end on this Mac"
 }

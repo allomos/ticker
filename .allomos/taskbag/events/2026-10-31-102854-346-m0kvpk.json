@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-31T10:28:54Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "claim",
+  "kind": "task",
+  "id": "A01-whale367",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "ready",
+      "to": "in_progress"
+    },
+    {
+      "field": "holder",
+      "to": "claude-code-10e82e40"
+    },
+    {
+      "field": "session",
+      "to": {
+        "agent": "claude-code",
+        "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+        "by": "claude-code-10e82e40",
+        "folder": ".",
+        "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+        "kind": "desktop"
+      }
+    },
+    {
+      "field": "working_branch",
+      "to": "task/A01-whale367"
+    }
+  ]
+}

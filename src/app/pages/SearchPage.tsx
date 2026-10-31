@@ -1,3 +1,4 @@
+import { AddToList } from "../components/AddToList";
 import { ResultRow, useSearch } from "../components/SearchBox";
 import { Link, quotePath } from "../router";
 
@@ -18,6 +19,9 @@ export function SearchPage({ query }: { query: string }) {
               <Link href={quotePath(r.symbol)} className="result-link">
                 <ResultRow r={r} />
               </Link>
+              <span className="result-add">
+                <AddToList target={r} compact />
+              </span>
             </li>
           ))}
         </ul>

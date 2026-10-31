@@ -4,6 +4,7 @@
 import type { Cached, Quote, QuotesResponse, Range, SearchResult, Series } from "../../shared/market";
 import type { Env } from "../env";
 import { aliasMatches } from "./aliases";
+import { sharedTwelveData, type Access } from "./access";
 import { cacheGet, cacheGetMany, cachePut, type CacheEntry } from "./cache";
 import { isLimit, MAX_BATCH, pause, pausedUntil, retryAfter } from "./pause";
 import { fetchQuotes, fetchSeries, isNotCovered, searchSymbols, TwelveDataError, type QuoteResult } from "./twelvedata";
@@ -42,11 +43,6 @@ export class BusyError extends Error {
 /** The symbol is not covered by the data plan, or does not exist. */
 export class UnavailableError extends Error {}
 
-function apiKey(env: Env): string {
-  if (!env.TWELVE_DATA_API_KEY) throw new Error("TWELVE_DATA_API_KEY is not set");
-  return env.TWELVE_DATA_API_KEY;
-}
-
 const cached = <T>(e: CacheEntry<T>, ttl: number, now: number): Cached<T> => ({
   data: e.value,
   fetchedAt: new Date(e.fetchedAt).toISOString(),
@@ -76,13 +72,14 @@ export async function search(env: Env, query: string, now = Date.now()): Promise
 
 type Stored = { quote: Quote } | { unavailable: string };
 
-export async function getQuotes(env: Env, symbols: string[], now = Date.now()): Promise<QuotesResponse> {
+export async function getQuotes(env: Env, symbols: string[], now = Date.now(), access?: Access): Promise<QuotesResponse> {
+  const a = access ?? sharedTwelveData(env);
   const unique = [...new Set(symbols)];
-  const hits = await cacheGetMany<Stored>(env.DB, unique.map((s) => `q:${s}`));
+  const hits = await cacheGetMany<Stored>(env.DB, unique.map((s) => `${a.prefix}q:${s}`));
   const response: QuotesResponse = { quotes: {}, pending: [], unavailable: [] };
   const toFetch: { symbol: string; fetchedAt: number }[] = [];
   for (const symbol of unique) {
-    const hit = hits.get(`q:${symbol}`);
+    const hit = hits.get(`${a.prefix}q:${symbol}`);
     if (hit && "unavailable" in hit.value) {
       if (now - hit.fetchedAt < UNAVAILABLE_TTL) response.unavailable.push(symbol);
       else toFetch.push({ symbol, fetchedAt: 0 });
@@ -97,33 +94,33 @@ export async function getQuotes(env: Env, symbols: string[], now = Date.now()): 
   // Missing ones first, then the stalest. Symbols another request is already fetching wait for it;
   // the others are marked as in flight at once, before anything else is awaited.
   toFetch.sort((a, b) => a.fetchedAt - b.fetchedAt);
-  const joined = toFetch.filter((f) => quotesInFlight.has(f.symbol)).map((f) => [f.symbol, quotesInFlight.get(f.symbol)!] as const);
-  const own = toFetch.filter((f) => !quotesInFlight.has(f.symbol)).map((f) => f.symbol);
+  const joined = toFetch.filter((f) => quotesInFlight.has(a.prefix + f.symbol)).map((f) => [f.symbol, quotesInFlight.get(a.prefix + f.symbol)!] as const);
+  const own = toFetch.filter((f) => !quotesInFlight.has(a.prefix + f.symbol)).map((f) => f.symbol);
   const done = new Map<string, (r: QuoteResult | undefined) => void>();
   for (const symbol of own) {
-    quotesInFlight.set(symbol, new Promise((resolve) => done.set(symbol, resolve)));
+    quotesInFlight.set(a.prefix + symbol, new Promise((resolve) => done.set(symbol, resolve)));
   }
   const finish = (symbol: string, r: QuoteResult | undefined) => {
     done.get(symbol)?.(r);
-    quotesInFlight.delete(symbol);
+    quotesInFlight.delete(a.prefix + symbol);
   };
   const ownResults = new Map<string, QuoteResult>();
   try {
     // The rest of a long list waits for a later request: polled again by the app.
-    const fetchNow = own.length && !(await pausedUntil(env.DB, now)) ? own.slice(0, MAX_BATCH) : [];
+    const fetchNow = own.length && !(await pausedUntil(env.DB, now, a.source)) ? own.slice(0, MAX_BATCH) : [];
     if (fetchNow.length) {
       try {
         let limit: string | null = null;
-        for (const [symbol, r] of await fetchQuotes(fetch, apiKey(env), fetchNow)) {
-          if (r.ok) await cachePut(env.DB, `q:${symbol}`, { quote: r.quote } satisfies Stored, now);
+        for (const [symbol, r] of await fetchQuotes(fetch, a.key, fetchNow)) {
+          if (r.ok) await cachePut(env.DB, `${a.prefix}q:${symbol}`, { quote: r.quote } satisfies Stored, now);
           else if (isLimit(r.code)) limit = r.message;
-          else if (isNotCovered(r.code)) await cachePut(env.DB, `q:${symbol}`, { unavailable: r.message } satisfies Stored, now);
+          else if (isNotCovered(r.code)) await cachePut(env.DB, `${a.prefix}q:${symbol}`, { unavailable: r.message } satisfies Stored, now);
           ownResults.set(symbol, r);
         }
-        if (limit) await pause(env.DB, limit, now);
+        if (limit) await pause(env.DB, limit, now, a.source);
       } catch (e) {
         if (!(e instanceof TwelveDataError)) throw e;
-        if (isLimit(e.code)) await pause(env.DB, e.message, now);
+        if (isLimit(e.code)) await pause(env.DB, e.message, now, a.source);
         else console.warn("Twelve Data quote failed:", e.code, e.message);
       }
     }
@@ -142,7 +139,7 @@ export async function getQuotes(env: Env, symbols: string[], now = Date.now()): 
   // Whatever is still missing: the stale copy when there is one, otherwise later.
   for (const { symbol } of toFetch) {
     if (response.quotes[symbol] || response.unavailable.includes(symbol)) continue;
-    const hit = hits.get(`q:${symbol}`);
+    const hit = hits.get(`${a.prefix}q:${symbol}`);
     if (hit && "quote" in hit.value) {
       response.quotes[symbol] = { data: hit.value.quote, fetchedAt: new Date(hit.fetchedAt).toISOString(), stale: true };
     } else {
@@ -152,15 +149,17 @@ export async function getQuotes(env: Env, symbols: string[], now = Date.now()): 
   return response;
 }
 
-export async function getQuote(env: Env, symbol: string, now = Date.now()): Promise<Cached<Quote>> {
-  const r = await getQuotes(env, [symbol], now);
+export async function getQuote(env: Env, symbol: string, now = Date.now(), access?: Access): Promise<Cached<Quote>> {
+  const a = access ?? sharedTwelveData(env);
+  const r = await getQuotes(env, [symbol], now, a);
   if (r.quotes[symbol]) return r.quotes[symbol];
   if (r.unavailable.includes(symbol)) throw new UnavailableError(symbol);
-  throw new BusyError(retryAfter(await pausedUntil(env.DB, now), now));
+  throw new BusyError(retryAfter(await pausedUntil(env.DB, now, a.source), now));
 }
 
-export async function getSeries(env: Env, symbol: string, range: Range, now = Date.now()): Promise<Cached<Series>> {
-  const key = `c:${range}:${symbol}`;
+export async function getSeries(env: Env, symbol: string, range: Range, now = Date.now(), access?: Access): Promise<Cached<Series>> {
+  const a = access ?? sharedTwelveData(env);
+  const key = `${a.prefix}c:${range}:${symbol}`;
   const ttl = SERIES_TTL[range];
   const hit = await cacheGet<Series>(env.DB, key);
   if (hit && now - hit.fetchedAt < ttl) return cached(hit, ttl, now);
@@ -168,8 +167,8 @@ export async function getSeries(env: Env, symbol: string, range: Range, now = Da
   if (!pending) {
     // Marked as in flight at once, before the pause is checked.
     pending = (async () => {
-      if (await pausedUntil(env.DB, now)) return null;
-      const series = await fetchSeries(fetch, apiKey(env), symbol, range, new Date(now));
+      if (await pausedUntil(env.DB, now, a.source)) return null;
+      const series = await fetchSeries(fetch, a.key, symbol, range, new Date(now));
       await cachePut(env.DB, key, series, now);
       return series;
     })();
@@ -182,11 +181,11 @@ export async function getSeries(env: Env, symbol: string, range: Range, now = Da
       if (series) return { data: series, fetchedAt: new Date(now).toISOString(), stale: false };
     } catch (e) {
       if (!(e instanceof TwelveDataError)) throw e;
-      if (isLimit(e.code)) await pause(env.DB, e.message, now);
+      if (isLimit(e.code)) await pause(env.DB, e.message, now, a.source);
       else if (!hit && isNotCovered(e.code)) throw new UnavailableError(symbol);
       else console.warn("Twelve Data series failed:", e.code, e.message);
     }
   }
   if (hit) return cached(hit, ttl, now);
-  throw new BusyError(retryAfter(await pausedUntil(env.DB, now), now));
+  throw new BusyError(retryAfter(await pausedUntil(env.DB, now, a.source), now));
 }

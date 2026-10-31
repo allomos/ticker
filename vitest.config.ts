@@ -16,6 +16,7 @@ export default defineConfig({
                 TWELVE_DATA_API_KEY: "test-key",
                 ALPHA_VANTAGE_API_KEY: "test-av-key",
                 MARKET_OWNER_EMAIL: "Owner@Example.com",
+                KEY_ENCRYPTION_KEY: "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
                 RESEND_API_KEY: "",
               },
             },

@@ -219,3 +219,9 @@ export async function fetchSeries(
   if (spec.keep) points = spec.keep(points, tz, roundTheClock);
   return { symbol, range, interval: spec.interval, timezone: tz, points };
 }
+
+/** The key's usage this minute; it costs no credits, so it serves to check that a key works. */
+export async function twelveDataUsage(fetchFn: Fetch, apiKey: string): Promise<{ plan: string }> {
+  const body = await getJson(fetchFn, "/api_usage", { apikey: apiKey });
+  return { plan: String(body?.plan_category ?? body?.plan_limit ?? "") };
+}

@@ -3,7 +3,8 @@
 // minute or UTC day; Alpha Vantage (1 a second, 25 a day) for two seconds or until the next UTC
 // day. Meanwhile cached data is served and users without a cached copy are told to wait.
 
-export type Source = "twelvedata" | "alphavantage";
+/** "twelvedata", "alphavantage", or a user key's own: "twelvedata:key:<hash>", "alphavantage:key:<hash>". */
+export type Source = string;
 const MINUTE = 60_000;
 const DAY = 86_400_000;
 
@@ -34,7 +35,7 @@ export function alphaVantagePauseEnd(message: string, now: number): { until: num
 
 /** Pauses a source after a limit answer; a longer pause already in place is kept. */
 export async function pause(db: D1Database, message: string, now = Date.now(), source: Source = "twelvedata"): Promise<number> {
-  const { until, reason } = source === "alphavantage" ? alphaVantagePauseEnd(message, now) : pauseEnd(message, now);
+  const { until, reason } = source.startsWith("alphavantage") ? alphaVantagePauseEnd(message, now) : pauseEnd(message, now);
   const row = await db
     .prepare(
       `INSERT INTO api_pause (source, until, reason) VALUES (?1, ?2, ?3)

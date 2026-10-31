@@ -24,4 +24,4 @@ placeholder such as `<ACCOUNT_EMAIL>` and how to look it up. None yet.
 ## Agents set up
 
 AI agents whose rule files follow AGENTS.md (`alm guide agent-files`): agent, its file, date.
-None yet.
+- Claude Code: CLAUDE.md (imports AGENTS.md), 2026-10-31

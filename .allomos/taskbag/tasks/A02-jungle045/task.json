@@ -1,0 +1,10 @@
+{
+  "area": "A02",
+  "folders": [
+    "ticker"
+  ],
+  "id": "A02-jungle045",
+  "iteration": "I-cast",
+  "state": "backlog",
+  "title": "A user who hits a data limit adds their own Twelve Data or iTick key and sees those stocks"
+}

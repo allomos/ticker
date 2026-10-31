@@ -19,6 +19,7 @@ beforeEach(() => {
   history.replaceState(null, "", "/quote/AAPL");
   vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
     const url = new URL(String(input), "http://localhost");
+    if (url.pathname === "/auth/me") return Response.json({ user: null });
     if (url.pathname === "/api/quote") {
       if (quoteStatus === 404) return Response.json({ error: "unavailable" }, { status: 404 });
       if (quoteStatus === 503) return Response.json({ error: "busy", retryAfter: 12 }, { status: 503 });

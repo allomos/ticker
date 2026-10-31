@@ -16,7 +16,6 @@
     }
   ],
   "vars": {
-    "APP_URL": "http://localhost:5173",
     "MAIL_FROM": "Ticker <no-reply@ticker.allomos.com>"
   },
   "triggers": { "crons": ["17 3 * * *"] },

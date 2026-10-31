@@ -34,6 +34,14 @@ RESEND_API_KEY=...        # Resend key for sign-in emails
 - `migrations/`: D1 database migrations.
 - `test/worker/`, `test/app/`: tests.
 
+## Sign-in
+
+Users sign in with a link sent by email (`POST /auth/email`), valid once for 15 minutes. The
+link opens `/signin/verify`, whose button posts the token (`POST /auth/verify`), so mail
+scanners that open links do not use it up. Sessions last 30 days and are kept in D1 as hashes.
+On localhost no email is sent: the link is written to the dev server's log. Elsewhere it goes
+through Resend, from `MAIL_FROM`.
+
 ## Market data
 
 Prices come from Twelve Data's free plan: 8 requests a minute, 800 a day, one request per

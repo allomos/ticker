@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:31:06Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-whale367",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "Release v0.2 (accounts and private lists), on this Mac. In `/Users/wanghui/coding/ticker`:\n\n1. `npx wrangler d1 migrations apply ticker --local`, then `npm run dev`; open http://localhost:5173.\n2. Sign in: enter an email address; the link is in the terminal running `npm run dev`. Open it and click Sign in.\n3. You have a \"Watchlist\". Make a second list, rename it, delete it.\n4. Search a few tickers (AAPL, VOO, bitcoin, yen) and add them with \"☆ Add to list\" to one or more lists.\n5. Home: each list shows prices and the day's change; remove one with ×.\n6. In a private window, sign in with another address: that account sees none of your lists.\n7. Stop and restart `npm run dev`: your lists are still there.\n"
+    }
+  ]
+}

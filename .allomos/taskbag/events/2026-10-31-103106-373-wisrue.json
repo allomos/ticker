@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-31T10:31:06Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "describe",
+  "kind": "task",
+  "id": "A01-whale367",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "description",
+      "from": "**Outcome.** Release v0.2 is tried against the spec's criteria 2, 3, 4, 5 and 8, and steps are written for the person.\n\n**Done means.**\n- Automated tests and `curl` checks against the local app pass, with two users.\n- Steps for the person to try it are written.\n\n**Notes.** Part of goal A01-teapot655.\n",
+      "to": "**Outcome.** Release v0.2 is tried against the spec's criteria 2, 3, 4, 5 and 8, and steps are written for the person.\n\n**Done means.**\n- Automated tests and `curl` checks against the local app pass, with two users.\n- Steps for the person to try it are written.\n\n**Notes.** Part of goal A01-teapot655.\n\n\n## Evidence\n\n2026-10-31, on master after merging A04-goblet948, A05-bird102, A05-guide010 and A05-cable879, local dev server, two users signed in with local sign-in links:\n\n```\n## npm test\n Test Files  11 passed (11)\n      Tests  66 passed (66)\n## typecheck\nok\n## build\n✓ built in 287ms\n## two users signed in (carol, dave)\n{\"user\":{\"email\":\"carol.check@example.com\"}}\n{\"user\":{\"email\":\"dave.check@example.com\"}}\n## criterion 4: several lists, rename, delete\n  Watchlist []\n  Tech []\n  Temp []\n  rename Tech -> Big Tech, delete Temp:\n{\"ok\":true}{\"ok\":true}\n  Watchlist []\n  Big Tech []\n## criterion 2: add tickers\n{\"ok\":true}{\"ok\":true}{\"ok\":true}{\"ok\":true}\n  Watchlist ['AAPL', 'MSFT', 'BTC/USD']\n  Big Tech ['NVDA']\n## criterion 3: remove MSFT\n{\"ok\":true}\n  Watchlist ['AAPL', 'BTC/USD']\n  Big Tech ['NVDA']\n## privacy: dave sees only his own list, and cannot change carol's\n  Watchlist []\n  dave renames carol's list -> 404\n  dave adds to carol's list -> 404\n  dave deletes carol's list -> 404\n  signed out -> 401\n  Watchlist ['AAPL', 'BTC/USD']\n  Big Tech ['NVDA']\n## criterion 5: prices for carol's Watchlist\n  AAPL 344.63 -4.28 -1.22668 2026-10-30T19:59:00.000Z\n  BTC/USD 77522.78 154.01 0.19905965 2026-10-31T10:29:00.000Z\n  pending []\n## criterion 8: carol's lists after the server restarts\n  Watchlist ['AAPL', 'BTC/USD']\n  Big Tech ['NVDA']\n```\n"
+    }
+  ]
+}

@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "v0.2 check passed on master: 66 tests, typecheck, build; two local users: create/rename/delete lists, add/remove tickers, the other user gets 404 on every change and sees none of them, prices load, lists survive a restart. No code changes. Next: v0.3, A06-powder407 (deploy to ticker.allomos.com; approved 2026-10-31).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "Release v0.2 (accounts and private lists), on this Mac. In `/Users/wanghui/coding/ticker`:\n\n1. `npx wrangler d1 migrations apply ticker --local`, then `npm run dev`; open http://localhost:5173.\n2. Sign in: enter an email address; the link is in the terminal running `npm run dev`. Open it and click Sign in.\n3. You have a \"Watchlist\". Make a second list, rename it, delete it.\n4. Search a few tickers (AAPL, VOO, bitcoin, yen) and add them with \"☆ Add to list\" to one or more lists.\n5. Home: each list shows prices and the day's change; remove one with ×.\n6. In a private window, sign in with another address: that account sees none of your lists.\n7. Stop and restart `npm run dev`: your lists are still there.\n",
   "id": "A01-whale367",
   "iteration": "I-pick",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "v0.2 acceptance check: accounts and private lists work end to end on this Mac"
+  "state": "done",
+  "title": "v0.2 acceptance check: accounts and private lists work end to end on this Mac",
+  "without_human_check": "Goal run"
 }

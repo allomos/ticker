@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T13:42:36Z",
+  "via": "alm",
+  "command": "title",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "from": "A user reads and uses Ticker in Chinese, Japanese or English, and switches between them",
+      "to": "A user reads and uses Ticker in English, Simplified Chinese, Traditional Chinese or Japanese, and switches between them"
+    }
+  ]
+}

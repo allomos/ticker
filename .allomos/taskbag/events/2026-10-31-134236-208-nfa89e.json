@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T13:42:36Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The URL does not carry the language (no /ja/... paths): the language lives in this browser only, so links stay the same for everyone and the Worker routes need no change; the recipient of a shared link sees it in their own language"
+    }
+  ]
+}

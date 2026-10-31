@@ -6,10 +6,13 @@ What every session must know, whatever its task. Keep it short, and change lines
 
 - Production: https://ticker.allomos.com, Cloudflare Worker `ticker` (custom domain; workers.dev
   off), D1 database `ticker` (id in wrangler.jsonc), daily cron `17 3 * * *` (clean-up).
-  Deployed 2026-10-31 from master, before the four languages (A01-pearl420) and the breadcrumb
-  (A03-dot197) were merged: master is ahead of production until the approver lets it deploy. Deploy: `npm run build && npx wrangler deploy`; migrations:
+  Deployed 2026-10-31 from master, before the four languages (A01-pearl420), the breadcrumb
+  (A03-dot197) and the sign-in code (A04-nose857) were merged: master is ahead of production until
+  the approver lets it deploy, and the next deploy needs migration 0004 applied remotely first. Deploy: `npm run build && npx wrangler deploy`; migrations:
   `npx wrangler d1 migrations apply ticker --remote`.
 - Nothing runs locally between sessions (`npm run dev` is started per check).
+- Local sign-in: the dev server logs `[sign-in for <address>] code <code> link <link>`; open the
+  link, or type the code on the sign-in screen.
 
 ## Pitfalls
 

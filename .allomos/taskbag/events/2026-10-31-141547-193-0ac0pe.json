@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T14:15:47Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "wait",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "waiting"
+    },
+    {
+      "field": "waiting_on",
+      "to": "Approval to migrate the production database (0004_sign_in_code: two new columns in login_tokens) and deploy master to ticker.allomos.com; the same deploy also ships A01-pearl420 and A03-dot197"
+    }
+  ]
+}

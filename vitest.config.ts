@@ -31,6 +31,7 @@ export default defineConfig({
           name: "app",
           include: ["test/app/**/*.test.tsx"],
           environment: "jsdom",
+          setupFiles: ["./test/app/setup.ts"],
         },
       },
     ],

@@ -49,6 +49,8 @@ signs in and keeps their own lists, private to them. First user: the person them
 - Markets: as many as possible.
 - Sign-in: both a sign-in link sent by email and "Sign in with Google".
 - Sign-up: open to anyone.
+- Platform: all on Cloudflare: the app on Cloudflare Workers, users, sign-in sessions and lists
+  in Cloudflare D1 (its SQL database), and short-lived price data in Cloudflare's cache.
 - Price data source: Yahoo Finance's public feeds (no key; unofficial, so prices are cached briefly
   and the data source is kept swappable).
 

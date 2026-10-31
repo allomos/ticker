@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-31T10:17:59Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "describe",
+  "kind": "task",
+  "id": "A01-mango189",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "description",
+      "from": "**Outcome.** Release v0.1 is tried against the spec's criteria 1, 6, 7, 9 and 10, and steps are written for the person.\n\n**Done means.**\n- Automated tests and `curl` checks against the local app pass.\n- Steps for the person to try it are written.\n\n**Notes.** Part of goal A01-teapot655.\n",
+      "to": "**Outcome.** Release v0.1 is tried against the spec's criteria 1, 6, 7, 9 and 10, and steps are written for the person.\n\n**Done means.**\n- Automated tests and `curl` checks against the local app pass.\n- Steps for the person to try it are written.\n\n**Notes.** Part of goal A01-teapot655.\n\n\n## Evidence\n\n2026-10-31, on master after merging A01-mascot452, A02-hen552, A03-film078 and A03-statue382, local dev server with the real Twelve Data key:\n\n```\n## npm test\n Test Files  6 passed (6)\n      Tests  35 passed (35)\n## typecheck\nok\n## build\n✓ built in 18ms\n✓ built in 267ms\n## search apple (criterion 1, 9)\nAAPL NASDAQ True | uncovered listed: 28\n## search AAPL / bitcoin / yen\nAAPL -> AAPL stock\nbitcoin -> BTC/USD crypto\nyen -> USD/JPY currency\n## quote AAPL (criterion 6, 7)\n344.63 -4.28 -1.22668 asOf 2026-10-30T19:59:00.000Z 52w 243.42 351.73001 stale False\n## chart AAPL 1D and 5Y\n1D 5min 78 points\n5Y 1week 262 points\n## uncovered symbol (criterion 9)\nquote 7203 -> HTTP 404\n## pages\n/ -> 200\n/search?q=apple -> 200\n/quote/AAPL -> 200\n## budget (criterion 10)\n[{'slot': 'd:2026-10-31', 'used': 6}, {'slot': 'm:2026-10-31T10:16', 'used': 6}]\n```\n\nPer-request credits checked against the local budget table: a new quote 1, a new chart range 1, a cached quote 0.\n"
+    }
+  ]
+}

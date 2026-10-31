@@ -1,12 +1,12 @@
 import { Hono } from "hono";
 import { RANGES, type Range } from "../../shared/market";
-import type { Env } from "../env";
+import type { AppEnv } from "../auth/session";
 import { BusyError, getQuote, getQuotes, getSeries, search, UnavailableError } from "./service";
 
 const SYMBOL = /^[A-Za-z0-9.\-/:^=]{1,24}$/;
 const MAX_SYMBOLS = 100;
 
-export const market = new Hono<{ Bindings: Env }>();
+export const market = new Hono<AppEnv>();
 
 market.onError((err, c) => {
   if (err instanceof BusyError) {

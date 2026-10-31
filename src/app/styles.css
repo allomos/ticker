@@ -109,3 +109,34 @@ a { color: var(--accent); text-decoration: none; }
   .chart-box { height: 240px; }
   .range { padding: 8px 9px; }
 }
+
+.narrow { max-width: 460px; }
+.button {
+  display: inline-block; padding: 9px 18px; border-radius: 20px; border: none;
+  background: var(--accent); color: var(--bg); font: inherit; font-weight: 500; cursor: pointer;
+}
+.button:disabled { opacity: 0.6; cursor: default; }
+.button-small { padding: 6px 14px; font-size: 14px; white-space: nowrap; }
+.button-quiet { background: none; color: var(--accent); border: 1px solid var(--border); }
+.link-button { background: none; border: none; padding: 0; color: var(--accent); font: inherit; cursor: pointer; }
+.form { display: grid; gap: 8px; margin-top: 16px; }
+.form label { font-size: 14px; color: var(--muted); }
+.form input {
+  padding: 10px 12px; font: inherit; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg); color: var(--text);
+}
+.form input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.form .button { justify-self: start; margin-top: 8px; }
+.user-menu { position: relative; margin-left: auto; min-width: 36px; }
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--accent); color: var(--bg); font-weight: 600; font-size: 15px;
+}
+.menu {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; min-width: 220px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15); padding: 4px 0;
+}
+.menu-note { padding: 8px 14px; color: var(--muted); font-size: 13px; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.menu-item { display: block; width: 100%; text-align: left; padding: 9px 14px; background: none; border: none; font: inherit; color: var(--text); cursor: pointer; }
+.menu-item:hover { background: var(--surface); }

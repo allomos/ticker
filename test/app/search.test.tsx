@@ -12,6 +12,7 @@ beforeEach(() => {
   history.replaceState(null, "", "/");
   vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
     const url = new URL(String(input), "http://localhost");
+    if (url.pathname === "/auth/me") return Response.json({ user: null });
     if (url.pathname === "/api/search") return Response.json({ results: url.searchParams.get("q") ? results : [] });
     return Response.json({ error: "not_found" }, { status: 404 });
   });

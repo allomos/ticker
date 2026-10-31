@@ -33,6 +33,8 @@ signs in and keeps their own lists, private to them. First user: the person them
    price shown. No real-time refresh is required.
 8. Users sign in; each user's lists are saved on the server, private to that user, and follow
    them to any device or browser where they sign in. A user never sees another user's lists.
+   Anyone can sign up. Two ways to sign in, both offered: a sign-in link sent by email (no
+   password), and "Sign in with Google".
 9. Search, lists and details cover as many markets as the free data allows: stocks on US and
    other exchanges, ETFs, indexes, mutual funds, currencies and crypto.
 10. The price data needs no API key at all.
@@ -45,11 +47,16 @@ signs in and keeps their own lists, private to them. First user: the person them
 - Price data: a free service that needs no API key at all.
 - Hosting: Cloudflare (the person already has an account; `allomos.com` is there).
 - Markets: as many as possible.
+- Sign-in: both a sign-in link sent by email and "Sign in with Google".
+- Sign-up: open to anyone.
+- Price data source: Yahoo Finance's public feeds (no key; unofficial, so prices are cached briefly
+  and the data source is kept swappable).
 
 ## Open points for discussion
 
-- How users sign in (for example: a sign-in link sent by email, or "Sign in with Google").
-- Can anyone sign up, or only people the person invites?
+None. Outside effects the approver will be asked for during the build: an email-sending
+service for sign-in links, a Google OAuth client for "Sign in with Google", and the Cloudflare
+deployment and DNS for `ticker.allomos.com`.
 
 ## Run mode
 

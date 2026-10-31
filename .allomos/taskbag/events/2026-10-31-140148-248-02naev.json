@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:01:48Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A03-dot197",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "A ?list= id that is not one of the user's lists (deleted, or signed out) shows just Home, rather than an error or a guessed list"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:01:48Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A03-dot197",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Separator drawn as › between crumbs (CSS), small text above the ticker name; long list names are cut with … at phone width"
+    }
+  ]
+}

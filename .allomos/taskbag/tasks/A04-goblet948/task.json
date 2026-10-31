@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Auth in src/worker/auth/ (migration 0002_accounts): sign-in links (hashed, 15 min, single use, limits per address and network address), sessions (30 days, cookie ticker_session), sameOrigin guard (JSON body + Origin) on all POSTs, requireUser middleware for the lists API. Emails: log on localhost, Resend elsewhere. Checked in the browser end to end. Next: A05-bird102 (lists API).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "On this Mac (`npx wrangler d1 migrations apply ticker --local`, then `npm run dev` in `/Users/wanghui/coding/ticker`):\n\n1. Open http://localhost:5173 and click \"Sign in to make your lists\".\n2. Enter any email address and click \"Email me a sign-in link\": the page says to check your\n   email; on this Mac no email is sent, and the link is in the terminal running `npm run dev`\n   (a line starting `[sign-in link for ...]`).\n3. Open that link and click \"Sign in\": you are back on the home page, with a round account\n   button at the top right.\n4. Open the same link again: it says the link does not work (each link works once).\n5. Click the account button, then \"Sign out\".\nReal emails are checked on the live site in v0.3.\n",
   "id": "A04-goblet948",
   "iteration": "I-pick",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user signs in with a link sent by email, and signs out"
+  "state": "done",
+  "title": "A user signs in with a link sent by email, and signs out",
+  "without_human_check": "Goal run"
 }

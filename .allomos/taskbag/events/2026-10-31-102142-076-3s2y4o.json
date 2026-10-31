@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:21:42Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A04-goblet948",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Auth in src/worker/auth/ (migration 0002_accounts): sign-in links (hashed, 15 min, single use, limits per address and network address), sessions (30 days, cookie ticker_session), sameOrigin guard (JSON body + Origin) on all POSTs, requireUser middleware for the lists API. Emails: log on localhost, Resend elsewhere. Checked in the browser end to end. Next: A05-bird102 (lists API)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

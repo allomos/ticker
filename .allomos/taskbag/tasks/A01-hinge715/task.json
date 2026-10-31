@@ -3,11 +3,12 @@
   "folders": [
     "ticker"
   ],
-  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: merged into master (pushed). The approved mock-up was not in the repo; it came from the logo session's saved transcript (widget ticker_signed_out_pages_allomos_palette). Checked locally in the browser: front page in light at desktop width and in dark and Japanese at 375px; the sign-in card, check-your-email card with the code field, and the link's page with the code, in light and dark. 102 tests pass, build clean. Branch merged and removed.\nNot done: master is NOT deployed; it waits for the approver with the other five tasks.\nNext step: once approved, deploy, look at ticker.allomos.com signed out in light and dark at desktop and phone width, label 'deployed and verified', finish with alm done --without-human-check and check steps.",
+  "handoff_note": "Run mode: quiet. Deployed with the approver's go. Checked on ticker.allomos.com: the front page in light at desktop width (headline, both buttons, example watchlist, three tiles) and the sign-in card with the logo in dark at phone width. Steps attached for a person's look (alm human, To check).",
   "holder": "claude-code-29ed5bb1",
+  "human_check_steps": "# Check: front page and sign-in screens (ticker.allomos.com)\n\n1. In a private window, open https://ticker.allomos.com: the front page matches the mock-up you approved (headline, sign-in button, \"Try a search\", example watchlist, three tiles), in light and dark, on a computer and on your phone.\n2. \"Try a search\" puts the cursor in the search box; \"Sign in to start your lists\" opens the sign-in card with the logo.\n3. Ask for a sign-in link: the \"Check your email\" card shows the code field and \"Use a different email\". Open the link: its page is the same card style.\n4. Switch the language at the foot of the page: the front page's wording changes with it.\n",
   "id": "A01-hinge715",
   "iteration": "I-cast",
-  "label": "locally verified",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -16,7 +17,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "waiting",
+  "state": "done",
   "title": "A visitor who isn't signed in sees a polished front page and sign-in screens with the Ticker logo",
-  "waiting_on": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (one deploy with A01-sofa728)"
+  "without_human_check": "The approver compares it with the mock-up they approved"
 }

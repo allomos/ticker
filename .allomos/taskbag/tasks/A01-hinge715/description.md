@@ -12,3 +12,7 @@
 - Approver made the task ready on 2026-10-31, after seeing the mock-up: build it as in the mock-up, with logo B2 and green/red for rises and falls. Still open for the approver: the go to deploy (outside effect).
 - Uses the logo B2 from A01-grotto889; do that one first.
 - If A01-pearl420 (Chinese, Japanese, English) lands first, the new wording goes through it.
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-11-01 ~00:05 JST from master ec2fb5d by claude-code-29ed5bb1 after the approver said 'Yes, deploy' in this session; Worker version 69ae9d14-c449-409b-8750-42653524d8cb; no migration

@@ -10,3 +10,7 @@
 - Approver, 2026-10-31: the signed-in screens move to the Allomos colours too; rises and falls stay green and red.
 - Shares the palette with A01-hinge715 (signed-out pages) and the logo A01-grotto889 (B2). Doing this one with or right after A01-hinge715 keeps both on the same tokens.
 - Approver made the task ready on 2026-10-31. Still open for the approver: the go to deploy (outside effect).
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-11-01 ~00:05 JST from master ec2fb5d by claude-code-29ed5bb1 after the approver said 'Yes, deploy' in this session; Worker version 69ae9d14-c449-409b-8750-42653524d8cb; no migration

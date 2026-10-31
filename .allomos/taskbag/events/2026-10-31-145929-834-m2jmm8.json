@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T14:59:29Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (one deploy with A01-hinge715)"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Signed-in screens need a real sign-in email, which an agent cannot receive"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: the app in the Allomos colours (ticker.allomos.com)\n\n1. Sign in at https://ticker.allomos.com and open your lists, a ticker page, the add-to-list menu, the account menu and the search box, first in light mode, then with your device in dark mode.\n2. Everything reads clearly; buttons and links are teal, the page matches www.allomos.com's colours, and rises are still green, falls still red.\n3. Do the same on your phone.\n4. Look at a new sign-in email: navy text and a teal button.\n"
+    }
+  ]
+}

@@ -3,11 +3,12 @@
   "folders": [
     "ticker"
   ],
-  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: merged into master (pushed). Checked locally in the browser: lists, ticker page, add-to-list menu in light at desktop width; ticker page, lists and the search dropdown in dark at phone width. Contrast checked by calculation (text 15.5:1, muted 5.7:1, links/buttons 5.0:1 light; dark 7.4-15:1). 99 tests pass. Branch merged and removed.\nFound, not in this task: at phone width the search dropdown is only as wide as the search box, so names are squeezed (older layout, same before this change).\nNot done: master is NOT deployed; it waits for the approver with the other four tasks.\nNext step: once approved, deploy, look at ticker.allomos.com in light and dark, label 'deployed and verified', finish with alm done --without-human-check and check steps.",
+  "handoff_note": "Run mode: quiet. Deployed with the approver's go. Checked on ticker.allomos.com: colour tokens live (--bg #fbfcfe, --accent #1f7a6f, --teal #2a9d8f, --up #137333); a ticker page in dark at phone width with the fall in red and no sideways scroll. Signed-in screens need a real sign-in: steps attached for a person (alm human, To check).",
   "holder": "claude-code-29ed5bb1",
+  "human_check_steps": "# Check: the app in the Allomos colours (ticker.allomos.com)\n\n1. Sign in at https://ticker.allomos.com and open your lists, a ticker page, the add-to-list menu, the account menu and the search box, first in light mode, then with your device in dark mode.\n2. Everything reads clearly; buttons and links are teal, the page matches www.allomos.com's colours, and rises are still green, falls still red.\n3. Do the same on your phone.\n4. Look at a new sign-in email: navy text and a teal button.\n",
   "id": "A01-sofa728",
   "iteration": "I-cast",
-  "label": "locally verified",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -16,7 +17,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "waiting",
+  "state": "done",
   "title": "A signed-in user sees the whole app in the Allomos colours, with rises and falls still in green and red",
-  "waiting_on": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (one deploy with A01-hinge715)"
+  "without_human_check": "Signed-in screens need a real sign-in email, which an agent cannot receive"
 }

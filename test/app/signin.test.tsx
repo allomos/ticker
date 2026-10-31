@@ -116,7 +116,7 @@ describe("sign-in code", () => {
     render(<App />);
     expect(await screen.findByText("Check your email")).toBeTruthy();
     expect(screen.getByLabelText("Sign-in code")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "Use another address" }));
+    fireEvent.click(screen.getByRole("button", { name: "Use a different email" }));
     expect(await screen.findByLabelText("Email address")).toBeTruthy();
   });
 

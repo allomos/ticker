@@ -45,7 +45,7 @@ describe("language", () => {
   it("follows the browser's language on a first visit", async () => {
     browserLanguages(["zh-TW", "en"]);
     render(<App />);
-    expect(await screen.findByRole("heading", { name: "隨時關注市場行情" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "你關注的每個價格，盡在一個畫面" })).toBeTruthy();
     expect(document.documentElement.lang).toBe("zh-Hant");
     expect(document.title).toBe("Ticker · 自選股");
     expect(screen.getByRole("link", { name: "登入" })).toBeTruthy();
@@ -54,23 +54,23 @@ describe("language", () => {
   it("uses English for a browser language Ticker does not have", async () => {
     browserLanguages(["fr-FR"]);
     render(<App />);
-    expect(await screen.findByRole("heading", { name: "Keep an eye on the markets" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "Every price you care about, on one screen" })).toBeTruthy();
     expect(document.documentElement.lang).toBe("en");
   });
 
   it("switches from the language menu and keeps the choice after a reload", async () => {
     browserLanguages(["en-US"]);
     const { unmount } = render(<App />);
-    await screen.findByRole("heading", { name: "Keep an eye on the markets" });
+    await screen.findByRole("heading", { name: "Every price you care about, on one screen" });
     fireEvent.change(screen.getByRole("combobox", { name: "Language" }), { target: { value: "ja" } });
-    expect(await screen.findByRole("heading", { name: "マーケットの動きをチェック" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "気になる価格を、ひとつの画面に" })).toBeTruthy();
     expect(document.documentElement.lang).toBe("ja");
     expect(document.title).toBe("Ticker · ウォッチリスト");
     expect(localStorage.getItem(STORAGE_KEY)).toBe("ja");
     unmount();
 
     render(<App />);
-    expect(await screen.findByRole("heading", { name: "マーケットの動きをチェック" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "気になる価格を、ひとつの画面に" })).toBeTruthy();
     expect(screen.getByRole("combobox", { name: "言語" })).toBeTruthy();
     expect(screen.getByRole("option", { name: "日本語", selected: true })).toBeTruthy();
   });
@@ -79,7 +79,7 @@ describe("language", () => {
     localStorage.setItem(STORAGE_KEY, "klingon");
     browserLanguages(["zh-CN"]);
     render(<App />);
-    expect(await screen.findByRole("heading", { name: "随时关注市场行情" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "你关注的每个价格，尽在一屏" })).toBeTruthy();
   });
 
   it("asks for the sign-in email in the chosen language", async () => {

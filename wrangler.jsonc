@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ticker",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/auth/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ticker",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "APP_URL": "http://localhost:5173",
+    "MAIL_FROM": "Ticker <no-reply@ticker.allomos.com>"
+  },
+  "observability": { "enabled": true }
+}

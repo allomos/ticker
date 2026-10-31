@@ -8,14 +8,13 @@
   - **Only in this browser**: never stored on the server. Kept in the browser's storage and sent with each request over HTTPS; the server uses it for that request only, never stores or logs it. Must be added again on each device, and is lost when the browser's site data is cleared.
 - A user can see where each key is kept and move it from one to the other.
 - With a key saved, that user's requests use it: their Twelve Data key for what it covers, their iTick key for JP, SH and SZ stocks. Without one they get today's behaviour.
-- Each saved key has its own request budget, so one user's key is never pushed past its limits and never slows other users.
+- A user's key is not counted ahead of time (decided by the approver on 2026-10-31): when Twelve Data (code 429) or iTick answers that the key's limit is reached, the app pauses that key until the next minute, or the next day for a daily limit, and shows that user "busy"; other users are never affected.
 - Data fetched with a user's own key is served only to that user, never to anyone else from the shared cache.
 - Keys are never logged; server-kept keys are removed when the user removes them or their account.
-- Tests cover adding and removing keys in both places, encryption round-trip and the user-id binding, routing by key, per-key budgets, cache separation and the "not available" / "busy" prompts.
+- Tests cover adding and removing keys in both places, encryption round-trip and the user-id binding, routing by key, the pause after a limit error, cache separation and the "not available" / "busy" prompts.
 
 **Notes.**
 - Idea from the approver on 2026-10-31. Builds on A02-bath658 (iTick client and owner-only rule): block on it.
 - Decided by the approver on 2026-10-31: the user chooses where each key is kept, on the server encrypted or only in their browser; the app supports both.
 - Open for the approver, before this task is made ready:
-  1. **Twelve Data plan limits** differ by paid plan: ask the user for their plan's limits, or read them from Twelve Data's usage endpoint.
-  2. **Wording and placement** of the "add your own key" prompt, in all four languages.
+  1. **Wording and placement** of the "add your own key" prompt, in all four languages.

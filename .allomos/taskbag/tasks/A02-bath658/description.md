@@ -1,13 +1,13 @@
 **Outcome.** The app's owner, signed in, can search, open and add Tokyo (TSE) and China A-share (Shanghai, Shenzhen) stocks, for example 7203 Toyota or 600519 Kweichow Moutai, and sees their price, day change and chart. Twelve Data's free plan does not cover these exchanges, so iTick answers them, while Twelve Data keeps serving everything it covers. iTick's free plan is for personal use only, so nobody else gets iTick data: other users and visitors see these stocks as not available, as today.
 
 **Done means.**
-- A first check with the real iTick key answers the plan's open points: a quote and a daily chart for 7203 (`region=JP`) and 600519 (`region=SH`), real-time or delayed, and how far back the history goes. If iTick fails it, stop and go back to the approver before building anything.
+- A first check with the real iTick key answers the plan's open points: a quote and a daily chart for 7203 (`region=JP`) and 600519 (`region=SH`), real-time or delayed, how far back the history goes, and what iTick answers when the limit is reached. If iTick fails it, stop and go back to the approver before building anything.
 - Search finds Japanese and Chinese stocks by code and by name, and they are no longer marked as not on the free plan.
 - The quote and chart pages and the list prices work for them, served from iTick through the same cache.
-- iTick has its own request budget, like Twelve Data's (free plan: 5 REST calls a minute), and the app never goes over it.
+- iTick calls are not counted ahead of time (decided by the approver on 2026-10-31): when iTick answers that the limit is reached (free plan: 5 REST calls a minute), the app pauses iTick until the next minute, or longer if iTick says so, and the owner sees "busy" for those stocks; cached data is still shown.
 - The owner is the account whose address equals the Worker secret `ITICK_OWNER_EMAIL` (locally in `.dev.vars`); the address is never written in the code, the repository or the taskbag.
 - iTick is called, and cached iTick data is served, only for the owner's session: anonymous visitors and other accounts get "not available" for JP, SH and SZ stocks, even when the data is in the cache.
-- Tests with a fake iTick cover routing by exchange, quote, chart, caching, its budget, and the owner-only rule (owner, other account, signed out).
+- Tests with a fake iTick cover routing by exchange, quote, chart, caching, the pause after a limit error, and the owner-only rule (owner, other account, signed out).
 
 **Notes.**
 - **Source: iTick**, chosen by the approver on 2026-10-31 ("i want to try iTick").

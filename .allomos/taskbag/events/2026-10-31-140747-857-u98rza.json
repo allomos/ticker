@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:07:47Z",
+  "via": "alm",
+  "command": "ready",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "backlog",
+      "to": "ready"
+    }
+  ]
+}

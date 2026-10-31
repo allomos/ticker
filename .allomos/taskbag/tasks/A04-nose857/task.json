@@ -5,6 +5,6 @@
   ],
   "id": "A04-nose857",
   "iteration": "I-build",
-  "state": "backlog",
+  "state": "ready",
   "title": "A user signs in by pasting a long code from the sign-in email, as well as by its link"
 }

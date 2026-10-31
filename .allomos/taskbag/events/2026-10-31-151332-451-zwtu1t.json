@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:13:32Z",
+  "via": "alm",
+  "command": "title",
+  "kind": "task",
+  "id": "A02-jungle045",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "from": "A user who hits a data limit adds their own Twelve Data, Alpha Vantage or Marketstack key and sees those stocks",
+      "to": "A user who hits a data limit adds their own Twelve Data or Alpha Vantage key and sees those stocks"
+    }
+  ]
+}

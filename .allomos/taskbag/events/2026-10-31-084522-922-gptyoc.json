@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T08:45:22Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-teapot655",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The project folder was not under version control, so I set it up (git init)"
+    }
+  ]
+}

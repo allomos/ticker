@@ -1,0 +1,9 @@
+{
+  "area": "A01",
+  "folders": [
+    "ticker"
+  ],
+  "id": "A01-teapot655",
+  "state": "backlog",
+  "title": "Goal: Ticker, a stock watchlist web app with search, multiple lists and ticker details"
+}

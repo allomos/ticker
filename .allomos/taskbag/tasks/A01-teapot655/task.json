@@ -1,12 +1,22 @@
 {
   "area": "A01",
-  "blocked_by": [
-    "A01-toy025"
-  ],
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Goal run finished 2026-10-31. Run mode: quiet (chosen by the person in Allomos). All 13 tasks done: v0.1 search and ticker details, v0.2 accounts and private lists, v0.3 live at https://ticker.allomos.com. Every acceptance criterion of the spec was checked on the live site (A01-toy025 Evidence). Left for the person: try the app (steps), sign in with their own address, and review the AI decisions (alm human). Not covered by the free data plan: exchanges outside the US, and indexes such as the S&P 500 (paid Twelve Data plans).",
+  "holder": "claude-code-10e82e40",
+  "human_check_steps": "Try the whole app at https://ticker.allomos.com (on a computer and on a phone):\n\n1. Search by name or ticker: apple, NVDA, vanguard, bitcoin, yen. Listings the free data does\n   not cover (for example Tokyo stocks such as Toyota, 7203) are greyed and marked.\n2. Open a ticker: latest price and its time, the day's change, a chart with 1D, 5D, 1M, 6M,\n   YTD, 1Y, 5Y and MAX, and key figures (open, previous close, day range, 52-week range, volume).\n3. Sign in with your email address: a link arrives from no-reply@ticker.allomos.com; open it and\n   click Sign in.\n4. Make several lists, rename and delete them; add tickers from search results and ticker pages\n   (\"☆ Add to list\", one tick per list); remove them with ×.\n5. Your lists show each ticker's price and day change. Sign in on another device: same lists.\n   Another account sees none of them.\nPrices are delayed and refresh every few minutes; the free data plan allows 8 requests a minute,\nso a long new list fills in over a minute or two.\n",
   "id": "A01-teapot655",
-  "state": "blocked",
-  "title": "Goal: Ticker, a stock watchlist web app with search, multiple lists and ticker details"
+  "label": "deployed and verified",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "done",
+  "title": "Goal: Ticker, a stock watchlist web app with search, multiple lists and ticker details",
+  "without_human_check": "Goal run: try the app"
 }

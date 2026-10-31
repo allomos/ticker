@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:35:22Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-teapot655",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run: try the app"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "Try the whole app at https://ticker.allomos.com (on a computer and on a phone):\n\n1. Search by name or ticker: apple, NVDA, vanguard, bitcoin, yen. Listings the free data does\n   not cover (for example Tokyo stocks such as Toyota, 7203) are greyed and marked.\n2. Open a ticker: latest price and its time, the day's change, a chart with 1D, 5D, 1M, 6M,\n   YTD, 1Y, 5Y and MAX, and key figures (open, previous close, day range, 52-week range, volume).\n3. Sign in with your email address: a link arrives from no-reply@ticker.allomos.com; open it and\n   click Sign in.\n4. Make several lists, rename and delete them; add tickers from search results and ticker pages\n   (\"☆ Add to list\", one tick per list); remove them with ×.\n5. Your lists show each ticker's price and day change. Sign in on another device: same lists.\n   Another account sees none of them.\nPrices are delayed and refresh every few minutes; the free data plan allows 8 requests a minute,\nso a long new list fills in over a minute or two.\n"
+    }
+  ]
+}

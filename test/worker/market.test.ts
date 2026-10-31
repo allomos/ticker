@@ -118,3 +118,32 @@ describe("API", () => {
     expect(r.status).toBe(404);
   });
 });
+
+describe("requests that arrive together", () => {
+  it("share one Twelve Data request", async () => {
+    let release!: () => void;
+    const gate = new Promise<void>((r) => (release = r));
+    const handler = quoteHandler();
+    fake = fakeTwelveData({
+      "/quote": async (url) => {
+        await gate;
+        return handler(url);
+      },
+      "/time_series": async () => {
+        await gate;
+        return { meta: {}, values: [{ datetime: "2026-10-30", close: "5" }] };
+      },
+    });
+    const t = nextMinute();
+    const quotes = [getQuote(env, "TOGETHER", t), getQuote(env, "TOGETHER", t)];
+    const charts = [getSeries(env, "TOGETHER", "6M", t), getSeries(env, "TOGETHER", "6M", t)];
+    await new Promise((r) => setTimeout(r, 20));
+    release();
+    const [a, b] = await Promise.all(quotes);
+    const [c, d] = await Promise.all(charts);
+    expect(a.data.symbol).toBe("TOGETHER");
+    expect(b.data.symbol).toBe("TOGETHER");
+    expect(c.data.points).toEqual(d.data.points);
+    expect(fake.credits()).toBe(2);
+  });
+});

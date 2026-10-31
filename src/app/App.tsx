@@ -1,4 +1,5 @@
 import { SearchBox } from "./components/SearchBox";
+import { QuotePage } from "./pages/QuotePage";
 import { SearchPage } from "./pages/SearchPage";
 import { Link, useLocation } from "./router";
 
@@ -28,7 +29,10 @@ export function App() {
   let page;
   if (path === "/") page = <Home />;
   else if (path === "/search") page = <SearchPage query={location.searchParams.get("q") ?? ""} key={location.search} />;
-  else page = <NotFound />;
+  else if (path.startsWith("/quote/")) {
+    const symbol = decodeURIComponent(path.slice("/quote/".length));
+    page = <QuotePage symbol={symbol} key={symbol} />;
+  } else page = <NotFound />;
   return (
     <div className="app">
       <header className="topbar">

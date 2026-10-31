@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { isLocale } from "../../shared/locale";
 import { createDefaultList } from "../lists/routes";
 import { newToken, sha256 } from "./crypto";
 import { isLocal, sendSignInMail } from "./mailer";
@@ -39,7 +40,7 @@ auth.post("/email", async (c) => {
   const url = new URL(c.req.url);
   const link = `${url.origin}/signin/verify?token=${token}`;
   try {
-    await sendSignInMail(c.env, url, { to: email, link });
+    await sendSignInMail(c.env, url, { to: email, link, lang: isLocale(body?.lang) ? body.lang : "en" });
   } catch (e) {
     console.error("Sign-in email failed:", (e as Error).message);
     return c.json({ error: "mail_failed" }, 502);
@@ -66,7 +67,7 @@ auth.post("/verify", async (c) => {
   )
     .bind(crypto.randomUUID(), row.email, now)
     .first<{ id: string; email: string; created_at: number }>();
-  if (user!.created_at === now) await createDefaultList(c.env.DB, user!.id, now);
+  if (user!.created_at === now) await createDefaultList(c.env.DB, user!.id, now, isLocale(body?.lang) ? body.lang : "en");
   await createSession(c, user!.id, now);
   return c.json({ user: { email: user!.email } });
 });

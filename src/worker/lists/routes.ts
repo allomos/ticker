@@ -2,20 +2,20 @@
 // answers 404, as if it did not exist.
 import { Hono } from "hono";
 import { LIMITS, type ListItem, type WatchList } from "../../shared/lists";
+import { DEFAULT_LIST_NAME, type Locale } from "../../shared/locale";
 import type { InstrumentType } from "../../shared/market";
 import { requireUser, type AppEnv } from "../auth/session";
 
 const SYMBOL = /^[A-Za-z0-9.\-/:^=]{1,24}$/;
 const TYPES: InstrumentType[] = ["stock", "etf", "fund", "index", "crypto", "currency", "other"];
-export const DEFAULT_LIST = "Watchlist";
 
 const clean = (v: unknown, max: number) => String(v ?? "").replace(/\s+/g, " ").trim().slice(0, max);
 
-/** Gives a new account its first list. */
-export async function createDefaultList(db: D1Database, userId: string, now = Date.now()) {
+/** Gives a new account its first list, named in the language the user signed up in. */
+export async function createDefaultList(db: D1Database, userId: string, now = Date.now(), lang: Locale = "en") {
   await db
     .prepare("INSERT INTO lists (id, user_id, name, position, created_at) VALUES (?1, ?2, ?3, 0, ?4)")
-    .bind(crypto.randomUUID(), userId, DEFAULT_LIST, now)
+    .bind(crypto.randomUUID(), userId, DEFAULT_LIST_NAME[lang], now)
     .run();
 }
 

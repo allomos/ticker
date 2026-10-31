@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../auth";
+import { useI18n } from "../i18n";
 import { Link, navigate } from "../router";
 
 export function UserMenu() {
   const { user, signOut } = useAuth();
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -18,13 +20,13 @@ export function UserMenu() {
   if (!user) {
     return (
       <Link className="button button-small" href="/signin">
-        Sign in
+        {t.signIn}
       </Link>
     );
   }
   return (
     <div className="user-menu" ref={box}>
-      <button className="avatar" aria-label={`Account: ${user.email}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+      <button className="avatar" aria-label={t.account(user.email)} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
         {user.email[0].toUpperCase()}
       </button>
       {open && (
@@ -39,7 +41,7 @@ export function UserMenu() {
               navigate("/");
             }}
           >
-            Sign out
+            {t.signOut}
           </button>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "../../src/app/App";
 import type { SearchResult } from "../../src/shared/market";
@@ -19,11 +19,14 @@ beforeEach(() => {
 });
 afterEach(() => vi.restoreAllMocks());
 
+/** The search box's suggestions (the language switcher has options of its own). */
+const suggestions = async () => within(await screen.findByRole("listbox")).findAllByRole("option");
+
 describe("search box", () => {
   it("suggests matches as you type, with uncovered listings marked", async () => {
     render(<App />);
-    fireEvent.change(screen.getByRole("combobox"), { target: { value: "apple" } });
-    const options = await screen.findAllByRole("option");
+    fireEvent.change(screen.getByRole("combobox", { name: "Search by name or ticker" }), { target: { value: "apple" } });
+    const options = await suggestions();
     expect(options).toHaveLength(2);
     expect(options[0].textContent).toContain("AAPL");
     expect(options[0].textContent).toContain("NASDAQ");
@@ -33,25 +36,25 @@ describe("search box", () => {
 
   it("opens the chosen ticker's page", async () => {
     render(<App />);
-    fireEvent.change(screen.getByRole("combobox"), { target: { value: "AAPL" } });
-    const [first] = await screen.findAllByRole("option");
+    fireEvent.change(screen.getByRole("combobox", { name: "Search by name or ticker" }), { target: { value: "AAPL" } });
+    const [first] = await suggestions();
     fireEvent.click(first);
     expect(window.location.pathname).toBe("/quote/AAPL");
   });
 
   it("does not open an uncovered listing", async () => {
     render(<App />);
-    fireEvent.change(screen.getByRole("combobox"), { target: { value: "apple" } });
-    const options = await screen.findAllByRole("option");
+    fireEvent.change(screen.getByRole("combobox", { name: "Search by name or ticker" }), { target: { value: "apple" } });
+    const options = await suggestions();
     fireEvent.click(options[1]);
     expect(window.location.pathname).toBe("/");
   });
 
   it("goes to all results on Enter", async () => {
     render(<App />);
-    const input = screen.getByRole("combobox");
+    const input = screen.getByRole("combobox", { name: "Search by name or ticker" });
     fireEvent.change(input, { target: { value: "apple" } });
-    await screen.findAllByRole("option");
+    await suggestions();
     fireEvent.keyDown(input, { key: "Enter" });
     expect(window.location.pathname).toBe("/search");
     expect(await screen.findByText(/Results for/)).toBeTruthy();
@@ -60,11 +63,11 @@ describe("search box", () => {
 
   it("picks a suggestion with the arrow keys", async () => {
     render(<App />);
-    const input = screen.getByRole("combobox");
+    const input = screen.getByRole("combobox", { name: "Search by name or ticker" });
     fireEvent.change(input, { target: { value: "apple" } });
-    await screen.findAllByRole("option");
+    await suggestions();
     fireEvent.keyDown(input, { key: "ArrowDown" });
-    await waitFor(() => expect(screen.getAllByRole("option")[0].getAttribute("aria-selected")).toBe("true"));
+    await waitFor(() => expect(within(screen.getByRole("listbox")).getAllByRole("option")[0].getAttribute("aria-selected")).toBe("true"));
     await act(async () => fireEvent.keyDown(input, { key: "Enter" }));
     expect(window.location.pathname).toBe("/quote/AAPL");
   });

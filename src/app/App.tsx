@@ -1,5 +1,7 @@
 import { AuthProvider, useAuth } from "./auth";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { SearchBox } from "./components/SearchBox";
+import { I18nProvider, useI18n } from "./i18n";
 import { ListsProvider } from "./lists";
 import { ListsPage } from "./pages/ListsPage";
 import { UserMenu } from "./components/UserMenu";
@@ -10,15 +12,16 @@ import { Link, useLocation } from "./router";
 
 function Home({ selected }: { selected: string | null }) {
   const { user } = useAuth();
+  const { t } = useI18n();
   if (user === undefined) return null;
   if (!user) {
     return (
       <section className="home narrow">
-        <h1 className="page-title">Keep an eye on the markets</h1>
-        <p>Search stocks, ETFs, currencies and crypto by name or ticker, keep them in your own lists, and open any of them for its price, chart and key figures.</p>
+        <h1 className="page-title">{t.homeTitle}</h1>
+        <p>{t.homeIntro}</p>
         <p>
           <Link className="button" href="/signin">
-            Sign in to make your lists
+            {t.homeSignIn}
           </Link>
         </p>
       </section>
@@ -28,11 +31,12 @@ function Home({ selected }: { selected: string | null }) {
 }
 
 function NotFound() {
+  const { t } = useI18n();
   return (
     <section>
-      <h1 className="page-title">Page not found</h1>
+      <h1 className="page-title">{t.notFoundTitle}</h1>
       <p>
-        <Link href="/">Back to your lists</Link>
+        <Link href="/">{t.notFoundBack}</Link>
       </p>
     </section>
   );
@@ -54,21 +58,26 @@ function Routes() {
 
 export function App() {
   return (
-    <AuthProvider>
-      <ListsProvider>
-        <div className="app">
-          <header className="topbar">
-            <Link className="brand" href="/">
-              Ticker
-            </Link>
-            <SearchBox />
-            <UserMenu />
-          </header>
-          <main className="page">
-            <Routes />
-          </main>
-        </div>
-      </ListsProvider>
-    </AuthProvider>
+    <I18nProvider>
+      <AuthProvider>
+        <ListsProvider>
+          <div className="app">
+            <header className="topbar">
+              <Link className="brand" href="/">
+                Ticker
+              </Link>
+              <SearchBox />
+              <UserMenu />
+            </header>
+            <main className="page">
+              <Routes />
+            </main>
+            <footer className="footer">
+              <LanguageSwitcher />
+            </footer>
+          </div>
+        </ListsProvider>
+      </AuthProvider>
+    </I18nProvider>
   );
 }

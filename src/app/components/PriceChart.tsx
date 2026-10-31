@@ -1,6 +1,8 @@
 import { AreaSeries, createChart, LineStyle, type IChartApi, type UTCTimestamp } from "lightweight-charts";
 import { useEffect, useRef } from "react";
+import { INTL_TAG } from "../../shared/locale";
 import type { Range, Series } from "../../shared/market";
+import { useI18n } from "../i18n";
 
 function cssVar(name: string) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -8,18 +10,18 @@ function cssVar(name: string) {
 
 const intraday = (range: Range) => range === "1D" || range === "5D" || range === "1M";
 
-function formatter(range: Range, timeZone: string) {
+function formatter(range: Range, timeZone: string, tag: string) {
   const opts: Intl.DateTimeFormatOptions = intraday(range)
     ? { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone }
     : { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" };
-  const fmt = new Intl.DateTimeFormat(undefined, opts);
+  const fmt = new Intl.DateTimeFormat(tag, opts);
   return (t: number) => fmt.format(new Date(t * 1000));
 }
 
-function tickFormatter(range: Range, timeZone: string) {
-  const time = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit", timeZone });
-  const day = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: intraday(range) ? timeZone : "UTC" });
-  const year = new Intl.DateTimeFormat(undefined, { year: "numeric", timeZone: "UTC" });
+function tickFormatter(range: Range, timeZone: string, tag: string) {
+  const time = new Intl.DateTimeFormat(tag, { hour: "numeric", minute: "2-digit", timeZone });
+  const day = new Intl.DateTimeFormat(tag, { month: "short", day: "numeric", timeZone: intraday(range) ? timeZone : "UTC" });
+  const year = new Intl.DateTimeFormat(tag, { year: "numeric", timeZone: "UTC" });
   return (t: number) => {
     const d = new Date(t * 1000);
     if (range === "1D") return time.format(d);
@@ -32,6 +34,7 @@ function tickFormatter(range: Range, timeZone: string) {
 export function PriceChart({ series, baseline }: { series: Series; baseline?: number | null }) {
   const box = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
+  const { t, locale } = useI18n();
 
   useEffect(() => {
     const el = box.current;
@@ -50,9 +53,9 @@ export function PriceChart({ series, baseline }: { series: Series; baseline?: nu
         timeVisible: intraday(series.range),
         fixLeftEdge: true,
         fixRightEdge: true,
-        tickMarkFormatter: tickFormatter(series.range, series.timezone),
+        tickMarkFormatter: tickFormatter(series.range, series.timezone, INTL_TAG[locale]),
       },
-      localization: { timeFormatter: formatter(series.range, series.timezone) },
+      localization: { locale: INTL_TAG[locale], timeFormatter: formatter(series.range, series.timezone, INTL_TAG[locale]) },
       crosshair: { horzLine: { visible: false } },
       handleScroll: false,
       handleScale: false,
@@ -67,14 +70,14 @@ export function PriceChart({ series, baseline }: { series: Series; baseline?: nu
     });
     area.setData(points.map((p) => ({ time: p.t as UTCTimestamp, value: p.c })));
     if (baseline != null) {
-      area.createPriceLine({ price: baseline, color: cssVar("--muted"), lineStyle: LineStyle.Dashed, lineWidth: 1, axisLabelVisible: false, title: "Prev close" });
+      area.createPriceLine({ price: baseline, color: cssVar("--muted"), lineStyle: LineStyle.Dashed, lineWidth: 1, axisLabelVisible: false, title: t.prevClose });
     }
     chart.timeScale().fitContent();
     return () => {
       chart.remove();
       chartRef.current = null;
     };
-  }, [series, baseline]);
+  }, [series, baseline, locale, t]);
 
-  return <div className="chart" ref={box} role="img" aria-label={`${series.symbol} price chart, ${series.range}`} />;
+  return <div className="chart" ref={box} role="img" aria-label={t.chartLabel(series.symbol, t.ranges[series.range])} />;
 }

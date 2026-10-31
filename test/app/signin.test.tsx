@@ -36,7 +36,7 @@ describe("sign-in", () => {
     fireEvent.change(screen.getByLabelText("Email address"), { target: { value: "ann@example.com" } });
     fireEvent.click(screen.getByRole("button", { name: "Email me a sign-in link" }));
     expect(await screen.findByText("Check your email")).toBeTruthy();
-    expect(requests.find((r) => r.path === "/auth/email")?.body).toEqual({ email: "ann@example.com" });
+    expect(requests.find((r) => r.path === "/auth/email")?.body).toEqual({ email: "ann@example.com", lang: "en" });
     expect(screen.getByText(/The link is in the dev server's log/)).toBeTruthy();
   });
 

@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import type { SearchResult } from "../../shared/market";
 import { api } from "../api";
-import { typeLabel } from "../format";
+import { useI18n } from "../i18n";
 import { navigate, quotePath } from "../router";
 
 export function useSearch(query: string, delay = 250) {
@@ -40,6 +40,7 @@ export function useSearch(query: string, delay = 250) {
 }
 
 export function ResultRow({ r }: { r: SearchResult }) {
+  const { t } = useI18n();
   return (
     <>
       <span className="result-symbol">{r.symbol}</span>
@@ -48,13 +49,14 @@ export function ResultRow({ r }: { r: SearchResult }) {
         {r.exchange}
         {r.country && r.type !== "crypto" && r.type !== "currency" ? ` · ${r.country}` : ""}
       </span>
-      <span className="badge">{typeLabel(r.type)}</span>
-      {!r.available && <span className="badge badge-muted" title="This symbol is not covered by the app's free data plan">Not on free data</span>}
+      <span className="badge">{t.types[r.type] ?? r.type}</span>
+      {!r.available && <span className="badge badge-muted" title={t.notOnFreeDataTitle}>{t.notOnFreeData}</span>}
     </>
   );
 }
 
 export function SearchBox({ initial = "" }: { initial?: string }) {
+  const { t } = useI18n();
   const [query, setQuery] = useState(initial);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
@@ -106,8 +108,8 @@ export function SearchBox({ initial = "" }: { initial?: string }) {
       <input
         type="search"
         className="search-input"
-        placeholder="Search stocks, ETFs, crypto, currencies"
-        aria-label="Search by name or ticker"
+        placeholder={t.searchPlaceholder}
+        aria-label={t.searchLabel}
         role="combobox"
         aria-expanded={open && query.trim() !== ""}
         aria-controls={listId}
@@ -123,8 +125,8 @@ export function SearchBox({ initial = "" }: { initial?: string }) {
       />
       {open && query.trim() !== "" && (
         <ul className="search-results" role="listbox" id={listId}>
-          {loading && shown.length === 0 && <li className="search-note">Searching…</li>}
-          {!loading && shown.length === 0 && <li className="search-note">No matches</li>}
+          {loading && shown.length === 0 && <li className="search-note">{t.searching}</li>}
+          {!loading && shown.length === 0 && <li className="search-note">{t.noMatches}</li>}
           {shown.map((r, i) => (
             <li
               key={`${r.symbol}|${r.exchange}`}
@@ -150,7 +152,7 @@ export function SearchBox({ initial = "" }: { initial?: string }) {
                   navigate(`/search?q=${encodeURIComponent(query.trim())}`);
                 }}
               >
-                All results for “{query.trim()}”
+                {t.allResults(query.trim())}
               </a>
             </li>
           )}

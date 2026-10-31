@@ -1,4 +1,5 @@
 import type { WatchList } from "../shared/lists";
+import type { Locale } from "../shared/locale";
 import type { Cached, InstrumentType, Quote, QuotesResponse, Range, SearchResult, Series } from "../shared/market";
 
 export class ApiError extends Error {
@@ -35,8 +36,8 @@ export interface Me {
 
 export const api = {
   me: () => get<{ user: Me | null }>("/auth/me").then((r) => r.user),
-  requestLink: (email: string) => send<{ ok: true; local: boolean }>("POST", "/auth/email", { email }),
-  verify: (token: string) => send<{ user: Me }>("POST", "/auth/verify", { token }).then((r) => r.user),
+  requestLink: (email: string, lang: Locale) => send<{ ok: true; local: boolean }>("POST", "/auth/email", { email, lang }),
+  verify: (token: string, lang: Locale) => send<{ user: Me }>("POST", "/auth/verify", { token, lang }).then((r) => r.user),
   signOut: () => send<{ ok: true }>("POST", "/auth/signout"),
   lists: () => get<{ lists: WatchList[] }>("/api/lists").then((r) => r.lists),
   createList: (name: string) => send<{ list: WatchList }>("POST", "/api/lists", { name }).then((r) => r.list),

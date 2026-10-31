@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:05:04Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-mascot452",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done on task/A01-mascot452, merged into master. Skeleton: Hono Worker (src/worker), React app (src/app), Vite with @cloudflare/vite-plugin, tests with @cloudflare/vitest-plugin (vitest 4; @cloudflare/vitest-pool-workers is deprecated). npm needs legacy-peer-deps (in .npmrc) because of an npm 10 'edgesOut' bug. Dev server: http://localhost:5173. Next: A02-hen552."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

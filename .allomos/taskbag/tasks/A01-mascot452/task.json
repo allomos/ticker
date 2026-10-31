@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done on task/A01-mascot452, merged into master. Skeleton: Hono Worker (src/worker), React app (src/app), Vite with @cloudflare/vite-plugin, tests with @cloudflare/vitest-plugin (vitest 4; @cloudflare/vitest-pool-workers is deprecated). npm needs legacy-peer-deps (in .npmrc) because of an npm 10 'edgesOut' bug. Dev server: http://localhost:5173. Next: A02-hen552.",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "In a terminal, in `/Users/wanghui/coding/ticker`:\n\n1. `npm install`, then `npm test`: every test passes.\n2. `npm run dev`, then open http://localhost:5173: the page shows \"Ticker\" in the top bar.\n3. Open http://localhost:5173/api/health: it shows `{\"ok\":true}`.\n",
   "id": "A01-mascot452",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "App skeleton: the Worker serves the web app locally, with tests and a build"
+  "state": "done",
+  "title": "App skeleton: the Worker serves the web app locally, with tests and a build",
+  "without_human_check": "Goal run"
 }

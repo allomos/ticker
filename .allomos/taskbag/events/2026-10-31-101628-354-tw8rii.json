@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:16:28Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A03-statue382",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Ticker page (src/app/pages/QuotePage.tsx, chart in components/PriceChart.tsx with lightweight-charts). Found and fixed: identical requests arriving together each spent credits (React dev double effects); the market service now shares in-flight Twelve Data requests per Worker instance. Next: A01-mango189 (v0.1 check)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

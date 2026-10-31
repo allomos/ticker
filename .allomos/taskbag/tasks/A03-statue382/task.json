@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Ticker page (src/app/pages/QuotePage.tsx, chart in components/PriceChart.tsx with lightweight-charts). Found and fixed: identical requests arriving together each spent credits (React dev double effects); the market service now shares in-flight Twelve Data requests per Worker instance. Next: A01-mango189 (v0.1 check).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "Run the app (`npm run dev` in `/Users/wanghui/coding/ticker`) and open http://localhost:5173/quote/AAPL:\n\n1. The page shows Apple Inc., AAPL · NASDAQ · USD, the latest price, the day's change in green or\n   red, \"Market open/closed\" and the time of the price.\n2. The 1D chart shows the last trading day, with a dashed line at the previous close.\n3. Click 5D, 1M, 6M, YTD, 1Y, 5Y, MAX: each loads its chart.\n4. Below the chart: open, previous close, day range, 52-week range, volume, average volume.\n5. Try http://localhost:5173/quote/BTC%2FUSD and http://localhost:5173/quote/EUR%2FUSD.\n6. Click many ranges quickly: when the free plan's minute limit is reached, the page says so\n   and loads by itself a few seconds later.\n",
   "id": "A03-statue382",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user opens a ticker and sees its price, day change, chart with ranges and key figures"
+  "state": "done",
+  "title": "A user opens a ticker and sees its price, day change, chart with ranges and key figures",
+  "without_human_check": "Goal run"
 }

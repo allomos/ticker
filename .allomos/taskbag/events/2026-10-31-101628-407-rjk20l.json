@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:16:28Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A03-statue382",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "Run the app (`npm run dev` in `/Users/wanghui/coding/ticker`) and open http://localhost:5173/quote/AAPL:\n\n1. The page shows Apple Inc., AAPL · NASDAQ · USD, the latest price, the day's change in green or\n   red, \"Market open/closed\" and the time of the price.\n2. The 1D chart shows the last trading day, with a dashed line at the previous close.\n3. Click 5D, 1M, 6M, YTD, 1Y, 5Y, MAX: each loads its chart.\n4. Below the chart: open, previous close, day range, 52-week range, volume, average volume.\n5. Try http://localhost:5173/quote/BTC%2FUSD and http://localhost:5173/quote/EUR%2FUSD.\n6. Click many ranges quickly: when the free plan's minute limit is reached, the page says so\n   and loads by itself a few seconds later.\n"
+    }
+  ]
+}

@@ -76,3 +76,7 @@ the budget is spent it answers with the latest cached data, marked `stale`, or `
 - `GET /api/quote?symbol=AAPL`
 - `GET /api/quotes?symbols=AAPL,MSFT,BTC/USD` (some may come back as `pending`)
 - `GET /api/chart?symbol=AAPL&range=1M` (`1D 5D 1M 6M YTD 1Y 5Y MAX`)
+
+## License
+
+MIT, see [LICENSE](LICENSE).

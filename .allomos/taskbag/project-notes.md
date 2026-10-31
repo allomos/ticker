@@ -29,7 +29,8 @@ Where the code and this taskbag are kept online, one list item each, so an agent
 copy elsewhere (in the cloud, say) can find both: `- Code: https://github.com/<owner>/<repo>`.
 The address only: never a token or a personal detail.
 
-- Code: https://github.com/allomos/ticker (private, branch `master`; created 2026-10-31)
+- Code: https://github.com/allomos/ticker (public, MIT licence, branch `master`; created 2026-10-31,
+  public since 2026-10-31). Everything committed is public: secrets stay in `.dev.vars` only.
 - Taskbag: in the same repository, `.allomos/taskbag/`
 - Pushing: this Mac's default SSH key for `github.com` belongs to another GitHub account, which
   cannot reach `allomos`. The `origin` remote uses an SSH host alias from `~/.ssh/config` that

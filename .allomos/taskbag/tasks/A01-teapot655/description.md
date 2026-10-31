@@ -13,9 +13,9 @@
 
 ## What the app does, and for whom
 
-A personal stock watchlist web app, a replacement for the list feature of Google Finance, which
-the person finds buggy and awkward. It runs at `ticker.allomos.com`. First user: the person
-themself.
+A stock watchlist web app, a replacement for the list feature of Google Finance, which the
+person finds buggy and awkward. It runs at `ticker.allomos.com`. It supports many users: each
+signs in and keeps their own lists, private to them. First user: the person themself.
 
 ## Acceptance criteria (as far as known now; to refine in discussion)
 
@@ -31,17 +31,25 @@ themself.
    low, previous close, 52-week range, volume, market cap, P/E where available).
 7. Prices come from a free data service; delayed prices are acceptable, with the time of the
    price shown. No real-time refresh is required.
-8. Lists are kept: they are still there after closing the browser and coming back.
-9. The app is reachable at `ticker.allomos.com`.
+8. Users sign in; each user's lists are saved on the server, private to that user, and follow
+   them to any device or browser where they sign in. A user never sees another user's lists.
+9. Search, lists and details cover as many markets as the free data allows: stocks on US and
+   other exchanges, ETFs, indexes, mutual funds, currencies and crypto.
+10. The price data needs no API key at all.
+11. The app is reachable at `ticker.allomos.com`, hosted on the person's Cloudflare account.
+
+## Agreed in discussion (2026-10-31)
+
+- Users: many users; signing in is required; each user's lists are saved for them, privately.
+- Storage: on the server, per user (follows from private, signed-in lists).
+- Price data: a free service that needs no API key at all.
+- Hosting: Cloudflare (the person already has an account; `allomos.com` is there).
+- Markets: as many as possible.
 
 ## Open points for discussion
 
-- Who can use it: only the person (sign-in needed?), or anyone, each with their own lists?
-- Where lists are stored: in the browser only, or on a server so they follow the person across
-  devices.
-- Which free price service is acceptable (some need a free API key and have daily limits).
-- Hosting for `ticker.allomos.com` (where `allomos.com`'s DNS is managed).
-- Markets: US stocks only, or other exchanges, ETFs, indexes, crypto too.
+- How users sign in (for example: a sign-in link sent by email, or "Sign in with Google").
+- Can anyone sign up, or only people the person invites?
 
 ## Run mode
 

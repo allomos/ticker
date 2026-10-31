@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Lists screen (src/app/pages/ListsPage.tsx), shared lists state (src/app/lists.tsx, optimistic changes), price polling (src/app/useQuotes.ts: every 20 s while prices are held back, else every 5 min). Checked in the browser at desktop and phone width with real prices. Fixed a flaky search-box test. Next: A05-cable879 (add to list).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "On this Mac (`npm run dev` in `/Users/wanghui/coding/ticker`), signed in (see A04-goblet948):\n\n1. The home page shows your lists as tabs; a new account has \"Watchlist\".\n2. Click \"+ New list\", name it, Save: the new tab opens. Rename it, then Delete it (it asks first).\n3. With tickers in a list (added with the buttons from A05-cable879), each row shows symbol,\n   name, latest price, the day's change in green or red, and the price's time.\n4. Prices the free plan holds back show \"…\" and fill in within about a minute.\n5. The × on a row removes that ticker; clicking a row opens its page.\n6. At phone width the day's change sits under the price.\n",
   "id": "A05-guide010",
   "iteration": "I-pick",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user sees each of their lists with the latest price and day change, and manages lists on screen"
+  "state": "done",
+  "title": "A user sees each of their lists with the latest price and day change, and manages lists on screen",
+  "without_human_check": "Goal run"
 }

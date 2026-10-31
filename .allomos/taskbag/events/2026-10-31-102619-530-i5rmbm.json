@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:26:19Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A05-guide010",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Lists screen (src/app/pages/ListsPage.tsx), shared lists state (src/app/lists.tsx, optimistic changes), price polling (src/app/useQuotes.ts: every 20 s while prices are held back, else every 5 min). Checked in the browser at desktop and phone width with real prices. Fixed a flaky search-box test. Next: A05-cable879 (add to list)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

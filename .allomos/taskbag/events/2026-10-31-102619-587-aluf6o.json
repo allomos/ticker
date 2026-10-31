@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:26:19Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A05-guide010",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "On this Mac (`npm run dev` in `/Users/wanghui/coding/ticker`), signed in (see A04-goblet948):\n\n1. The home page shows your lists as tabs; a new account has \"Watchlist\".\n2. Click \"+ New list\", name it, Save: the new tab opens. Rename it, then Delete it (it asks first).\n3. With tickers in a list (added with the buttons from A05-cable879), each row shows symbol,\n   name, latest price, the day's change in green or red, and the price's time.\n4. Prices the free plan holds back show \"…\" and fill in within about a minute.\n5. The × on a row removes that ticker; clicking a row opens its page.\n6. At phone width the day's change sits under the price.\n"
+    }
+  ]
+}

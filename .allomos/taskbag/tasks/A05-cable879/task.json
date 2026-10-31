@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. AddToList (src/app/components/AddToList.tsx) on the ticker page and the search results page; the type of a ticker added from its page comes from search (no credits). Ticks show at once. Checked in the browser. Next: A01-whale367 (v0.2 check).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "On this Mac (`npm run dev` in `/Users/wanghui/coding/ticker`), signed in:\n\n1. Open a ticker, for example http://localhost:5173/quote/AAPL, and click \"☆ Add to list\":\n   your lists appear with a tick box each. Tick \"Watchlist\": the button turns into \"★ In Watchlist\".\n2. Untick it: the button goes back to \"☆ Add to list\".\n3. In the same menu, \"+ New list\", type a name, Add: the list is made with the ticker in it.\n4. Search `vanguard`, press Enter, and click ☆ on VOO's row: the same menu; adding does not\n   leave the results page.\n5. Go home: the tickers you added are in their lists, with prices.\nSigned out, the button says \"Sign in to add to a list\".\n",
   "id": "A05-cable879",
   "iteration": "I-pick",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A user adds a ticker to any of their lists from search results or its details page"
+  "state": "done",
+  "title": "A user adds a ticker to any of their lists from search results or its details page",
+  "without_human_check": "Goal run"
 }

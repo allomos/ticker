@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:28:54Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A05-cable879",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "On this Mac (`npm run dev` in `/Users/wanghui/coding/ticker`), signed in:\n\n1. Open a ticker, for example http://localhost:5173/quote/AAPL, and click \"☆ Add to list\":\n   your lists appear with a tick box each. Tick \"Watchlist\": the button turns into \"★ In Watchlist\".\n2. Untick it: the button goes back to \"☆ Add to list\".\n3. In the same menu, \"+ New list\", type a name, Add: the list is made with the ticker in it.\n4. Search `vanguard`, press Enter, and click ☆ on VOO's row: the same menu; adding does not\n   leave the results page.\n5. Go home: the tickers you added are in their lists, with prices.\nSigned out, the button says \"Sign in to add to a list\".\n"
+    }
+  ]
+}

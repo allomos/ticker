@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:28:54Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A05-cable879",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. AddToList (src/app/components/AddToList.tsx) on the ticker page and the search results page; the type of a ticker added from its page comes from search (no credits). Ticks show at once. Checked in the browser. Next: A01-whale367 (v0.2 check)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

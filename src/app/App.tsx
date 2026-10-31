@@ -51,7 +51,7 @@ function Routes() {
   if (path === "/signin/verify") return <VerifyPage token={location.searchParams.get("token") ?? ""} />;
   if (path.startsWith("/quote/")) {
     const symbol = decodeURIComponent(path.slice("/quote/".length));
-    return <QuotePage symbol={symbol} key={symbol} />;
+    return <QuotePage symbol={symbol} list={location.searchParams.get("list")} query={location.searchParams.get("q")} key={symbol} />;
   }
   return <NotFound />;
 }

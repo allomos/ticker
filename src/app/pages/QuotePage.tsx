@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
 import { AddToList } from "../components/AddToList";
+import { Breadcrumb } from "../components/Breadcrumb";
 import { PriceChart } from "../components/PriceChart";
 import { formatChange, formatCompact, formatPrice, formatTime } from "../format";
 import { useI18n } from "../i18n";
@@ -80,7 +81,7 @@ function Header({ cached }: { cached: Cached<Quote> }) {
   );
 }
 
-export function QuotePage({ symbol }: { symbol: string }) {
+function QuoteDetails({ symbol }: { symbol: string }) {
   const { t, locale } = useI18n();
   const [range, setRange] = useState<Range>("1D");
   const quote = useLoad<Cached<Quote>>(`q:${symbol}`, (s) => api.quote(symbol, s));
@@ -129,5 +130,14 @@ export function QuotePage({ symbol }: { symbol: string }) {
         <Stat label={t.statAvgVolume} value={formatCompact(q.averageVolume, locale)} />
       </dl>
     </section>
+  );
+}
+
+export function QuotePage({ symbol, list, query }: { symbol: string; list: string | null; query: string | null }) {
+  return (
+    <>
+      <Breadcrumb list={list} query={query} />
+      <QuoteDetails symbol={symbol} />
+    </>
   );
 }

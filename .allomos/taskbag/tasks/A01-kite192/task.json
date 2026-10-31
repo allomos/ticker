@@ -3,11 +3,12 @@
   "folders": [
     "ticker"
   ],
-  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). Checked locally on a production build (npm run preview): the service worker registers and activates and caches /offline.html and /favicon.svg; the manifest is served as application/manifest+json; all icons (180, 192, 512, maskable 512) are served as PNG and look right, the maskable one inside a circle mask. 107 tests pass (manifest, page tags, offline text, and the service worker's fallback run against a fake cache). Branch merged and removed.\nNot checked: the offline screen in a real browser (the browser pane blocks requests to a stopped local server before the service worker can answer), Chrome's installability panel, and real phones: all in the human check.\nNot done: master is NOT deployed; waits for the approver (no database migration).\nNext step: once approved, deploy (npm run build && npx wrangler deploy), check /manifest.webmanifest and /sw.js on ticker.allomos.com, label 'deployed and verified', finish with alm done --without-human-check and check steps (iPhone and Android: add to home screen, icon and name, standalone, airplane mode shows the offline screen, sign in with the code).",
+  "handoff_note": "Run mode: quiet. Deployed with the approver's go (Worker 5d9e3470, no migration). Checked on ticker.allomos.com: manifest served as application/manifest+json (standalone, Ticker), icons 192, 512, maskable 512 and the 180 touch icon are PNG, the iOS tags and viewport-fit=cover are in the page, the service worker activates and caches /offline.html and /favicon.svg, and /sw.js is served with max-age=0, must-revalidate. Done, to check: real iPhone and Android (home screen, standalone, offline, sign-in with the code) need a person; steps in alm human. Nothing running, nothing left to deploy.",
   "holder": "claude-code-29ed5bb1",
+  "human_check_steps": "# Check: Ticker on the phone's home screen (ticker.allomos.com)\n\n1. iPhone, Safari: open https://ticker.allomos.com, tap Share › Add to Home Screen. The name is \"Ticker\" and the icon shows the logo on a light tile.\n2. Open it from the home screen: it opens full screen without Safari's bar; nothing sits under the notch, the status bar or the home indicator (also turn the phone sideways).\n3. In the home-screen app, ask for a sign-in link, copy the code from the email in Mail, come back, paste it and sign in.\n4. Turn on airplane mode and open Ticker from the home screen (or pull a new page): it shows \"You're offline – prices will load when you're back online.\" Turn airplane mode off: the page loads by itself, or with Try again.\n5. Android, Chrome: open the site, menu › Install app (or Add to Home screen). The icon fits the launcher's shape with nothing cut off, and it opens without the browser bar. Repeat step 4.\n6. Optional, on a computer: Chrome › DevTools › Application › Manifest shows no errors or warnings about installability.\n",
   "id": "A01-kite192",
   "iteration": "I-cast",
-  "label": "locally verified",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -16,7 +17,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "waiting",
+  "state": "done",
   "title": "A user adds Ticker to their phone's home screen and opens it like an app",
-  "waiting_on": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (ships the home-screen app support)"
+  "without_human_check": "Needs a real iPhone and Android phone: adding to the home screen, standalone, airplane mode, sign-in by code"
 }

@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T15:18:45Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (ships the home-screen app support)"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Needs a real iPhone and Android phone: adding to the home screen, standalone, airplane mode, sign-in by code"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: Ticker on the phone's home screen (ticker.allomos.com)\n\n1. iPhone, Safari: open https://ticker.allomos.com, tap Share › Add to Home Screen. The name is \"Ticker\" and the icon shows the logo on a light tile.\n2. Open it from the home screen: it opens full screen without Safari's bar; nothing sits under the notch, the status bar or the home indicator (also turn the phone sideways).\n3. In the home-screen app, ask for a sign-in link, copy the code from the email in Mail, come back, paste it and sign in.\n4. Turn on airplane mode and open Ticker from the home screen (or pull a new page): it shows \"You're offline – prices will load when you're back online.\" Turn airplane mode off: the page loads by itself, or with Try again.\n5. Android, Chrome: open the site, menu › Install app (or Add to Home screen). The icon fits the launcher's shape with nothing cut off, and it opens without the browser bar. Repeat step 4.\n6. Optional, on a computer: Chrome › DevTools › Application › Manifest shows no errors or warnings about installability.\n"
+    }
+  ]
+}

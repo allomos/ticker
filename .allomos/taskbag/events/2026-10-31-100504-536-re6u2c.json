@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:05:04Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-mascot452",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Stack: Hono on Workers with static assets (SPA fallback), React 19 + Vite 8 with @cloudflare/vite-plugin, vitest 4 with @cloudflare/vitest-plugin; legacy-peer-deps in .npmrc to get past an npm 10 install bug"
+    }
+  ]
+}

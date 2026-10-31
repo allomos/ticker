@@ -1,13 +1,19 @@
 {
   "area": "A02",
-  "blocked_by": [
-    "A01-mascot452"
-  ],
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-10e82e40",
   "id": "A02-hen552",
   "iteration": "I-build",
-  "state": "blocked",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
 }

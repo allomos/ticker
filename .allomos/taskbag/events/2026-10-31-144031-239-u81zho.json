@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T14:40:31Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to deploy master (the four languages) to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Needs a real sign-in email and signed-in screens in each language, which an agent cannot receive"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: Ticker in four languages (ticker.allomos.com)\n\n1. Open https://ticker.allomos.com in a private window. It follows your browser's language (Japanese, Simplified or Traditional Chinese, otherwise English).\n2. At the foot of the page, pick each language in turn: every text on the page, the tab title, numbers and dates change with it. Reload: the choice stays.\n3. Sign in in Japanese (or Chinese): the sign-in email arrives in that language, and a brand-new account's first list is named in it (ウォッチリスト, 自选股, 自選股).\n4. Open a list and a ticker page in each language on your phone: nothing is in mixed languages (company names from the data provider stay in English), and the chart range buttons fit on one line.\n"
+    }
+  ]
+}

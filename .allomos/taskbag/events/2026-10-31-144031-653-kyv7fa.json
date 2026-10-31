@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T14:40:31Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to deploy master to ticker.allomos.com (one deploy ships this logo with A01-pearl420, A03-dot197 and A04-nose857; A04-nose857 needs migration 0004 applied first)"
+    },
+    {
+      "field": "without_human_check",
+      "to": "The sign-in email's look in real mail apps needs a real email"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: Ticker's logo (ticker.allomos.com)\n\n1. Open https://ticker.allomos.com: the browser tab shows the new icon (teal dots, coral dot, gold star and ball), and the header shows it beside \"Ticker\", in light and dark mode.\n2. Ask for a sign-in email: it opens with the name in the logo's colours (gold star, teal and coral dots, navy \"Ticker\"). Check it in Gmail and in Apple Mail.\n"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-31T14:40:31Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A03-dot197",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: the breadcrumb is merged into master (pushed) and checked locally in the browser: Home › <list> from a list, Home › Search: “q” from results and from the search box, just Home for a direct link; clicking each crumb, reload, back and forward keep the right trail; Japanese at 375px phone width with a long query cut with …. 83 tests pass. Branch a03-dot197-breadcrumb merged and removed.\nNot done: master is NOT deployed; the production deploy waits for the approver (same deploy as A01-pearl420, which is also waiting on it).\nNext step: once approved, deploy master (npm run build && npx wrangler deploy, no migration), check the trail at ticker.allomos.com, label 'deployed and verified', and finish with alm done --without-human-check and check steps.",
+      "to": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST). Deployed by another session at ~23:35 JST. Checked on ticker.allomos.com, signed out: search 'apple' then AAPL gives /quote/AAPL?q=apple with Home › Search: “apple” linking back to /search?q=apple. Finished below the top label: only a person's hands-on check is left (steps attached; alm human, To check)."
+    },
+    {
+      "field": "description",
+      "from": "**Outcome.** A ticker's details page shows a breadcrumb trail above the ticker name, for example `Home > Tech stocks`. Clicking **Home** goes back to the home page; clicking the list name goes back to that list on the home page (`/?list=<id>`).\n\n**Done means.**\n- Opening a ticker from a list (for example `Tech stocks`) shows `Home > Tech stocks` on its page.\n- Opening a ticker from search for \"apple\" shows `Home > Search: \"apple\"`; clicking it opens `/search?q=apple`. Opened by a direct link, it shows just `Home`.\n- Clicking `Home` opens `/`; clicking `Tech stocks` opens `/?list=<that list's id>` with that list selected.\n- Reloading the details page, or using the browser's back and forward buttons, keeps the right trail.\n- Tests pass; checked locally (`npm run dev`) and on ticker.allomos.com after deploy.\n\n**Notes.**\n- Code: `src/app/pages/QuotePage.tsx` (details page), `src/app/pages/ListsPage.tsx` (home page, list chosen with `?list=<id>`), `src/app/router.tsx`. The quote path (`/quote/AAPL`) does not carry the list today, so the list the user came from has to be passed along, for example as `/quote/AAPL?list=<id>`.\n- Decided by the approver (2026-10-31):\n  1. Opened from search: the trail shows `Home > Search: \"<query>\"`, and clicking it goes back to those search results. With no list and no search (a shared link, or a signed-out user), it shows just `Home`.\n  2. The list name is only ever the list the user came from, never a list the ticker happens to be in.\n",
+      "to": "**Outcome.** A ticker's details page shows a breadcrumb trail above the ticker name, for example `Home > Tech stocks`. Clicking **Home** goes back to the home page; clicking the list name goes back to that list on the home page (`/?list=<id>`).\n\n**Done means.**\n- Opening a ticker from a list (for example `Tech stocks`) shows `Home > Tech stocks` on its page.\n- Opening a ticker from search for \"apple\" shows `Home > Search: \"apple\"`; clicking it opens `/search?q=apple`. Opened by a direct link, it shows just `Home`.\n- Clicking `Home` opens `/`; clicking `Tech stocks` opens `/?list=<that list's id>` with that list selected.\n- Reloading the details page, or using the browser's back and forward buttons, keeps the right trail.\n- Tests pass; checked locally (`npm run dev`) and on ticker.allomos.com after deploy.\n\n**Notes.**\n- Code: `src/app/pages/QuotePage.tsx` (details page), `src/app/pages/ListsPage.tsx` (home page, list chosen with `?list=<id>`), `src/app/router.tsx`. The quote path (`/quote/AAPL`) does not carry the list today, so the list the user came from has to be passed along, for example as `/quote/AAPL?list=<id>`.\n- Decided by the approver (2026-10-31):\n  1. Opened from search: the trail shows `Home > Search: \"<query>\"`, and clicking it goes back to those search results. With no list and no search (a shared link, or a signed-out user), it shows just `Home`.\n  2. The list name is only ever the list the user came from, never a list the ticker happens to be in.\n\n## Evidence\n\n- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-10-31 ~23:35 JST from master 0890629 by another session (Worker version 016408b1; remote D1 migrations through 0004)\n"
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

@@ -12,3 +12,7 @@
 - Decided by the approver (2026-10-31):
   1. Opened from search: the trail shows `Home > Search: "<query>"`, and clicking it goes back to those search results. With no list and no search (a shared link, or a signed-out user), it shows just `Home`.
   2. The list name is only ever the list the user came from, never a list the ticker happens to be in.
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-10-31 ~23:35 JST from master 0890629 by another session (Worker version 016408b1; remote D1 migrations through 0004)

@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T14:40:31Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A03-dot197",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to deploy master to ticker.allomos.com (one deploy covers this breadcrumb and A01-pearl420's four languages): npm run build && npx wrangler deploy, no database migration"
+    },
+    {
+      "field": "without_human_check",
+      "to": "The list trail needs a signed-in account, which needs a real sign-in email"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: breadcrumb on ticker pages (ticker.allomos.com)\n\n1. Signed in, open a list (for example \"Tech stocks\") and click a ticker: the page shows \"Home › Tech stocks\". Click \"Tech stocks\": that list is open again.\n2. Search \"apple\" and open AAPL from the results: \"Home › Search: “apple”\". Click it: the results come back.\n3. On a ticker page, reload, and use Back and Forward: the trail stays right. A ticker opened from a shared link shows just \"Home\".\n"
+    }
+  ]
+}

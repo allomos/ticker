@@ -17,3 +17,7 @@ Decided by the approver (2026-10-31):
 3. The choice is kept in this browser only (no database change).
 4. Company and exchange names from Twelve Data stay as they come (English).
 5. Whether the URL carries the language: left to the agent; decided not to (see AI decisions).
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-10-31 ~23:35 JST from master 0890629 by another session (Worker version 016408b1; remote D1 migrations through 0004)

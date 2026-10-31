@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-31T14:40:31Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "waiting",
+      "to": "done"
+    },
+    {
+      "field": "waiting_on",
+      "from": "Approval to migrate the production database (0004_sign_in_code: two new columns in login_tokens) and deploy master to ticker.allomos.com; the same deploy also ships A01-pearl420 and A03-dot197"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Needs a real email, an iPhone home-screen app and a real clipboard"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "# Check: sign in with the code (ticker.allomos.com)\n\n1. On an iPhone, add ticker.allomos.com to the home screen (Share › Add to Home Screen) and open it from there. Ask for a sign-in link.\n2. In Mail, the email shows a large code (like K7QM-4XRP-9TWD-2HNC). Long-press it: the whole code is selected; copy it.\n3. Back in the home-screen app (it may have reloaded): the \"Check your email\" screen still shows the code field. Tap Paste (or paste by hand), then \"Sign in with code\": you are signed in.\n4. Open the same email's link in Safari: it now says the link does not work (the code used it up).\n5. Ask for another link and open it in a browser: the page shows the code with a Copy button; tap Copy and paste somewhere to see it copied. Then \"Sign in\" signs that browser in.\n6. Type a wrong code five times: the request is voided and the right code no longer works.\n"
+    }
+  ]
+}

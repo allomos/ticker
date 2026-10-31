@@ -25,3 +25,7 @@
 ```
 - Logo direction chosen (B2, below). Approver made the task ready on 2026-10-31: work may start.
 - Feeds the landing-page task (the page before sign-in uses this logo).
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-10-31 ~23:35 JST from master 0890629 by another session (Worker version 016408b1; remote D1 migrations through 0004)

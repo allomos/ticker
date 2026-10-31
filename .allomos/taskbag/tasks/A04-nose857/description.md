@@ -17,3 +17,7 @@
 - Needed by A01-kite192 (home-screen web app): on iPhone, the home-screen web app and Safari are signed in separately.
 - Changes the sign-in built in A04-goblet948 (`src/worker/auth/`, `src/app/auth.tsx`).
 - Deploying to ticker.allomos.com is an outside effect: it waits for the approver's go-ahead.
+
+## Evidence
+
+- 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-10-31 ~23:35 JST from master 0890629 by another session (Worker version 016408b1; remote D1 migrations through 0004)

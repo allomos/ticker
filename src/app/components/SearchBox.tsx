@@ -80,7 +80,7 @@ export function SearchBox({ initial = "" }: { initial?: string }) {
     if (!r.available) return;
     setOpen(false);
     setQuery("");
-    navigate(quotePath(r.symbol));
+    navigate(quotePath(r.symbol, { q: query.trim() }));
   };
 
   const onKey = (e: KeyboardEvent<HTMLInputElement>) => {

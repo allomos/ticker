@@ -13,6 +13,9 @@ const en = {
   homeSignIn: "Sign in to make your lists",
   notFoundTitle: "Page not found",
   notFoundBack: "Back to your lists",
+  breadcrumb: "Breadcrumb",
+  home: "Home",
+  searchCrumb: (q: string) => `Search: “${q}”`,
 
   searchPlaceholder: "Search stocks, ETFs, crypto, currencies",
   searchLabel: "Search by name or ticker",
@@ -124,6 +127,9 @@ const zhHans: Messages = {
   homeSignIn: "登录后创建你的列表",
   notFoundTitle: "找不到该页面",
   notFoundBack: "返回你的列表",
+  breadcrumb: "当前位置",
+  home: "首页",
+  searchCrumb: (q) => `搜索：“${q}”`,
 
   searchPlaceholder: "搜索股票、ETF、加密货币、外汇",
   searchLabel: "按名称或代码搜索",
@@ -233,6 +239,9 @@ const zhHant: Messages = {
   homeSignIn: "登入後建立你的清單",
   notFoundTitle: "找不到此頁面",
   notFoundBack: "返回你的清單",
+  breadcrumb: "目前位置",
+  home: "首頁",
+  searchCrumb: (q) => `搜尋：「${q}」`,
 
   searchPlaceholder: "搜尋股票、ETF、加密貨幣、外匯",
   searchLabel: "依名稱或代號搜尋",
@@ -342,6 +351,9 @@ const ja: Messages = {
   homeSignIn: "ログインしてリストを作成",
   notFoundTitle: "ページが見つかりません",
   notFoundBack: "リストに戻る",
+  breadcrumb: "現在地",
+  home: "ホーム",
+  searchCrumb: (q) => `検索：「${q}」`,
 
   searchPlaceholder: "株式・ETF・暗号資産・為替を検索",
   searchLabel: "銘柄名またはティッカーで検索",

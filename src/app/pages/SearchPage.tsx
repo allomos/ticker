@@ -18,7 +18,7 @@ export function SearchPage({ query }: { query: string }) {
         <ul className="result-list">
           {available.map((r) => (
             <li key={`${r.symbol}|${r.exchange}`} className="result">
-              <Link href={quotePath(r.symbol)} className="result-link">
+              <Link href={quotePath(r.symbol, { q: query })} className="result-link">
                 <ResultRow r={r} />
               </Link>
               <span className="result-add">

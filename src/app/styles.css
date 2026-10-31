@@ -218,3 +218,8 @@ a { color: var(--accent); text-decoration: none; }
   font: inherit; color: var(--text); background: var(--surface);
   border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px;
 }
+
+.breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0 0 8px; padding: 0; list-style: none; font-size: 13px; }
+.breadcrumb li { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.breadcrumb li + li::before { content: "›"; color: var(--muted); }
+.breadcrumb a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw; }

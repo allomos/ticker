@@ -60,9 +60,9 @@ function ListTable({ list }: { list: WatchList }) {
           const q = quotes[item.symbol];
           const change = q ? formatChange(q.data.change, q.data.changePercent, locale) : null;
           return (
-            <tr key={item.symbol} onClick={() => navigate(quotePath(item.symbol))}>
+            <tr key={item.symbol} onClick={() => navigate(quotePath(item.symbol, { list: list.id }))}>
               <td>
-                <Link href={quotePath(item.symbol)} className="row-symbol" onClick={(e) => e.stopPropagation()}>
+                <Link href={quotePath(item.symbol, { list: list.id })} className="row-symbol" onClick={(e) => e.stopPropagation()}>
                   {item.symbol}
                 </Link>
                 <div className="row-name">

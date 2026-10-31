@@ -1,13 +1,10 @@
 {
   "area": "A03",
-  "blocked_by": [
-    "A02-hen552"
-  ],
   "folders": [
     "ticker"
   ],
   "id": "A03-statue382",
   "iteration": "I-build",
-  "state": "blocked",
+  "state": "ready",
   "title": "A user opens a ticker and sees its price, day change, chart with ranges and key figures"
 }

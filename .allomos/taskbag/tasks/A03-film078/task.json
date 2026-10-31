@@ -1,13 +1,10 @@
 {
   "area": "A03",
-  "blocked_by": [
-    "A02-hen552"
-  ],
   "folders": [
     "ticker"
   ],
   "id": "A03-film078",
   "iteration": "I-build",
-  "state": "blocked",
+  "state": "ready",
   "title": "A user searches by name or ticker and sees matching symbols, with those not on the free plan marked"
 }

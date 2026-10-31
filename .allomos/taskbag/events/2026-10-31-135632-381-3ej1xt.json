@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T13:56:32Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Language switcher: a select at the foot of every page (each language named in itself: English, 简体中文, 繁體中文, 日本語), so the crowded phone-width header stays as it is; a first visit already follows the browser's language"
+    }
+  ]
+}

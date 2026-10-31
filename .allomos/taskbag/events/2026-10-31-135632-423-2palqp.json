@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T13:56:32Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "A new account's first list is named in the language of the sign-in page (Watchlist, 自选股, 自選股, ウォッチリスト); existing lists keep their names"
+    }
+  ]
+}

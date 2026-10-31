@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T13:56:32Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Japanese uses 前日比 for the day change label and column; Chinese uses 今日"
+    }
+  ]
+}

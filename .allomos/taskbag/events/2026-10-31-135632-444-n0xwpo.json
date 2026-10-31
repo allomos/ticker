@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T13:56:32Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Page title per language: Ticker · Stock watchlist / 自选股 / 自選股 / ウォッチリスト; chart ranges are translated too (1日, 5天, 年初来...)"
+    }
+  ]
+}

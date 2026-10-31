@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-31T08:44:16Z",
+  "via": "app",
+  "command": "connect project folder",
+  "kind": "project",
+  "id": "ticker",
+  "changes": [
+    {
+      "field": "project_folders",
+      "to": [
+        {
+          "name": "ticker",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

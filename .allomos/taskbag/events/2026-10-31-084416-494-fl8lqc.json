@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-31T08:44:16Z",
+  "via": "app",
+  "command": "init",
+  "kind": "project",
+  "id": "ticker",
+  "changes": [
+    {
+      "field": "format",
+      "to": "allomos/6"
+    },
+    {
+      "field": "labels",
+      "to": [
+        "implemented",
+        "locally verified",
+        "deployed and verified",
+        "human verified"
+      ]
+    },
+    {
+      "field": "name",
+      "to": "ticker"
+    },
+    {
+      "field": "task_language",
+      "to": "ui"
+    }
+  ]
+}

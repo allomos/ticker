@@ -1,0 +1,18 @@
+{
+  "format": "allomos/6",
+  "id": "ticker",
+  "name": "ticker",
+  "labels": [
+    "implemented",
+    "locally verified",
+    "deployed and verified",
+    "human verified"
+  ],
+  "project_folders": [
+    {
+      "name": "ticker",
+      "path": "."
+    }
+  ],
+  "task_language": "ui"
+}

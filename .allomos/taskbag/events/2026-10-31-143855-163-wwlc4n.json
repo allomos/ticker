@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:38:55Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-hinge715",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The example list is fixed sample data labelled 'example' (AAPL, NVDA, EUR/USD, BTC/USD from the mock-up) with a drawn teal sparkline; it does not call the price API for visitors. Its name follows the language (Watchlist, 自选股, 自選股, ウォッチリスト)"
+    }
+  ]
+}

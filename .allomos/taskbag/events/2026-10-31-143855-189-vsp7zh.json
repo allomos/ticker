@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:38:55Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-hinge715",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Wording follows the mock-up in all four languages; the sign-in intro is now the mock-up's short line (the 'New here? The same link creates your account' sentence is gone) and 'Use another address' became 'Use a different email'"
+    }
+  ]
+}

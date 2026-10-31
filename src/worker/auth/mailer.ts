@@ -65,13 +65,13 @@ export function signInMessage(link: string, code: string, lang: Locale = "en") {
   const text = `${m.open}\n\n${link}\n\n${m.codeIntro}\n\n${code}\n\n${m.note}`;
   // Non-breaking hyphens (U+2011) and user-select: all make a long-press select the whole code.
   const shown = code.replace(/-/g, "\u2011");
-  const html = `<div lang="${lang}" style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.5;color:#1f2328">
+  const html = `<div lang="${lang}" style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.5;color:#12223a">
 ${WORDMARK}
 <p>${m.click}</p>
-<p><a href="${escapeHtml(link)}" style="display:inline-block;padding:10px 18px;background:#1a73e8;color:#fff;border-radius:6px;text-decoration:none">${m.button}</a></p>
+<p><a href="${escapeHtml(link)}" style="display:inline-block;padding:10px 18px;background:#1f7a6f;color:#fff;border-radius:8px;text-decoration:none">${m.button}</a></p>
 <p>${m.codeIntro}</p>
-<p><span style="display:inline-block;padding:12px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:24px;font-weight:600;letter-spacing:2px;white-space:nowrap;background:#f6f8fb;border:1px solid #dde3ea;border-radius:8px;-webkit-user-select:all;user-select:all">${shown}</span></p>
-<p style="color:#5f6b7a;font-size:13px">${m.note}</p>
+<p><span style="display:inline-block;padding:12px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:24px;font-weight:600;letter-spacing:2px;white-space:nowrap;background:#fbfcfe;border:1px solid #e2e7ee;border-radius:8px;-webkit-user-select:all;user-select:all">${shown}</span></p>
+<p style="color:#55667c;font-size:13px">${m.note}</p>
 </div>`;
   return { subject, text, html };
 }

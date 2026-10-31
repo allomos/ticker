@@ -18,5 +18,5 @@
   },
   "state": "waiting",
   "title": "A signed-in user sees the whole app in the Allomos colours, with rises and falls still in green and red",
-  "waiting_on": "Approval to deploy master to ticker.allomos.com (one deploy with A01-pearl420, A03-dot197, A04-nose857 and A01-grotto889; A04-nose857 needs migration 0004 first)"
+  "waiting_on": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (one deploy with A01-hinge715)"
 }

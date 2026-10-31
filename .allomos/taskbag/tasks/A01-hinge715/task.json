@@ -18,5 +18,5 @@
   },
   "state": "waiting",
   "title": "A visitor who isn't signed in sees a polished front page and sign-in screens with the Ticker logo",
-  "waiting_on": "Approval to deploy master to ticker.allomos.com (one deploy with A01-pearl420, A03-dot197, A04-nose857, A01-grotto889 and A01-sofa728; A04-nose857 needs migration 0004 first)"
+  "waiting_on": "Approval to deploy master to ticker.allomos.com: npm run build && npx wrangler deploy, no database migration (one deploy with A01-sofa728)"
 }

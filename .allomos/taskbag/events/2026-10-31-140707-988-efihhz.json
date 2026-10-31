@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T14:07:07Z",
+  "via": "alm",
+  "command": "block",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "backlog",
+      "to": "blocked"
+    },
+    {
+      "field": "blocked_by",
+      "to": [
+        "A04-nose857"
+      ]
+    }
+  ]
+}

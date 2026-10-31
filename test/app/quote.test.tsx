@@ -23,6 +23,7 @@ beforeEach(() => {
     if (url.pathname === "/api/quote") {
       if (quoteStatus === 404) return Response.json({ error: "unavailable" }, { status: 404 });
       if (quoteStatus === 503) return Response.json({ error: "busy", retryAfter: 12 }, { status: 503 });
+      if (quoteStatus === 5030) return Response.json({ error: "busy", retryAfter: 5 * 3600 }, { status: 503 });
       return Response.json({ data: quote, fetchedAt: "2026-10-31T10:00:00Z", stale: false });
     }
     if (url.pathname === "/api/chart") {
@@ -65,5 +66,11 @@ describe("ticker page", () => {
     quoteStatus = 503;
     render(<App />);
     expect(await screen.findByText(/loads by itself in about 12 seconds/)).toBeTruthy();
+  });
+
+  it("says when prices come back after the daily limit", async () => {
+    quoteStatus = 5030;
+    render(<App />);
+    expect(await screen.findByText(/The free data plan's limit for today is reached\. Prices load again by themselves from .+; prices seen before stay on screen\./)).toBeTruthy();
   });
 });

@@ -84,6 +84,7 @@ const en = {
 
   busyPrice: (s: number) => `The free data plan's limit for this minute is reached. The price loads by itself in about ${s} seconds.`,
   busyChart: (s: number) => `The free data plan's limit for this minute is reached. The chart loads by itself in about ${s} seconds.`,
+  busyDay: (time: string) => `The free data plan's limit for today is reached. Prices load again by themselves from ${time}; prices seen before stay on screen.`,
   today: "today",
   marketOpen: "Market open",
   marketClosed: "Market closed",
@@ -218,6 +219,7 @@ const zhHans: Messages = {
 
   busyPrice: (s) => `本分钟的免费数据额度已用完。价格将在约 ${s} 秒后自动加载。`,
   busyChart: (s) => `本分钟的免费数据额度已用完。走势图将在约 ${s} 秒后自动加载。`,
+  busyDay: (time) => `今天的免费数据额度已用完。从 ${time} 起会自动重新加载价格；之前看过的价格仍会显示。`,
   today: "今日",
   marketOpen: "交易中",
   marketClosed: "已收盘",
@@ -350,6 +352,7 @@ const zhHant: Messages = {
 
   busyPrice: (s) => `本分鐘的免費資料額度已用完。價格將在約 ${s} 秒後自動載入。`,
   busyChart: (s) => `本分鐘的免費資料額度已用完。走勢圖將在約 ${s} 秒後自動載入。`,
+  busyDay: (time) => `今天的免費資料額度已用完。從 ${time} 起會自動重新載入價格；之前看過的價格仍會顯示。`,
   today: "今日",
   marketOpen: "交易中",
   marketClosed: "已收盤",
@@ -482,6 +485,7 @@ const ja: Messages = {
 
   busyPrice: (s) => `無料データプランの1分あたりの上限に達しました。約 ${s} 秒後に価格が自動で読み込まれます。`,
   busyChart: (s) => `無料データプランの1分あたりの上限に達しました。約 ${s} 秒後にチャートが自動で読み込まれます。`,
+  busyDay: (time) => `無料データプランの本日の上限に達しました。${time} から自動で価格を読み込みます。表示済みの価格はそのまま見られます。`,
   today: "前日比",
   marketOpen: "取引中",
   marketClosed: "取引終了",

@@ -3,7 +3,7 @@ import { auth } from "./auth/routes";
 import { loadUser, sameOrigin, type AppEnv } from "./auth/session";
 import type { Env } from "./env";
 import { lists } from "./lists/routes";
-import { prune } from "./market/budget";
+import { prune } from "./market/pause";
 import { market } from "./market/routes";
 
 export const app = new Hono<AppEnv>();
@@ -27,7 +27,7 @@ app.onError((err, c) => {
   return c.json({ error: "server_error" }, 500);
 });
 
-/** Daily clean-up: old budget windows, old cached data, used sign-in links, ended sessions. */
+/** Daily clean-up: old cached data, ended Twelve Data pauses, used sign-in links, ended sessions. */
 export async function cleanUp(env: Env, now = Date.now()) {
   await prune(env.DB, now);
   await env.DB.batch([

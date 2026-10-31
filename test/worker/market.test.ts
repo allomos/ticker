@@ -1,14 +1,17 @@
 import { env } from "cloudflare:test";
 import { afterEach, describe, expect, it } from "vitest";
 import { app } from "../../src/worker/index";
-import { MINUTE_LIMIT } from "../../src/worker/market/budget";
+import { MAX_BATCH } from "../../src/worker/market/pause";
 import { getQuote, getQuotes, getSeries, search } from "../../src/worker/market/service";
 import { fakeTwelveData, quoteHandler, type FakeTwelveData } from "./fake-twelvedata";
 
 let fake: FakeTwelveData | undefined;
-afterEach(() => fake?.restore());
+afterEach(async () => {
+  fake?.restore();
+  await env.DB.prepare("DELETE FROM api_pause").run();
+});
 
-// Each test uses its own minute, so budgets do not mix.
+// Each test uses its own minutes, so cached copies do not mix.
 let minute = 0;
 const nextMinute = () => Date.parse("2026-10-31T00:00:00Z") + ++minute * 60_000 * 3;
 
@@ -33,30 +36,18 @@ describe("quote cache", () => {
     expect(fake.credits()).toBe(2);
   });
 
-  it("fetches only what the minute allows; the rest comes later", async () => {
+  it("asks for at most 8 symbols in one request; the rest come with the next", async () => {
     fake = fakeTwelveData({ "/quote": quoteHandler() });
     const t = nextMinute();
     const symbols = Array.from({ length: 10 }, (_, i) => `L${i}`);
     const first = await getQuotes(env, symbols, t);
-    expect(Object.keys(first.quotes)).toHaveLength(MINUTE_LIMIT);
-    expect(first.pending).toHaveLength(10 - MINUTE_LIMIT);
+    expect(Object.keys(first.quotes)).toHaveLength(MAX_BATCH);
+    expect(first.pending).toHaveLength(10 - MAX_BATCH);
     expect(fake.calls).toHaveLength(1);
-    const second = await getQuotes(env, symbols, t + 60_000);
+    const second = await getQuotes(env, symbols, t + 20_000);
     expect(Object.keys(second.quotes)).toHaveLength(10);
     expect(second.pending).toEqual([]);
     expect(fake.credits()).toBe(10);
-  });
-
-  it("returns the stale copy, marked, when the budget is spent", async () => {
-    fake = fakeTwelveData({ "/quote": quoteHandler() });
-    const t = nextMinute();
-    await getQuote(env, "AMZN", t);
-    // Two hours later the copy is old; the minute's budget is used up by others.
-    const later = t + 2 * 3_600_000;
-    await getQuotes(env, Array.from({ length: MINUTE_LIMIT }, (_, i) => `B${i}`), later);
-    const r = await getQuote(env, "AMZN", later);
-    expect(r.stale).toBe(true);
-    expect(r.data.symbol).toBe("AMZN");
   });
 
   it("remembers symbols the plan does not cover", async () => {

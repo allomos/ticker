@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:13:50Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "A code is checked together with the email address it was sent to (the sign-in screen knows it); each wrong code counts against every open request for that address, and the fifth voids them, link included. The error says how many tries are left"
+    }
+  ]
+}

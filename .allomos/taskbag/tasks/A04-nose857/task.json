@@ -6,6 +6,7 @@
   "holder": "claude-code-29ed5bb1",
   "id": "A04-nose857",
   "iteration": "I-build",
+  "label": "implemented",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

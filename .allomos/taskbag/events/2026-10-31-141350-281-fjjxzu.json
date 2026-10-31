@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:13:50Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The link's page shows the code with Copy BEFORE signing in, with a smaller 'Sign in on this browser' button below: signing the browser in first would use up the code (the card says either one uses up both), so the home-screen user copies the code and does not press Sign in"
+    }
+  ]
+}

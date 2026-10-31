@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:13:50Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A04-nose857",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The Paste button shows only where the browser offers clipboard reading; if reading is refused the field gets focus for a manual paste. Dev server log line is now '[sign-in for <address>] code <code> link <link>'"
+    }
+  ]
+}

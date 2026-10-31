@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T15:08:43Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). Checked locally on a production build (npm run preview): the service worker registers and activates and caches /offline.html and /favicon.svg; the manifest is served as application/manifest+json; all icons (180, 192, 512, maskable 512) are served as PNG and look right, the maskable one inside a circle mask. 107 tests pass (manifest, page tags, offline text, and the service worker's fallback run against a fake cache). Branch merged and removed.\nNot checked: the offline screen in a real browser (the browser pane blocks requests to a stopped local server before the service worker can answer), Chrome's installability panel, and real phones: all in the human check.\nNot done: master is NOT deployed; waits for the approver (no database migration).\nNext step: once approved, deploy (npm run build && npx wrangler deploy), check /manifest.webmanifest and /sw.js on ticker.allomos.com, label 'deployed and verified', finish with alm done --without-human-check and check steps (iPhone and Android: add to home screen, icon and name, standalone, airplane mode shows the offline screen, sign in with the code)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

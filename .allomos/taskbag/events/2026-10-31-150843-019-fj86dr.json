@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:08:43Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Home-screen icon: the logo mark on the light page background (#fbfcfe), since iOS fills transparent icons with black; the maskable icon keeps the mark inside Android's safe circle. Sources are public/icons/icon.svg and maskable.svg; scripts/make-icons.sh rebuilds the PNGs (rsvg-convert), so the approver's new icon is a swap of two SVGs"
+    }
+  ]
+}

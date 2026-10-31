@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:08:43Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Status bar style 'default' (the bar keeps its own space) with viewport-fit=cover and safe-area padding on the header, page sides and footer; theme colour white in light and #152136 in dark"
+    }
+  ]
+}

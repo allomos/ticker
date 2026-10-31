@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:08:43Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The service worker caches nothing but the offline screen and the favicon: pages and prices always come from the network, so nothing stale is ever shown. The offline screen follows the app's last language, has a Try again button, and reloads by itself when the connection comes back"
+    }
+  ]
+}

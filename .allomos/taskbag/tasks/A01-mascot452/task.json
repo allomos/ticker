@@ -3,8 +3,17 @@
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-10e82e40",
   "id": "A01-mascot452",
   "iteration": "I-build",
-  "state": "ready",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "App skeleton: the Worker serves the web app locally, with tests and a build"
 }

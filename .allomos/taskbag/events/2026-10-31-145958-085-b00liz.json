@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T14:59:58Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-hinge715",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "not human-checked: The approver compares it with the mock-up they approved\nhuman check steps:\n    # Check: front page and sign-in screens (ticker.allomos.com)Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14); done, to check: steps in alm human.",
+      "to": "Run mode: quiet. Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14, no migration). Checked on ticker.allomos.com: the front page in light at desktop width (headline, both buttons, example watchlist, three tiles) and the sign-in card with the logo in dark at phone width. Done, to check: the approver compares it with the mock-up (steps in alm human). Nothing running, nothing left to deploy."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

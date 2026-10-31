@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T14:59:58Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "not human-checked: Signed-in screens need a real sign-in email, which an agent cannot receive\nhuman check steps:\n    # Check: the app in the Allomos colours (ticker.allomos.com)Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14); done, to check: steps in alm human.",
+      "to": "Run mode: quiet. Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14, no migration). Checked on ticker.allomos.com: colour tokens live (--bg #fbfcfe, --accent #1f7a6f, --teal #2a9d8f, --up #137333); a ticker page in dark at phone width with the fall in red and no sideways scroll. Done, to check: signed-in screens need a person's look (steps in alm human). Nothing running, nothing left to deploy."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

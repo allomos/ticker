@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:35:05Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-toy025",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Live check of signed-in parts: two temporary accounts written straight into the production D1 database (no inbox to receive real sign-in emails), removed right after; orphan rows checked: none"
+    }
+  ]
+}

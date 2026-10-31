@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "v0.3 check passed on the live site (see Evidence). No code changes. Next: the goal task A01-teapot655.",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "Release v0.3: the whole app at https://ticker.allomos.com, on a computer and on a phone.\n\n1. Sign in with your own email address (the email comes from no-reply@ticker.allomos.com).\n2. Make two or three lists; rename one, delete one.\n3. Search by name and by ticker (apple, NVDA, vanguard, bitcoin, yen) and add tickers to your\n   lists from the search results and from their pages.\n4. Home: each list shows the latest price, the day's change and the price's time; remove one with ×.\n5. Open a ticker: chart ranges 1D to MAX, key figures.\n6. Sign out and in again, or open the site on your phone: your lists are still there.\n",
   "id": "A01-toy025",
   "iteration": "I-sweep",
+  "label": "deployed and verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "v0.3 acceptance check: the whole app works at ticker.allomos.com"
+  "state": "done",
+  "title": "v0.3 acceptance check: the whole app works at ticker.allomos.com",
+  "without_human_check": "Goal run"
 }

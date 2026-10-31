@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-31T10:35:05Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "describe",
+  "kind": "task",
+  "id": "A01-toy025",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "description",
+      "from": "**Outcome.** Release v0.3 is tried against every criterion of the spec on the live site, and steps are written for the person.\n\n**Done means.**\n- `curl` checks against https://ticker.allomos.com pass.\n- Steps for the person to try the live app are written.\n\n**Notes.** Part of goal A01-teapot655.\n",
+      "to": "**Outcome.** Release v0.3 is tried against every criterion of the spec on the live site, and steps are written for the person.\n\n**Done means.**\n- `curl` checks against https://ticker.allomos.com pass.\n- Steps for the person to try the live app are written.\n\n**Notes.** Part of goal A01-teapot655.\n\n\n## Evidence\n\n2026-10-31, live site https://ticker.allomos.com (Worker version 3dd8ddaf), checked with curl. Signed-in parts used two temporary accounts written directly into the production D1 database (users smoke-a/smoke-b@example.invalid with one-hour sessions), removed afterwards; nothing left behind. The first account's session was not created on the first try (a one-off when creating it), so its steps were run again.\n\n```\n## 11: live site\n  https page 200\n{\"ok\":true}  health \n## 1, 9: search\n  apple -> AAPL NASDAQ stock | not covered, marked: 28\n  AAPL -> AAPL NASDAQ stock | not covered, marked: 19\n  bitcoin -> BTC/USD Crypto crypto | not covered, marked: 13\n  yen -> USD/JPY Currency currency | not covered, marked: 9\n  vanguard -> VOO NYSE etf | not covered, marked: 16\n## 6, 7: details\n  MSFT 521.90997 -8.23004 -1.55243 open 525.27002 prev 530.14001 52w 349.20001 551.15002 vol 35618300 asOf 2026-10-30T19:59:00.000Z\n  chart 1D 78 points\n  chart 1Y 253 points\n  Toyota 7203 (not covered) -> 404\n## 8: sign-in required\n  lists signed out -> 401\n## 8: two temporary accounts signed in\n{\"user\":{\"email\":\"smoke-a@example.invalid\"}}\n{\"user\":{\"email\":\"smoke-b@example.invalid\"}}\n## 4: several lists, rename, delete\n{\"ok\":true}{\"ok\":true}\n  Watchlist []\n  Big Tech []\n## 2, 3: add three, remove one\n{\"ok\":true}{\"ok\":true}{\"ok\":true}{\"ok\":true}\n{\"ok\":true}\n  Watchlist ['AAPL', 'ETH/USD']\n  Big Tech ['NVDA']\n## 8: privacy\n  Watchlist []\n  B renames A's list -> 404\n  B adds to A's list -> 404\n  B deletes A's list -> 404\n  Watchlist ['AAPL', 'ETH/USD']\n  Big Tech ['NVDA']\n## clean-up: remove the two temporary accounts\n  {'users': 0, 'orphan_sessions': 0, 'orphan_lists': 0, 'orphan_items': 0}\n  A's session now: {\"user\":null}\n```\n\nAlso: a sign-in email through Resend to delivered@resend.dev was accepted (A06-recipe196); the ticker page renders live in the browser.\n"
+    }
+  ]
+}

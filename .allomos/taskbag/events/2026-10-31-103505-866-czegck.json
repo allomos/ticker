@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:35:05Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-toy025",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "Release v0.3: the whole app at https://ticker.allomos.com, on a computer and on a phone.\n\n1. Sign in with your own email address (the email comes from no-reply@ticker.allomos.com).\n2. Make two or three lists; rename one, delete one.\n3. Search by name and by ticker (apple, NVDA, vanguard, bitcoin, yen) and add tickers to your\n   lists from the search results and from their pages.\n4. Home: each list shows the latest price, the day's change and the price's time; remove one with ×.\n5. Open a ticker: chart ranges 1D to MAX, key figures.\n6. Sign out and in again, or open the site on your phone: your lists are still there.\n"
+    }
+  ]
+}

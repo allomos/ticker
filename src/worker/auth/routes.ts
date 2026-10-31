@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { createDefaultList } from "../lists/routes";
 import { newToken, sha256 } from "./crypto";
 import { isLocal, sendSignInMail } from "./mailer";
 import { createSession, endSession, type AppEnv } from "./session";
@@ -61,10 +62,11 @@ auth.post("/verify", async (c) => {
   if (!row) return c.json({ error: "bad_link" }, 400);
   const user = await c.env.DB.prepare(
     `INSERT INTO users (id, email, created_at) VALUES (?1, ?2, ?3)
-     ON CONFLICT (email) DO UPDATE SET email = users.email RETURNING id, email`,
+     ON CONFLICT (email) DO UPDATE SET email = users.email RETURNING id, email, created_at`,
   )
     .bind(crypto.randomUUID(), row.email, now)
-    .first<{ id: string; email: string }>();
+    .first<{ id: string; email: string; created_at: number }>();
+  if (user!.created_at === now) await createDefaultList(c.env.DB, user!.id, now);
   await createSession(c, user!.id, now);
   return c.json({ user: { email: user!.email } });
 });

@@ -42,6 +42,15 @@ scanners that open links do not use it up. Sessions last 30 days and are kept in
 On localhost no email is sent: the link is written to the dev server's log. Elsewhere it goes
 through Resend, from `MAIL_FROM`.
 
+## Lists
+
+A new account starts with one list, "Watchlist". All `/api/lists` routes need a signed-in user
+and touch only that user's lists; another user's list answers 404.
+
+- `GET /api/lists`, `POST /api/lists {name}`, `PATCH /api/lists/:id {name}`, `DELETE /api/lists/:id`
+- `POST /api/lists/order {ids}`
+- `POST /api/lists/:id/items {symbol, name, exchange, type}`, `DELETE /api/lists/:id/items/:symbol`
+
 ## Market data
 
 Prices come from Twelve Data's free plan: 8 requests a minute, 800 a day, one request per

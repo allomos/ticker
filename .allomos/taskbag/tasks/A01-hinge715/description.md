@@ -17,3 +17,4 @@
 
 - 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-11-01 ~00:05 JST from master ec2fb5d by claude-code-29ed5bb1 after the approver said 'Yes, deploy' in this session; Worker version 69ae9d14-c449-409b-8750-42653524d8cb; no migration
 - 2026-10-31, claude-code-29ed5bb1: Correction: the deploy above was at 2026-10-31 ~23:57 JST (not 2026-11-01 ~00:05)
+- 2026-10-31, claude-code-29ed5bb1: Deployed again from the same commit (master ec2fb5d) by session claude-code-94d4eb30 after the approver said 'Deploy both' there, 2026-10-31 14:59 UTC: Worker version a1ac20b9-851a-43c3-850e-552a6e345240 is the live one; 69ae9d14 went out 18 s earlier with identical code

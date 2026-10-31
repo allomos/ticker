@@ -3,7 +3,7 @@
   "folders": [
     "ticker"
   ],
-  "handoff_note": "Run mode: quiet. Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14, no migration). Checked on ticker.allomos.com: the front page in light at desktop width (headline, both buttons, example watchlist, three tiles) and the sign-in card with the logo in dark at phone width. Done, to check: the approver compares it with the mock-up (steps in alm human). Nothing running, nothing left to deploy.",
+  "handoff_note": "Run mode: quiet. Deployed 2026-10-31 ~23:57 JST with the approver's go (Worker 69ae9d14, then a1ac20b9 from the same commit, which is live; no migration). Checked on ticker.allomos.com: the front page in light at desktop width (headline, both buttons, example watchlist, three tiles) and the sign-in card with the logo in dark at phone width. Done, to check: the approver compares it with the mock-up (steps in alm human). Nothing running, nothing left to deploy.",
   "holder": "claude-code-29ed5bb1",
   "human_check_steps": "# Check: front page and sign-in screens (ticker.allomos.com)\n\n1. In a private window, open https://ticker.allomos.com: the front page matches the mock-up you approved (headline, sign-in button, \"Try a search\", example watchlist, three tiles), in light and dark, on a computer and on your phone.\n2. \"Try a search\" puts the cursor in the search box; \"Sign in to start your lists\" opens the sign-in card with the logo.\n3. Ask for a sign-in link: the \"Check your email\" card shows the code field and \"Use a different email\". Open the link: its page is the same card style.\n4. Switch the language at the foot of the page: the front page's wording changes with it.\n",
   "id": "A01-hinge715",

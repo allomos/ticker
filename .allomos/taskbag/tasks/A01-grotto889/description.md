@@ -9,5 +9,6 @@
 **Notes.**
 - Colour style (approver, 2026-10-31): the logo and the website follow www.allomos.com. Its palette: light background #fbfcfe, surface #ffffff, text navy #12223a, muted #55667c, lines #e2e7ee, link #1f7a6f; dark background #0e1726, surface #152136, text #e8edf4, muted #9aa8bb, lines #26344c, link #5cc8ba; accents teal #2a9d8f (main, buttons), coral #e76f51, gold #e9c46a. Its logo is made of outlined and filled circles plus a gold four-point star, with no background tile.
 - Drafts shown in the conversation on 2026-10-31 in the Allomos colours: A tick and rise, B rising dots (teal ring, teal dot, coral dot, gold star), C ring and candle. The approver picks one.
+- Approver, 2026-10-31: go with B, plus a circle or ball in its upper-left corner. Versions shown: B1 coral ring (echoes Allomos's outlined and filled coral), B2 gold ball, B3 small teal ball; the approver picks one.
 - Open for the approver: which logo direction (what users will see and get used to). Not to be started before the approver says go.
 - Feeds the landing-page task (the page before sign-in uses this logo).

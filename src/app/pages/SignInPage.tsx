@@ -4,10 +4,99 @@ import { useAuth } from "../auth";
 import { useI18n } from "../i18n";
 import { navigate } from "../router";
 
+// The address a sign-in email went to, kept for the link's 15 minutes: a home-screen app is often
+// reloaded while the user copies the code in the mail app, and must still show the code field.
+const PENDING_KEY = "ticker.signin";
+const PENDING_MS = 15 * 60_000;
+
+function loadPending(): string | null {
+  try {
+    const p = JSON.parse(localStorage.getItem(PENDING_KEY) ?? "null");
+    return p && typeof p.email === "string" && Date.now() - p.at < PENDING_MS ? p.email : null;
+  } catch {
+    return null;
+  }
+}
+
+function savePending(email: string | null) {
+  try {
+    if (email) localStorage.setItem(PENDING_KEY, JSON.stringify({ email, at: Date.now() }));
+    else localStorage.removeItem(PENDING_KEY);
+  } catch {
+    // Without storage the code field lasts until the page reloads.
+  }
+}
+
+function CodeForm({ email }: { email: string }) {
+  const { t, locale } = useI18n();
+  const { setUser } = useAuth();
+  const [code, setCode] = useState("");
+  const [working, setWorking] = useState(false);
+  const [error, setError] = useState<{ kind: "bad"; left: number } | { kind: "void" } | { kind: "failed" } | null>(null);
+  const input = useRef<HTMLInputElement>(null);
+  const canPaste = Boolean(navigator.clipboard?.readText);
+
+  const paste = async () => {
+    try {
+      setCode((await navigator.clipboard.readText()).trim());
+    } catch {
+      // Refused: the user pastes into the field by hand.
+    }
+    input.current?.focus();
+  };
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    setWorking(true);
+    setError(null);
+    try {
+      setUser(await api.signInWithCode(email, code, locale));
+      savePending(null);
+      navigate("/", true);
+    } catch (err) {
+      const status = err instanceof ApiError ? err.code : "";
+      setError(status === "bad_code" ? { kind: "bad", left: (err as ApiError).triesLeft ?? 0 } : status === "code_void" ? { kind: "void" } : { kind: "failed" });
+      setWorking(false);
+    }
+  };
+
+  return (
+    <form onSubmit={submit} className="form code-form">
+      <h2 className="section-title">{t.codeTitle}</h2>
+      <p className="muted small">{t.codeHelp}</p>
+      <label htmlFor="code">{t.codeLabel}</label>
+      <div className="code-row">
+        <input
+          id="code"
+          ref={input}
+          className="code-input"
+          required
+          autoComplete="one-time-code"
+          autoCapitalize="characters"
+          spellCheck={false}
+          placeholder="XXXX-XXXX-XXXX-XXXX"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+        {canPaste && (
+          <button type="button" className="button button-quiet" onClick={paste}>
+            {t.paste}
+          </button>
+        )}
+      </div>
+      <button className="button" type="submit" disabled={working}>
+        {working ? t.signingIn : t.codeSubmit}
+      </button>
+      {error && <p className="error">{error.kind === "bad" ? t.badCode(error.left) : error.kind === "void" ? t.codeVoid : t.mailFailed}</p>}
+    </form>
+  );
+}
+
 export function SignInPage() {
   const { t, locale } = useI18n();
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [pending] = useState(loadPending);
+  const [email, setEmail] = useState(pending ?? "");
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">(pending ? "sent" : "idle");
   const [message, setMessage] = useState<"badEmail" | "tooMany" | "mailFailed">("mailFailed");
   const [local, setLocal] = useState(false);
 
@@ -17,6 +106,7 @@ export function SignInPage() {
     try {
       const r = await api.requestLink(email, locale);
       setLocal(r.local);
+      savePending(email);
       setState("sent");
     } catch (err) {
       const code = err instanceof ApiError ? err.code : "";
@@ -31,8 +121,15 @@ export function SignInPage() {
         <h1 className="page-title">{t.checkEmail}</h1>
         <p>{t.sentTo(<strong>{email}</strong>)}</p>
         {local && <p className="notice small">{t.localNotice}</p>}
+        <CodeForm email={email} />
         <p>
-          <button className="link-button" onClick={() => setState("idle")}>
+          <button
+            className="link-button"
+            onClick={() => {
+              savePending(null);
+              setState("idle");
+            }}
+          >
             {t.useAnother}
           </button>
         </p>
@@ -56,12 +153,52 @@ export function SignInPage() {
   );
 }
 
+/** The code the email's link carries in its fragment (#code=…), which never reaches the server. */
+function linkCode(): string | null {
+  const code = new URLSearchParams(window.location.hash.slice(1)).get("code");
+  return code && /^[0-9A-Z-]{16,24}$/.test(code) ? code : null;
+}
+
+function CopyCode({ code }: { code: string }) {
+  const { t } = useI18n();
+  const [copied, setCopied] = useState(false);
+  const box = useRef<HTMLElement>(null);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+    } catch {
+      // No clipboard access: select the code so the user can copy it.
+      const range = document.createRange();
+      range.selectNodeContents(box.current!);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+    }
+  };
+  return (
+    <div className="copy-code">
+      <p>{t.copyHint}</p>
+      <div className="code-row">
+        <code ref={box} className="signin-code">
+          {code}
+        </code>
+        <button className="button" onClick={copy}>
+          {copied ? `✓ ${t.copied}` : t.copy}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function VerifyPage({ token }: { token: string }) {
   const { setUser } = useAuth();
   const { t, locale } = useI18n();
   const [state, setState] = useState<"ready" | "working" | "bad">(token ? "ready" : "bad");
+  const [code] = useState(linkCode);
   const button = useRef<HTMLButtonElement>(null);
-  useEffect(() => button.current?.focus(), []);
+  useEffect(() => {
+    if (!code) button.current?.focus();
+  }, [code]);
 
   const finish = async () => {
     setState("working");
@@ -89,8 +226,9 @@ export function VerifyPage({ token }: { token: string }) {
   return (
     <section className="narrow">
       <h1 className="page-title">{t.signInTitle}</h1>
-      <p>{t.oneMoreClick}</p>
-      <button ref={button} className="button" onClick={finish} disabled={state === "working"}>
+      {code && <CopyCode code={code} />}
+      <p>{code ? t.orThisBrowser : t.oneMoreClick}</p>
+      <button ref={button} className={code ? "button button-quiet" : "button"} onClick={finish} disabled={state === "working"}>
         {state === "working" ? t.signingIn : t.signIn}
       </button>
     </section>

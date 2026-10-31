@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T15:24:24Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "from": "Done, merged into master. Market data in src/worker/market/: Twelve Data client, D1 cache (market_cache) and shared request budget (api_budget: 7/min, 780/day). Checked locally against the real API: search, AAPL quote, 1M chart, BTC/USD. Next: A03-film078 (search UI) and A03-statue382 (details page), both unblocked now.",
+      "to": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). The counting budget is gone (src/worker/market/budget.ts deleted); src/worker/market/pause.ts pauses Twelve Data in D1 after a 429 until the next minute or next UTC day; the service checks the pause before asking, serves cached copies (marked stale) and answers busy with Retry-After otherwise. 106 tests pass, including pause after a minute and a day 429, cached data served while paused, a chart 429 pausing quotes too, and the 8-symbol request cap. Checked locally with the real key: curl /api/quote?symbol=AAPL and /api/chart?symbol=AAPL&range=1M answer real data; migration 0005 applies locally (api_pause in, api_budget out). Branch merged and removed.\nNot done: production. The deploy needs migration 0005 applied remotely FIRST (it drops the api_budget counters and adds api_pause); deploying code without it breaks quotes and charts. Waits for the approver.\nNext step: once approved, npx wrangler d1 migrations apply ticker --remote, then npm run build && npx wrangler deploy; check a quote at ticker.allomos.com; label 'deployed and verified'; finish with alm done --without-human-check (a real 429 cannot be caused on purpose without using up the shared day)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

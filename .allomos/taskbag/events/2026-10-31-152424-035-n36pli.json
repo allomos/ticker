@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T15:24:24Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The pause lives in D1 (new table api_pause, migration 0005 drops api_budget), so every Worker instance stops together; a longer pause (day) is never shortened by a later minute one"
+    }
+  ]
+}

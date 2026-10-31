@@ -3,10 +3,11 @@
   "folders": [
     "ticker"
   ],
-  "handoff_note": "Done, merged into master. Market data in src/worker/market/: Twelve Data client, D1 cache (market_cache) and shared request budget (api_budget: 7/min, 780/day). Checked locally against the real API: search, AAPL quote, 1M chart, BTC/USD. Next: A03-film078 (search UI) and A03-statue382 (details page), both unblocked now.",
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). The counting budget is gone (src/worker/market/budget.ts deleted); src/worker/market/pause.ts pauses Twelve Data in D1 after a 429 until the next minute or next UTC day; the service checks the pause before asking, serves cached copies (marked stale) and answers busy with Retry-After otherwise. 106 tests pass, including pause after a minute and a day 429, cached data served while paused, a chart 429 pausing quotes too, and the 8-symbol request cap. Checked locally with the real key: curl /api/quote?symbol=AAPL and /api/chart?symbol=AAPL&range=1M answer real data; migration 0005 applies locally (api_pause in, api_budget out). Branch merged and removed.\nNot done: production. The deploy needs migration 0005 applied remotely FIRST (it drops the api_budget counters and adds api_pause); deploying code without it breaks quotes and charts. Waits for the approver.\nNext step: once approved, npx wrangler d1 migrations apply ticker --remote, then npm run build && npx wrangler deploy; check a quote at ticker.allomos.com; label 'deployed and verified'; finish with alm done --without-human-check (a real 429 cannot be caused on purpose without using up the shared day).",
   "holder": "claude-code-29ed5bb1",
   "id": "A02-hen552",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -15,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
+  "state": "waiting",
+  "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits",
+  "waiting_on": "Approval to apply migration 0005 to the production database (drops the api_budget counters, adds api_pause) and then deploy master to ticker.allomos.com"
 }

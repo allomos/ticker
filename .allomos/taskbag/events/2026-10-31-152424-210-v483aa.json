@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T15:24:24Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "wait",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "waiting"
+    },
+    {
+      "field": "waiting_on",
+      "to": "Approval to apply migration 0005 to the production database (drops the api_budget counters, adds api_pause) and then deploy master to ticker.allomos.com"
+    }
+  ]
+}

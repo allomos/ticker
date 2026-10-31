@@ -9,6 +9,8 @@ What every session must know, whatever its task. Keep it short, and change lines
   Deployed 2026-11-01 ~00:18 JST from master fc11caf (everything up to the home-screen app, A01-kite192),
   Worker version 5d9e3470; remote D1 migrations applied through 0004. Deploy: `npm run build && npx wrangler deploy`; migrations:
   `npx wrangler d1 migrations apply ticker --remote`.
+- Master is ahead of production with A02-hen552 (react to the limit), which needs migration 0005
+  applied remotely before its deploy; waits for the approver.
 - The holder of a task does its deploy (two sessions once deployed the same commit 18 s apart).
 - Nothing runs locally between sessions (`npm run dev` is started per check).
 - Local sign-in: the dev server logs `[sign-in for <address>] code <code> link <link>`; open the
@@ -23,11 +25,11 @@ What every session must know, whatever its task. Keep it short, and change lines
   project's `.npmrc` sets `legacy-peer-deps=true`, which avoids it. Keep it.
 - Each checkout (and each task worktree) has its own local D1 database: run
   `npx wrangler d1 migrations apply ticker --local` before `npm run dev`.
-- Twelve Data's free plan allows 8 requests a minute and 800 a day for the whole app (local dev
-  and production share the same key). Tests never call it: they use a fake (test/worker/fake-twelvedata.ts)
-  and the key `test-key`. Avoid scripts that loop over the real API. Production and local dev
-  keep separate budgets in their own D1, but share the one key: heavy local use can make
-  production answer "busy" for a minute.
+- Twelve Data's free plan allows 8 requests a minute and 800 a day for the whole app, and local dev
+  and production share the one key. The app does not count ahead: after a 429 it pauses Twelve Data
+  (D1 table api_pause) until the next minute or UTC day. Tests never call it: they use a fake
+  (test/worker/fake-twelvedata.ts) and the key `test-key`. Avoid scripts that loop over the real API:
+  heavy local use can use up the day's 800 for production too.
 - `@cloudflare/vitest-pool-workers` is deprecated; the project uses `@cloudflare/vitest-plugin`.
 
 ## Repositories

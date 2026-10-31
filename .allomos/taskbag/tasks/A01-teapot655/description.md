@@ -34,9 +34,11 @@ signs in and keeps their own lists, private to them. First user: the person them
 8. Users sign in; each user's lists are saved on the server, private to that user, and follow
    them to any device or browser where they sign in. A user never sees another user's lists.
    Anyone can sign up. Users sign in with a sign-in link sent by email (no password).
-9. Search, lists and details cover as many markets as the free data allows: stocks on US and
-   other exchanges, ETFs, indexes, mutual funds, currencies and crypto.
-10. The price data needs no API key at all.
+9. Search, lists and details cover as many markets as the free data plan allows (US stocks and
+   ETFs, currencies, crypto). Search also shows symbols the free plan does not cover, marked as
+   such, and they cannot be opened or added until the plan allows them.
+10. The app never goes past the data plan's limits (8 requests a minute, 800 a day): when it
+    would, it shows the latest price it has, with its time, and refreshes later.
 11. The app is reachable at `ticker.allomos.com`, hosted on the person's Cloudflare account.
 
 ## Agreed in discussion (2026-10-31)
@@ -51,14 +53,13 @@ signs in and keeps their own lists, private to them. First user: the person them
 - Sign-up: open to anyone.
 - Platform: all on Cloudflare: the app on Cloudflare Workers, users, sign-in sessions and lists
   in Cloudflare D1 (its SQL database), and short-lived price data in Cloudflare's cache.
-- Price data source: OPEN AGAIN (2026-10-31). Yahoo Finance's public feeds answer "Too Many
-  Requests" to plain requests, and getting past that would mean bypassing Yahoo's bot checks,
-  which the agent will not do; Stooq now has a browser check too. No legitimate source gives
-  stock prices without a key. Waiting on the person: a free key from a data service, or another
-  choice.
-
-## Open points for discussion
-
+- Price data source: Twelve Data, free Basic plan, with a free API key (2026-10-31). The person
+  first wanted no key at all; Yahoo Finance's public feeds answer "Too Many Requests" and getting
+  past that would mean bypassing Yahoo's bot checks, which the agent will not do, and no other
+  legitimate source gives stock prices without a key, so the person chose a free Twelve Data key.
+  Free plan limits: 8 requests a minute, 800 a day, one request per symbol; it covers US stocks
+  and ETFs, currencies and crypto; other exchanges and indexes such as the S&P 500 need a paid
+  plan. The app caches prices, shares them between users, and stays within those limits.
 - Email sending for sign-in links: Resend, free plan (Cloudflare's own email sending needs the
   Workers Paid plan, so the person chose Resend on 2026-10-31). The person added the domain
   `ticker.allomos.com` in Resend, with its DNS records in Cloudflare. The app keeps the email

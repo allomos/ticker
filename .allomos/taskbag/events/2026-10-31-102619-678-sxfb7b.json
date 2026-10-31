@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:26:19Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A05-guide010",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Lists screen: one tab per list (selected list in the URL ?list=), deleting a list asks with the browser's confirm dialog, prices refresh every 5 minutes (every 20 seconds while some are held back by the plan's limit)"
+    }
+  ]
+}

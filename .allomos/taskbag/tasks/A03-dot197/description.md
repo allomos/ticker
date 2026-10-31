@@ -2,13 +2,13 @@
 
 **Done means.**
 - Opening a ticker from a list (for example `Tech stocks`) shows `Home > Tech stocks` on its page.
+- Opening a ticker from search for "apple" shows `Home > Search: "apple"`; clicking it opens `/search?q=apple`. Opened by a direct link, it shows just `Home`.
 - Clicking `Home` opens `/`; clicking `Tech stocks` opens `/?list=<that list's id>` with that list selected.
 - Reloading the details page, or using the browser's back and forward buttons, keeps the right trail.
 - Tests pass; checked locally (`npm run dev`) and on ticker.allomos.com after deploy.
 
 **Notes.**
 - Code: `src/app/pages/QuotePage.tsx` (details page), `src/app/pages/ListsPage.tsx` (home page, list chosen with `?list=<id>`), `src/app/router.tsx`. The quote path (`/quote/AAPL`) does not carry the list today, so the list the user came from has to be passed along, for example as `/quote/AAPL?list=<id>`.
-- Open for the approver (what users see):
-  1. What does the trail show when the ticker was opened from search, from a shared link, or by a signed-out user, so there is no list? Suggested: `Home > Search: "<query>"` from search, just `Home` otherwise.
-  2. Should the list name come from the list the user came from only, or also from a list the ticker is in when no list was passed? Suggested: only the list the user came from.
-- Waiting for the approver's go-ahead before any work starts (asked 2026-10-31).
+- Decided by the approver (2026-10-31):
+  1. Opened from search: the trail shows `Home > Search: "<query>"`, and clicking it goes back to those search results. With no list and no search (a shared link, or a signed-out user), it shows just `Home`.
+  2. The list name is only ever the list the user came from, never a list the ticker happens to be in.

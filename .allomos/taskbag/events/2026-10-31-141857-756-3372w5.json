@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T14:18:57Z",
+  "via": "alm",
+  "command": "add iteration",
+  "kind": "iteration",
+  "id": "I-cast",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "name",
+      "to": "After launch: languages, sign-in code, logo and more"
+    },
+    {
+      "field": "order",
+      "to": 4
+    },
+    {
+      "field": "release",
+      "to": "v0.4"
+    }
+  ]
+}

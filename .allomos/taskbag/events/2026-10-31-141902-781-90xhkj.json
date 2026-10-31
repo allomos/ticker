@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T14:19:02Z",
+  "via": "alm",
+  "command": "change iteration",
+  "kind": "iteration",
+  "id": "I-cast",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "to": "active"
+    }
+  ]
+}

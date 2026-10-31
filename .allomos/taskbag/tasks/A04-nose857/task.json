@@ -6,7 +6,7 @@
   "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: merged into master (pushed). Checked locally in the browser at 375px phone width: after Send link the code field with Paste shows, and stays after a reload; the dev log shows '[sign-in for <address>] code <code> link <link>'; the link's page shows the code with Copy before signing in; the code typed in lower case with spaces signs in; afterwards the link says it does not work; a wrong code in Japanese says 4 tries left. 96 tests pass (format, hash only, single use shared with the link, expiry, five wrong codes void the request, forgiving input, the email's code box, Paste and Copy). Branch a04-nose857-code merged and removed.\nNot checked: Copy writing to a real clipboard (the browser pane refuses clipboard writes; the page then selects the code), and the email's long-press selection on a real phone.\nNot done: master is NOT deployed. This deploy needs the remote migration first: npx wrangler d1 migrations apply ticker --remote (0004_sign_in_code adds two columns to login_tokens), then npm run build && npx wrangler deploy. Waits for the approver, together with A01-pearl420 and A03-dot197.\nNext step: once approved, migrate, deploy, sign in at ticker.allomos.com with a real email using the code, label 'deployed and verified', and finish with alm done --without-human-check and check steps (iPhone: ask from the home-screen app, open the email, copy the code, paste it in the app).",
   "holder": "claude-code-29ed5bb1",
   "id": "A04-nose857",
-  "iteration": "I-build",
+  "iteration": "I-cast",
   "label": "locally verified",
   "session": {
     "agent": "claude-code",

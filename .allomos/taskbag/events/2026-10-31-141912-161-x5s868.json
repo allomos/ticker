@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T14:19:12Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: logo B2 merged into master (pushed). public/favicon.svg is the mark; public/logo.svg and logo-dark.svg are mark + wordmark; the header shows the mark beside 'Ticker' (src/app/components/Logo.tsx); the sign-in email opens with the name in the logo's colours. Checked locally in the browser: the mark at 16, 32 and 64 px and both wordmarks on light and dark backgrounds, the header at desktop width in light and at phone width in dark, and the email's HTML. 99 tests pass, build clean. Branch merged and removed.\nNot done: master is NOT deployed (waits for the approver, with A01-pearl420, A03-dot197 and A04-nose857); the email's look in real mail apps is not checked.\nNext step: once approved, deploy, check the tab icon and header at ticker.allomos.com and a real sign-in email, label 'deployed and verified', and finish with alm done --without-human-check and check steps. A01-hinge715 (signed-out pages) can now use the logo."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

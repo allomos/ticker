@@ -6,6 +6,7 @@
   "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: all four languages are implemented, merged into master (248c968, pushed) and checked locally in the browser (en, zh-Hans, zh-Hant, ja; desktop and 375px phone width): text, page lang and title, number/date formats, switcher persistence, browser-language detection, Japanese first-list name. 78 tests pass. Working branch a01-pearl420-i18n is merged and removed.\nNot done: master is NOT deployed. The production deploy (npm run build && npx wrangler deploy, no migration needed) was refused by the session's permission check, so it waits for the approver.\nNext step: once the approver says go, deploy master, then check ticker.allomos.com in all four languages at desktop and phone width (signed out: home, sign-in, a ticker page; switcher; lang/title) and ask a person to try a real sign-in email in one non-English language. Then label 'deployed and verified' and finish with alm done --without-human-check and check steps.",
   "holder": "claude-code-29ed5bb1",
   "id": "A01-pearl420",
+  "iteration": "I-cast",
   "label": "locally verified",
   "session": {
     "agent": "claude-code",

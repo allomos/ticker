@@ -3,9 +3,11 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: logo B2 merged into master (pushed). public/favicon.svg is the mark; public/logo.svg and logo-dark.svg are mark + wordmark; the header shows the mark beside 'Ticker' (src/app/components/Logo.tsx); the sign-in email opens with the name in the logo's colours. Checked locally in the browser: the mark at 16, 32 and 64 px and both wordmarks on light and dark backgrounds, the header at desktop width in light and at phone width in dark, and the email's HTML. 99 tests pass, build clean. Branch merged and removed.\nNot done: master is NOT deployed (waits for the approver, with A01-pearl420, A03-dot197 and A04-nose857); the email's look in real mail apps is not checked.\nNext step: once approved, deploy, check the tab icon and header at ticker.allomos.com and a real sign-in email, label 'deployed and verified', and finish with alm done --without-human-check and check steps. A01-hinge715 (signed-out pages) can now use the logo.",
   "holder": "claude-code-29ed5bb1",
   "id": "A01-grotto889",
-  "iteration": "I-build",
+  "iteration": "I-cast",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -14,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "Ticker has its own logo, seen in the browser tab, the header and the sign-in email"
+  "state": "waiting",
+  "title": "Ticker has its own logo, seen in the browser tab, the header and the sign-in email",
+  "waiting_on": "Approval to deploy master to ticker.allomos.com (one deploy ships this logo with A01-pearl420, A03-dot197 and A04-nose857; A04-nose857 needs migration 0004 applied first)"
 }

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:19:12Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Only the logo changes: the app keeps its current colours (blue accent, green/red prices); moving the site to the Allomos palette is still open for the approver in A01-hinge715"
+    }
+  ]
+}

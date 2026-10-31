@@ -6,7 +6,7 @@
   "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: the breadcrumb is merged into master (pushed) and checked locally in the browser: Home › <list> from a list, Home › Search: “q” from results and from the search box, just Home for a direct link; clicking each crumb, reload, back and forward keep the right trail; Japanese at 375px phone width with a long query cut with …. 83 tests pass. Branch a03-dot197-breadcrumb merged and removed.\nNot done: master is NOT deployed; the production deploy waits for the approver (same deploy as A01-pearl420, which is also waiting on it).\nNext step: once approved, deploy master (npm run build && npx wrangler deploy, no migration), check the trail at ticker.allomos.com, label 'deployed and verified', and finish with alm done --without-human-check and check steps.",
   "holder": "claude-code-29ed5bb1",
   "id": "A03-dot197",
-  "iteration": "I-build",
+  "iteration": "I-cast",
   "label": "locally verified",
   "session": {
     "agent": "claude-code",

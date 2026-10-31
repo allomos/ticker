@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:19:12Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The sign-in email shows Ticker's name in the logo's colours as text (gold ✦, teal ○●, coral ●, navy Ticker) instead of an image: many mail apps block images and drop SVG; the email's button stays blue like the app"
+    }
+  ]
+}

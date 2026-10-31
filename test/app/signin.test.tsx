@@ -42,7 +42,7 @@ describe("sign-in", () => {
     fireEvent.click(screen.getByRole("button", { name: "Email me a sign-in link" }));
     expect(await screen.findByText("Check your email")).toBeTruthy();
     expect(requests.find((r) => r.path === "/auth/email")?.body).toEqual({ email: "ann@example.com", lang: "en" });
-    expect(screen.getByText(/The link is in the dev server's log/)).toBeTruthy();
+    expect(screen.getByText(/The link and the code are in the dev server's log/)).toBeTruthy();
   });
 
   it("finishes signing in from the link with one click, then shows the account", async () => {

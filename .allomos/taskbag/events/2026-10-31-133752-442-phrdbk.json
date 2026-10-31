@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T13:37:52Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "Ticker has its own logo, seen in the browser tab, the header and the sign-in email"
+    },
+    {
+      "field": "area",
+      "to": "A01"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** Ticker has a logo of its own: people see it in the browser tab, in the app's header and on the sign-in email, and it reads clearly at small and large sizes, in light and dark.\n\n**Done means.**\n- Two or three logo directions shown to the approver as images (mark and wordmark, at 16 px, 32 px and header size, on light and dark); the approver picks one.\n- The chosen logo is in the project as SVG (mark, mark + wordmark) and replaces `public/favicon.svg` (today a blue square with a line chart) and the header's text-only \"Ticker\".\n- The sign-in email shows the logo (or its name in the logo's colours, if the email can't load images reliably).\n- Checked in the browser at desktop and phone width; tests and build pass.\n\n**Notes.**\n- Open for the approver: which logo direction (what users will see and get used to). Not to be started before the approver says go.\n- Feeds A01 landing-page task (the page before sign-in uses this logo).\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

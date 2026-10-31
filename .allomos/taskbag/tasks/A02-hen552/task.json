@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Market data in src/worker/market/: Twelve Data client, D1 cache (market_cache) and shared request budget (api_budget: 7/min, 780/day). Checked locally against the real API: search, AAPL quote, 1M chart, BTC/USD. Next: A03-film078 (search UI) and A03-statue382 (details page), both unblocked now.",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "In a terminal, in `/Users/wanghui/coding/ticker` (with `TWELVE_DATA_API_KEY` in `.dev.vars`):\n\n1. `npx wrangler d1 migrations apply ticker --local`, then `npm run dev`.\n2. Open http://localhost:5173/api/search?q=apple: Apple Inc. on NASDAQ comes first, marked `\"available\":true`.\n3. Open http://localhost:5173/api/quote?symbol=AAPL: Apple's latest price, day change and 52-week range.\n4. Open http://localhost:5173/api/chart?symbol=AAPL&range=1M: about a month of hourly prices.\n5. Reload step 3 a few times: the `fetchedAt` time stays the same (it comes from the cache).\n",
   "id": "A02-hen552",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
+  "state": "done",
+  "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits",
+  "without_human_check": "Goal run"
 }

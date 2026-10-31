@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:10:23Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Market data in src/worker/market/: Twelve Data client, D1 cache (market_cache) and shared request budget (api_budget: 7/min, 780/day). Checked locally against the real API: search, AAPL quote, 1M chart, BTC/USD. Next: A03-film078 (search UI) and A03-statue382 (details page), both unblocked now."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

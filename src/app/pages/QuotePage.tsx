@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
+import { AddToList } from "../components/AddToList";
 import { PriceChart } from "../components/PriceChart";
 import { formatChange, formatCompact, formatPrice, formatTime } from "../format";
 
@@ -58,11 +59,14 @@ function Header({ cached }: { cached: Cached<Quote> }) {
   return (
     <div className="quote-head">
       <div className="quote-names">
-        <h1 className="quote-name">{q.name}</h1>
-        <div className="muted">
-          {q.symbol} · {q.exchange}
-          {q.currency ? ` · ${q.currency}` : ""}
+        <div>
+          <h1 className="quote-name">{q.name}</h1>
+          <div className="muted">
+            {q.symbol} · {q.exchange}
+            {q.currency ? ` · ${q.currency}` : ""}
+          </div>
         </div>
+        <AddToList target={{ symbol: q.symbol, name: q.name, exchange: q.exchange }} />
       </div>
       <div className="quote-price">
         <span className="price">{formatPrice(q.price)}</span>

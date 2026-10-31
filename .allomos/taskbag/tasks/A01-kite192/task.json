@@ -1,13 +1,10 @@
 {
   "area": "A01",
-  "blocked_by": [
-    "A04-nose857"
-  ],
   "folders": [
     "ticker"
   ],
   "id": "A01-kite192",
   "iteration": "I-cast",
-  "state": "blocked",
+  "state": "ready",
   "title": "A user adds Ticker to their phone's home screen and opens it like an app"
 }

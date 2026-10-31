@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:10:23Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Cache and request budget in D1 (not the per-location Cache API), so every Worker instance shares one budget; 7/min and 780/day leave one spare credit a minute and 20 a day"
+    }
+  ]
+}

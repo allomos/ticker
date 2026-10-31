@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:10:23Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Search adds a small built-in list of crypto and currency names (bitcoin -> BTC/USD, yen -> USD/JPY), since Twelve Data's search finds pairs only by symbol"
+    }
+  ]
+}

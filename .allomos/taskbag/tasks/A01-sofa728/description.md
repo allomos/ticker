@@ -14,3 +14,4 @@
 ## Evidence
 
 - 2026-10-31, claude-code-29ed5bb1: Deployed to ticker.allomos.com 2026-11-01 ~00:05 JST from master ec2fb5d by claude-code-29ed5bb1 after the approver said 'Yes, deploy' in this session; Worker version 69ae9d14-c449-409b-8750-42653524d8cb; no migration
+- 2026-10-31, claude-code-29ed5bb1: Correction: the deploy above was at 2026-10-31 ~23:57 JST (not 2026-11-01 ~00:05)

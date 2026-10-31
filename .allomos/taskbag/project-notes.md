@@ -7,7 +7,7 @@ What every session must know, whatever its task. Keep it short, and change lines
 - Production: https://ticker.allomos.com, Cloudflare Worker `ticker` (custom domain; workers.dev
   off), D1 database `ticker` (id in wrangler.jsonc), daily cron `17 3 * * *` (clean-up).
   Deployed 2026-10-31 ~23:57 JST from master ec2fb5d (everything up to the Allomos colours and the
-  front page), Worker version 69ae9d14; remote D1 migrations applied through 0004. Deploy: `npm run build && npx wrangler deploy`; migrations:
+  front page), Worker version a1ac20b9 (live; 69ae9d14, the same commit, went out 18 s before it); remote D1 migrations applied through 0004. Deploy: `npm run build && npx wrangler deploy`; migrations:
   `npx wrangler d1 migrations apply ticker --remote`.
 - Nothing runs locally between sessions (`npm run dev` is started per check).
 - Local sign-in: the dev server logs `[sign-in for <address>] code <code> link <link>`; open the

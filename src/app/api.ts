@@ -1,4 +1,5 @@
 import type { WatchList } from "../shared/lists";
+import { keyHeaders, type KeySource } from "./browserKeys";
 import type { Locale } from "../shared/locale";
 import type { Cached, InstrumentType, Quote, QuotesResponse, Range, SearchResult, Series } from "../shared/market";
 
@@ -8,13 +9,14 @@ export class ApiError extends Error {
     readonly code: string,
     readonly retryAfter?: number,
     readonly triesLeft?: number,
+    readonly detail?: string,
   ) {
     super(code);
   }
 }
 
 export async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const res = await fetch(path, { signal, headers: { accept: "application/json" } });
+  const res = await fetch(path, { signal, headers: { accept: "application/json", ...keyHeaders() } });
   const body: any = await res.json().catch(() => ({}));
   if (!res.ok) throw new ApiError(res.status, body.error ?? "error", body.retryAfter);
   return body as T;
@@ -27,8 +29,13 @@ export async function send<T>(method: string, path: string, body: unknown = {}):
     body: JSON.stringify(body),
   });
   const data: any = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter, data.triesLeft);
+  if (!res.ok) throw new ApiError(res.status, data.error ?? "error", data.retryAfter, data.triesLeft, data.message);
   return data as T;
+}
+
+export interface ServerKey {
+  source: KeySource;
+  last4: string;
 }
 
 export interface Me {
@@ -41,6 +48,10 @@ export const api = {
   verify: (token: string, lang: Locale) => send<{ user: Me }>("POST", "/auth/verify", { token, lang }).then((r) => r.user),
   signInWithCode: (email: string, code: string, lang: Locale) =>
     send<{ user: Me }>("POST", "/auth/code", { email, code, lang }).then((r) => r.user),
+  keys: () => get<{ keys: ServerKey[] }>("/api/keys").then((r) => r.keys),
+  checkKey: (source: KeySource, key: string) => send<{ ok: boolean; message?: string }>("POST", "/api/keys/check", { source, key }),
+  saveKey: (source: KeySource, key: string) => send<{ ok: true; last4: string }>("PUT", `/api/keys/${source}`, { key }),
+  removeKey: (source: KeySource) => send<{ ok: true }>("DELETE", `/api/keys/${source}`),
   signOut: () => send<{ ok: true }>("POST", "/auth/signout"),
   lists: () => get<{ lists: WatchList[] }>("/api/lists").then((r) => r.lists),
   createList: (name: string) => send<{ list: WatchList }>("POST", "/api/lists", { name }).then((r) => r.list),

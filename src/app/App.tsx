@@ -5,6 +5,7 @@ import { SearchBox } from "./components/SearchBox";
 import { I18nProvider, useI18n } from "./i18n";
 import { ListsProvider } from "./lists";
 import { FrontPage } from "./pages/FrontPage";
+import { KeysPage } from "./pages/KeysPage";
 import { ListsPage } from "./pages/ListsPage";
 import { UserMenu } from "./components/UserMenu";
 import { QuotePage } from "./pages/QuotePage";
@@ -37,6 +38,7 @@ function Routes() {
   if (path === "/") return <Home selected={location.searchParams.get("list")} />;
   if (path === "/search") return <SearchPage query={location.searchParams.get("q") ?? ""} key={location.search} />;
   if (path === "/signin") return <SignInPage />;
+  if (path === "/account/keys") return <KeysPage />;
   if (path === "/signin/verify") return <VerifyPage token={location.searchParams.get("token") ?? ""} />;
   if (path.startsWith("/quote/")) {
     const symbol = decodeURIComponent(path.slice("/quote/".length));

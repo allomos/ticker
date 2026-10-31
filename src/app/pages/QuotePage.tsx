@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { INTL_TAG } from "../../shared/locale";
 import { END_OF_DAY_RANGES, isEndOfDaySymbol, RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
+import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { AddToList } from "../components/AddToList";
 import { Breadcrumb } from "../components/Breadcrumb";
 import { PriceChart } from "../components/PriceChart";
@@ -44,9 +45,19 @@ function Busy({ retryAfter, what }: { retryAfter: number; what: "price" | "chart
   const { t, locale } = useI18n();
   if (retryAfter > 120) {
     const from = new Date(Date.now() + retryAfter * 1000).toLocaleTimeString(INTL_TAG[locale], { hour: "numeric", minute: "2-digit" });
-    return <p className="notice">{t.busyDay(from)}</p>;
+    return (
+      <>
+        <p className="notice">{t.busyDay(from)}</p>
+        <AddKeyPrompt kind="busy" />
+      </>
+    );
   }
-  return <p className="notice">{what === "price" ? t.busyPrice(retryAfter) : t.busyChart(retryAfter)}</p>;
+  return (
+    <>
+      <p className="notice">{what === "price" ? t.busyPrice(retryAfter) : t.busyChart(retryAfter)}</p>
+      {what === "price" && <AddKeyPrompt kind="busy" />}
+    </>
+  );
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
@@ -100,6 +111,7 @@ function QuoteDetails({ symbol }: { symbol: string }) {
       <section>
         <h1 className="page-title">{symbol}</h1>
         <p>{t.notCovered(symbol)}</p>
+        <AddKeyPrompt kind="unavailable" />
       </section>
     );
   }

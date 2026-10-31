@@ -35,6 +35,16 @@ export function UserMenu() {
           <button
             role="menuitem"
             className="menu-item"
+            onClick={() => {
+              setOpen(false);
+              navigate("/account/keys");
+            }}
+          >
+            {t.menuKeys}
+          </button>
+          <button
+            role="menuitem"
+            className="menu-item"
             onClick={async () => {
               setOpen(false);
               await signOut();

@@ -302,3 +302,17 @@ a { color: var(--accent); text-decoration: none; }
   .page { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
 }
 .range:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* A user's own API keys (A02-jungle045). */
+.key-prompt { margin: 10px 0 14px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: color-mix(in srgb, var(--teal) 7%, var(--surface)); }
+.key-prompt p { margin: 0 0 8px; }
+.key-prompt.small { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.key-card { margin-top: 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.key-card .section-title { margin-top: 0; }
+.key-status { font-weight: 500; }
+.key-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.where { border: none; padding: 0; margin: 4px 0; display: grid; gap: 8px; }
+.where legend { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+.where-option { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.where-option span { display: grid; gap: 2px; }
+.where-option input { margin-top: 3px; accent-color: var(--accent); }

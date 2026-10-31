@@ -1,4 +1,5 @@
 import { AddToList } from "../components/AddToList";
+import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { ResultRow, useSearch } from "../components/SearchBox";
 import { useI18n } from "../i18n";
 import { Link, quotePath } from "../router";
@@ -32,6 +33,7 @@ export function SearchPage({ query }: { query: string }) {
         <>
           <h2 className="section-title">{t.notOnPlanTitle}</h2>
           <p className="muted small">{t.notOnPlanText}</p>
+          <AddKeyPrompt kind="unavailable" />
           <ul className="result-list">
             {others.map((r) => (
               <li key={`${r.symbol}|${r.exchange}`} className="result unavailable">

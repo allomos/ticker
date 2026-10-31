@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { WatchList } from "../../shared/lists";
+import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { formatChange, formatPrice, formatTime } from "../format";
 import { useI18n } from "../i18n";
 import { useLists } from "../lists";
@@ -36,64 +37,69 @@ function ListTable({ list }: { list: WatchList }) {
   if (list.items.length === 0) {
     return <p className="empty">{t.emptyList}</p>;
   }
+  // Once above the list: the free plan does not cover some of its stocks, or is busy for them.
+  const limited = list.items.some((i) => unavailable.has(i.symbol)) ? "unavailable" : list.items.some((i) => pending.has(i.symbol) && !quotes[i.symbol]) ? "busy" : null;
   return (
-    <table className="list-table">
-      <thead>
-        <tr>
-          <th scope="col">{t.colSymbol}</th>
-          <th scope="col" className="num">
-            {t.colPrice}
-          </th>
-          <th scope="col" className="num hide-narrow">
-            {t.colToday}
-          </th>
-          <th scope="col" className="num hide-narrow">
-            {t.colAsOf}
-          </th>
-          <th scope="col">
-            <span className="visually-hidden">{t.colRemove}</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.items.map((item) => {
-          const q = quotes[item.symbol];
-          const change = q ? formatChange(q.data.change, q.data.changePercent, locale) : null;
-          return (
-            <tr key={item.symbol} onClick={() => navigate(quotePath(item.symbol, { list: list.id }))}>
-              <td>
-                <Link href={quotePath(item.symbol, { list: list.id })} className="row-symbol" onClick={(e) => e.stopPropagation()}>
-                  {item.symbol}
-                </Link>
-                <div className="row-name">
-                  {item.name} <span className="muted">· {item.type === "stock" ? item.exchange : (t.types[item.type] ?? item.type)}</span>
-                </div>
-              </td>
-              <td className="num">
-                {q ? formatPrice(q.data.price, locale) : unavailable.has(item.symbol) ? <span className="muted">{t.noData}</span> : pending.has(item.symbol) ? <span className="muted" title={t.waitingTitle}>…</span> : "–"}
-                {q?.stale && <span className="stale" title={t.staleTitle}> •</span>}
-                {change && <div className={`chip ${change.direction} show-narrow`}>{change.text}</div>}
-              </td>
-              <td className="num hide-narrow">{change && <span className={`chip ${change.direction}`}>{change.text}</span>}</td>
-              <td className="num muted small hide-narrow">{q ? formatTime(q.data.asOf, locale) : ""}</td>
-              <td className="actions">
-                <button
-                  className="icon-button"
-                  aria-label={t.removeFrom(item.symbol, list.name)}
-                  title={t.removeTitle}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeItem(list.id, item.symbol).catch(() => {});
-                  }}
-                >
-                  ×
-                </button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <>
+      {limited && <AddKeyPrompt kind={limited} />}
+      <table className="list-table">
+        <thead>
+          <tr>
+            <th scope="col">{t.colSymbol}</th>
+            <th scope="col" className="num">
+              {t.colPrice}
+            </th>
+            <th scope="col" className="num hide-narrow">
+              {t.colToday}
+            </th>
+            <th scope="col" className="num hide-narrow">
+              {t.colAsOf}
+            </th>
+            <th scope="col">
+              <span className="visually-hidden">{t.colRemove}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {list.items.map((item) => {
+            const q = quotes[item.symbol];
+            const change = q ? formatChange(q.data.change, q.data.changePercent, locale) : null;
+            return (
+              <tr key={item.symbol} onClick={() => navigate(quotePath(item.symbol, { list: list.id }))}>
+                <td>
+                  <Link href={quotePath(item.symbol, { list: list.id })} className="row-symbol" onClick={(e) => e.stopPropagation()}>
+                    {item.symbol}
+                  </Link>
+                  <div className="row-name">
+                    {item.name} <span className="muted">· {item.type === "stock" ? item.exchange : (t.types[item.type] ?? item.type)}</span>
+                  </div>
+                </td>
+                <td className="num">
+                  {q ? formatPrice(q.data.price, locale) : unavailable.has(item.symbol) ? <span className="muted">{t.noData}</span> : pending.has(item.symbol) ? <span className="muted" title={t.waitingTitle}>…</span> : "–"}
+                  {q?.stale && <span className="stale" title={t.staleTitle}> •</span>}
+                  {change && <div className={`chip ${change.direction} show-narrow`}>{change.text}</div>}
+                </td>
+                <td className="num hide-narrow">{change && <span className={`chip ${change.direction}`}>{change.text}</span>}</td>
+                <td className="num muted small hide-narrow">{q ? formatTime(q.data.asOf, locale) : ""}</td>
+                <td className="actions">
+                  <button
+                    className="icon-button"
+                    aria-label={t.removeFrom(item.symbol, list.name)}
+                    title={t.removeTitle}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItem(list.id, item.symbol).catch(() => {});
+                    }}
+                  >
+                    ×
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 }
 

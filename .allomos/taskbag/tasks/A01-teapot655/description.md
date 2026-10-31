@@ -51,8 +51,11 @@ signs in and keeps their own lists, private to them. First user: the person them
 - Sign-up: open to anyone.
 - Platform: all on Cloudflare: the app on Cloudflare Workers, users, sign-in sessions and lists
   in Cloudflare D1 (its SQL database), and short-lived price data in Cloudflare's cache.
-- Price data source: Yahoo Finance's public feeds (no key; unofficial, so prices are cached briefly
-  and the data source is kept swappable).
+- Price data source: OPEN AGAIN (2026-10-31). Yahoo Finance's public feeds answer "Too Many
+  Requests" to plain requests, and getting past that would mean bypassing Yahoo's bot checks,
+  which the agent will not do; Stooq now has a browser check too. No legitimate source gives
+  stock prices without a key. Waiting on the person: a free key from a data service, or another
+  choice.
 
 ## Open points for discussion
 
@@ -64,6 +67,12 @@ signs in and keeps their own lists, private to them. First user: the person them
 - The person sets up access up front (Cloudflare login with the needed permissions, email
   sending) and approves the outside effects in advance, so the run does not stop to ask.
 
+## Approvals
+
+- 2026-10-31, the person in the conversation, replying "go ahead" to the agent's message
+  "Approved: create the D1 database, deploy the Worker, attach ticker.allomos.com, and upload the
+  Resend key as a Worker secret. Go ahead.": the goal run, and these four outside effects.
+
 ## Run mode
 
 Run mode: quiet (the person chose it in Allomos; it applies once the build starts).
@@ -71,5 +80,8 @@ Run mode: quiet (the person chose it in Allomos; it applies once the build start
 ## Status
 
 This goal task was written first, for discussion: no other areas, iterations or tasks exist
-yet, and nothing is built. Planning starts (goal prompt phase 2, step 2) when the person says
-to go ahead.
+yet, and nothing is built. The person said to go ahead on 2026-10-31.
+
+Goal run (goal prompt v4): the person approved this plan in advance by submitting the goal on
+2026-10-31; the agent makes the areas, iterations and ready tasks. Outside effects still wait for
+the approver.

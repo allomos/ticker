@@ -1,13 +1,19 @@
 {
   "area": "A05",
-  "blocked_by": [
-    "A05-bird102"
-  ],
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-10e82e40",
   "id": "A05-guide010",
   "iteration": "I-pick",
-  "state": "blocked",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "A user sees each of their lists with the latest price and day change, and manages lists on screen"
 }

@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "v0.1 check passed on master: 35 tests, typecheck, build, and live checks against Twelve Data (search incl. bitcoin/yen aliases, AAPL quote with time, 1D 78 points, 5Y 262 points, Toyota 7203 answered 404 as not covered, one credit per new request). No code changes in this task. Next: v0.2, A04-goblet948 (email sign-in).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "Release v0.1 (search and ticker details), on this Mac. In `/Users/wanghui/coding/ticker`:\n\n1. `npm install`, `npx wrangler d1 migrations apply ticker --local`, then `npm run dev`.\n2. Open http://localhost:5173 and search `apple`, `AAPL`, `bitcoin`, `yen`, `vanguard`:\n   matches appear as you type; listings the free plan does not cover are greyed.\n3. Open Apple: price, day change, the time of the price, chart ranges 1D to MAX, key figures.\n4. Open BTC/USD and EUR/USD the same way.\n5. Open http://localhost:5173/quote/7203 (Toyota in Tokyo): the page says the free data does not cover it.\nLists and sign-in come in v0.2.\n",
   "id": "A01-mango189",
   "iteration": "I-build",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "v0.1 acceptance check: search and ticker details work end to end on this Mac"
+  "state": "done",
+  "title": "v0.1 acceptance check: search and ticker details work end to end on this Mac",
+  "without_human_check": "Goal run"
 }

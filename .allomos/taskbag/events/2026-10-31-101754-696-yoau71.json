@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:17:54Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A01-mango189",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Goal run"
+    },
+    {
+      "field": "human_check_steps",
+      "to": "Release v0.1 (search and ticker details), on this Mac. In `/Users/wanghui/coding/ticker`:\n\n1. `npm install`, `npx wrangler d1 migrations apply ticker --local`, then `npm run dev`.\n2. Open http://localhost:5173 and search `apple`, `AAPL`, `bitcoin`, `yen`, `vanguard`:\n   matches appear as you type; listings the free plan does not cover are greyed.\n3. Open Apple: price, day change, the time of the price, chart ranges 1D to MAX, key figures.\n4. Open BTC/USD and EUR/USD the same way.\n5. Open http://localhost:5173/quote/7203 (Toyota in Tokyo): the page says the free data does not cover it.\nLists and sign-in come in v0.2.\n"
+    }
+  ]
+}

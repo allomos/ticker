@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:17:54Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-mango189",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "v0.1 check passed on master: 35 tests, typecheck, build, and live checks against Twelve Data (search incl. bitcoin/yen aliases, AAPL quote with time, 1D 78 points, 5Y 262 points, Toyota 7203 answered 404 as not covered, one credit per new request). No code changes in this task. Next: v0.2, A04-goblet948 (email sign-in)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

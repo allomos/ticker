@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { auth } from "./auth/routes";
 import { loadUser, sameOrigin, type AppEnv } from "./auth/session";
 import type { Env } from "./env";
+import { lists } from "./lists/routes";
 import { prune } from "./market/budget";
 import { market } from "./market/routes";
 
@@ -11,6 +12,7 @@ app.use("/api/*", sameOrigin, loadUser);
 app.use("/auth/*", sameOrigin, loadUser);
 
 app.get("/api/health", (c) => c.json({ ok: true }));
+app.route("/api/lists", lists);
 app.route("/api", market);
 app.route("/auth", auth);
 

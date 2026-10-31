@@ -7,6 +7,8 @@
 - Looks right at desktop and phone width, in light and dark; tests and build pass; deployed to ticker.allomos.com after the approver's go.
 
 **Notes.**
+- Colour style (approver, 2026-10-31): the logo and the website follow www.allomos.com. Its palette: light background #fbfcfe, surface #ffffff, text navy #12223a, muted #55667c, lines #e2e7ee, link #1f7a6f; dark background #0e1726, surface #152136, text #e8edf4, muted #9aa8bb, lines #26344c, link #5cc8ba; accents teal #2a9d8f (main, buttons), coral #e76f51, gold #e9c46a. Its logo is made of outlined and filled circles plus a gold four-point star, with no background tile.
+- Mock-up shown in the conversation on 2026-10-31 (Allomos colours, logo B). Open for the approver: whether the signed-in screens (lists, search, ticker pages) move to the same palette too, and whether price rises and falls stay green/red or change to teal/coral.
 - Open for the approver: the page's look and wording (what users will see), and the go to deploy (outside effect). Not to be started before the approver says go.
 - Uses the logo from A01-grotto889; do that one first.
 - If A01-pearl420 (Chinese, Japanese, English) lands first, the new wording goes through it.

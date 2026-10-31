@@ -11,5 +11,18 @@
 - Drafts shown in the conversation on 2026-10-31 in the Allomos colours: A tick and rise, B rising dots (teal ring, teal dot, coral dot, gold star), C ring and candle. The approver picks one.
 - Approver, 2026-10-31: go with B, plus a circle or ball in its upper-left corner. Versions shown: B1 coral ring (echoes Allomos's outlined and filled coral), B2 gold ball, B3 small teal ball; the approver picks one.
 - Approver, 2026-10-31: swap them: the gold star goes to the upper-left corner and the new circle to the lower-right corner (where the star was). Versions shown with the swap: B1 coral ring, B2 gold ball, B3 teal ball; the approver picks one.
-- Open for the approver: which logo direction (what users will see and get used to). Not to be started before the approver says go.
+- **Chosen (approver, 2026-10-31): B2.** Rising dots with the gold star upper left and a gold ball lower right. Drawn on a 32×32 grid, no background tile:
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ticker">
+<path d="M9.6 21.6L13 19M19.3 13.2L21.6 11.4" stroke="#2a9d8f" stroke-width="2.4" stroke-linecap="round"/>
+<circle cx="6.5" cy="24" r="3.6" fill="none" stroke="#2a9d8f" stroke-width="2.6"/>
+<circle cx="16" cy="16.5" r="4.2" fill="#2a9d8f"/>
+<circle cx="25" cy="8" r="5.2" fill="#e76f51"/>
+<path d="M7 3.5l1.2 2.8 2.8 1.2-2.8 1.2L7 11.5 5.8 8.7 3 7.5l2.8-1.2z" fill="#e9c46a"/>
+<circle cx="25.5" cy="24.5" r="4" fill="#e9c46a"/>
+</svg>
+```
+- Still waiting for the approver's go before any work starts.
+- Logo direction chosen (B2, below). Not to be started before the approver says go.
 - Feeds the landing-page task (the page before sign-in uses this logo).

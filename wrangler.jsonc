@@ -3,6 +3,9 @@
   "name": "ticker",
   "main": "src/worker/index.ts",
   "compatibility_date": "2026-10-20",
+  "routes": [{ "pattern": "ticker.allomos.com", "custom_domain": true }],
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*", "/auth/*"]
@@ -11,7 +14,7 @@
     {
       "binding": "DB",
       "database_name": "ticker",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "b18a17a8-83b9-4a53-bcc8-59d4bdde30b9",
       "migrations_dir": "migrations"
     }
   ],

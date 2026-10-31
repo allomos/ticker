@@ -27,6 +27,19 @@ TWELVE_DATA_API_KEY=...   # free key from twelvedata.com
 RESEND_API_KEY=...        # Resend key for sign-in emails
 ```
 
+## Deploy
+
+Production runs at https://ticker.allomos.com (Cloudflare Worker `ticker`, custom domain; the
+workers.dev address is off). Its D1 database is `ticker`; the secrets `TWELVE_DATA_API_KEY` and
+`RESEND_API_KEY` are set on the Worker. To deploy a change:
+
+```bash
+npx wrangler d1 migrations apply ticker --remote   # when migrations/ changed
+npm run build && npx wrangler deploy
+```
+
+To change a secret: `npx wrangler secret put RESEND_API_KEY` (or `--secrets-file .dev.vars` on deploy).
+
 ## Layout
 
 - `src/worker/`: the Cloudflare Worker (Hono): `/api/*` and `/auth/*`.

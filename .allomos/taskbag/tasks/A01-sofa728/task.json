@@ -3,9 +3,11 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: merged into master (pushed). Checked locally in the browser: lists, ticker page, add-to-list menu in light at desktop width; ticker page, lists and the search dropdown in dark at phone width. Contrast checked by calculation (text 15.5:1, muted 5.7:1, links/buttons 5.0:1 light; dark 7.4-15:1). 99 tests pass. Branch merged and removed.\nFound, not in this task: at phone width the search dropdown is only as wide as the search box, so names are squeezed (older layout, same before this change).\nNot done: master is NOT deployed; it waits for the approver with the other four tasks.\nNext step: once approved, deploy, look at ticker.allomos.com in light and dark, label 'deployed and verified', finish with alm done --without-human-check and check steps.",
   "holder": "claude-code-29ed5bb1",
   "id": "A01-sofa728",
   "iteration": "I-cast",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -14,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A signed-in user sees the whole app in the Allomos colours, with rises and falls still in green and red"
+  "state": "waiting",
+  "title": "A signed-in user sees the whole app in the Allomos colours, with rises and falls still in green and red",
+  "waiting_on": "Approval to deploy master to ticker.allomos.com (one deploy with A01-pearl420, A03-dot197, A04-nose857 and A01-grotto889; A04-nose857 needs migration 0004 first)"
 }

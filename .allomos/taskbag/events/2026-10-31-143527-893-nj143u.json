@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T14:35:27Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST, for the hourly /loop run).\nWhere it stopped: merged into master (pushed). Checked locally in the browser: lists, ticker page, add-to-list menu in light at desktop width; ticker page, lists and the search dropdown in dark at phone width. Contrast checked by calculation (text 15.5:1, muted 5.7:1, links/buttons 5.0:1 light; dark 7.4-15:1). 99 tests pass. Branch merged and removed.\nFound, not in this task: at phone width the search dropdown is only as wide as the search box, so names are squeezed (older layout, same before this change).\nNot done: master is NOT deployed; it waits for the approver with the other four tasks.\nNext step: once approved, deploy, look at ticker.allomos.com in light and dark, label 'deployed and verified', finish with alm done --without-human-check and check steps."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-29ed5bb1"
+    }
+  ]
+}

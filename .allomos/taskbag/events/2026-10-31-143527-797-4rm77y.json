@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:35:27Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Buttons, links and the active tab's text use the palette's link teal (#1f7a6f light, #5cc8ba dark) instead of the main teal #2a9d8f: white on #2a9d8f is 3.3:1, below WCAG AA (4.5:1) that the task asks for; #1f7a6f gives 5.0:1 and dark #5cc8ba with navy text 8.9:1. #2a9d8f marks focus rings and the chosen tab and range underline (3.2:1, enough for non-text)"
+    }
+  ]
+}

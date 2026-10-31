@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-31T14:35:27Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "wait",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "waiting"
+    },
+    {
+      "field": "waiting_on",
+      "to": "Approval to deploy master to ticker.allomos.com (one deploy with A01-pearl420, A03-dot197, A04-nose857 and A01-grotto889; A04-nose857 needs migration 0004 first)"
+    }
+  ]
+}

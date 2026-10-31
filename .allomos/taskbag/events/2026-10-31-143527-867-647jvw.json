@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T14:35:27Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-sofa728",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Header, menus, search results and inputs sit on the surface colour (#ffffff / #152136) over the page background, as in the Allomos mock-up; the sign-in email moves to the same navy, muted grey and link teal"
+    }
+  ]
+}

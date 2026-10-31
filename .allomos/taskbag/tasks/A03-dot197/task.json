@@ -1,0 +1,10 @@
+{
+  "area": "A03",
+  "folders": [
+    "ticker"
+  ],
+  "id": "A03-dot197",
+  "iteration": "I-build",
+  "state": "backlog",
+  "title": "On a ticker's details page, a user sees a Home > list name breadcrumb and clicks it to go back to the home page or that list"
+}

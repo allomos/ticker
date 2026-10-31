@@ -1,11 +1,11 @@
 // Market data for the API: cached in D1, shared by all users, and fetched from Twelve Data
-// only within the free plan's budget. When the budget is spent, the latest cached data is
-// returned, marked stale.
+// unless it is paused after answering that the free plan's limit is reached (./pause.ts). While
+// paused, the latest cached data is returned, marked stale.
 import type { Cached, Quote, QuotesResponse, Range, SearchResult, Series } from "../../shared/market";
 import type { Env } from "../env";
 import { aliasMatches } from "./aliases";
-import { reserve, reserveUpTo, secondsToNextMinute } from "./budget";
 import { cacheGet, cacheGetMany, cachePut, type CacheEntry } from "./cache";
+import { isLimit, MAX_BATCH, pause, pausedUntil, retryAfter } from "./pause";
 import { fetchQuotes, fetchSeries, isNotCovered, searchSymbols, TwelveDataError, type QuoteResult } from "./twelvedata";
 
 const MIN = 60_000;
@@ -32,7 +32,7 @@ export function quoteTtl(q: Quote): number {
   return q.isMarketOpen ? 5 * MIN : HOUR;
 }
 
-/** No data yet and no budget left to fetch it: try again after `retryAfter` seconds. */
+/** No data yet and Twelve Data paused (or not answering): try again after `retryAfter` seconds. */
 export class BusyError extends Error {
   constructor(readonly retryAfter: number) {
     super("The data plan's limit is reached for now");
@@ -109,18 +109,22 @@ export async function getQuotes(env: Env, symbols: string[], now = Date.now()): 
   };
   const ownResults = new Map<string, QuoteResult>();
   try {
-    const granted = own.length ? await reserveUpTo(env.DB, own.length, now) : 0;
-    const fetchNow = own.slice(0, granted);
+    // The rest of a long list waits for a later request: polled again by the app.
+    const fetchNow = own.length && !(await pausedUntil(env.DB, now)) ? own.slice(0, MAX_BATCH) : [];
     if (fetchNow.length) {
       try {
+        let limit: string | null = null;
         for (const [symbol, r] of await fetchQuotes(fetch, apiKey(env), fetchNow)) {
           if (r.ok) await cachePut(env.DB, `q:${symbol}`, { quote: r.quote } satisfies Stored, now);
+          else if (isLimit(r.code)) limit = r.message;
           else if (isNotCovered(r.code)) await cachePut(env.DB, `q:${symbol}`, { unavailable: r.message } satisfies Stored, now);
           ownResults.set(symbol, r);
         }
+        if (limit) await pause(env.DB, limit, now);
       } catch (e) {
         if (!(e instanceof TwelveDataError)) throw e;
-        console.warn("Twelve Data quote failed:", e.code, e.message);
+        if (isLimit(e.code)) await pause(env.DB, e.message, now);
+        else console.warn("Twelve Data quote failed:", e.code, e.message);
       }
     }
   } finally {
@@ -152,7 +156,7 @@ export async function getQuote(env: Env, symbol: string, now = Date.now()): Prom
   const r = await getQuotes(env, [symbol], now);
   if (r.quotes[symbol]) return r.quotes[symbol];
   if (r.unavailable.includes(symbol)) throw new UnavailableError(symbol);
-  throw new BusyError(secondsToNextMinute(now));
+  throw new BusyError(retryAfter(await pausedUntil(env.DB, now), now));
 }
 
 export async function getSeries(env: Env, symbol: string, range: Range, now = Date.now()): Promise<Cached<Series>> {
@@ -162,9 +166,9 @@ export async function getSeries(env: Env, symbol: string, range: Range, now = Da
   if (hit && now - hit.fetchedAt < ttl) return cached(hit, ttl, now);
   let pending = seriesInFlight.get(key);
   if (!pending) {
-    // Marked as in flight at once, before the budget is checked.
+    // Marked as in flight at once, before the pause is checked.
     pending = (async () => {
-      if (!(await reserve(env.DB, 1, now))) return null;
+      if (await pausedUntil(env.DB, now)) return null;
       const series = await fetchSeries(fetch, apiKey(env), symbol, range, new Date(now));
       await cachePut(env.DB, key, series, now);
       return series;
@@ -178,10 +182,11 @@ export async function getSeries(env: Env, symbol: string, range: Range, now = Da
       if (series) return { data: series, fetchedAt: new Date(now).toISOString(), stale: false };
     } catch (e) {
       if (!(e instanceof TwelveDataError)) throw e;
-      if (!hit && isNotCovered(e.code)) throw new UnavailableError(symbol);
-      console.warn("Twelve Data series failed:", e.code, e.message);
+      if (isLimit(e.code)) await pause(env.DB, e.message, now);
+      else if (!hit && isNotCovered(e.code)) throw new UnavailableError(symbol);
+      else console.warn("Twelve Data series failed:", e.code, e.message);
     }
   }
   if (hit) return cached(hit, ttl, now);
-  throw new BusyError(secondsToNextMinute(now));
+  throw new BusyError(retryAfter(await pausedUntil(env.DB, now), now));
 }

@@ -72,3 +72,12 @@ export function quoteHandler(over: (symbol: string) => Record<string, unknown> |
     return Object.fromEntries(symbols.map((s) => [s, one(s)]));
   };
 }
+
+/** Twelve Data's answer when the free plan's limit is reached, for the minute or the day. */
+export function limitReached(per: "minute" | "day") {
+  const message =
+    per === "minute"
+      ? "You have run out of API credits for the current minute. 9 API credits were used, with the current limit being 8. Wait for the next minute or consider switching to a higher tier plan at https://twelvedata.com/pricing"
+      : "You have run out of API credits for the day. 801 API credits were used, with the current limit being 800. Wait for the next day or consider switching to a higher tier plan at https://twelvedata.com/pricing";
+  return Response.json({ code: 429, message, status: "error" }, { status: 429 });
+}

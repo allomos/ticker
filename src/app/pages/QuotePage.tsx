@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { INTL_TAG } from "../../shared/locale";
 import { RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
 import { AddToList } from "../components/AddToList";
@@ -38,8 +39,13 @@ function useLoad<T>(key: string, fn: (signal: AbortSignal) => Promise<T>): Load<
   return load;
 }
 
+/** Waiting more than a couple of minutes means the daily limit: then it says from when. */
 function Busy({ retryAfter, what }: { retryAfter: number; what: "price" | "chart" }) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  if (retryAfter > 120) {
+    const from = new Date(Date.now() + retryAfter * 1000).toLocaleTimeString(INTL_TAG[locale], { hour: "numeric", minute: "2-digit" });
+    return <p className="notice">{t.busyDay(from)}</p>;
+  }
   return <p className="notice">{what === "price" ? t.busyPrice(retryAfter) : t.busyChart(retryAfter)}</p>;
 }
 

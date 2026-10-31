@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T13:36:46Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A01-kite192",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user adds Ticker to their phone's home screen and opens it like an app"
+    },
+    {
+      "field": "area",
+      "to": "A01"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** On a phone, a user adds Ticker to the home screen (iPhone Safari: Share → Add to Home Screen; Android Chrome: Install app / Add to Home screen). It gets its own icon and name, and opens full screen like an app, without the browser bar.\n\n**Done means.**\n- The app serves a web app manifest (name, short name, icons including 192 and 512 px and a maskable one, theme and background colours, `display: standalone`, start URL) and an `apple-touch-icon`, plus the iOS meta tags for a standalone app (title, status bar style).\n- Chrome's installability check passes (Lighthouse or DevTools → Application → Manifest shows no errors), with a small service worker if Chrome still needs one to offer installation.\n- On a real iPhone and a real Android phone at ticker.allomos.com: added to the home screen, the icon and name look right, and the app opens standalone; sign-in by email link still works from the home-screen app.\n- Layout respects the notch and home indicator (safe-area insets) in standalone mode.\n- Tests and build pass; deployed to ticker.allomos.com.\n\n**Notes.**\n- Today the app has only `public/favicon.svg`; no manifest, touch icon or service worker.\n- Open for the person (what users will see):\n  1. Name under the icon: \"Ticker\"? Icon: made from the current favicon, or a new design?\n  2. Offline: only make it installable (prices need the network anyway), or also show a cached page / \"offline\" message when there is no connection?\n- Sign-in links from email open in the phone's browser, not in the installed app (iOS keeps them separate); the human check must confirm the session reaches the home-screen app, or the task must say how a user signs in there.\n- Deploying to ticker.allomos.com is an outside effect: it waits for the approver's go-ahead.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

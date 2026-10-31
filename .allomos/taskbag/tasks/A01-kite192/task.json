@@ -1,0 +1,10 @@
+{
+  "area": "A01",
+  "folders": [
+    "ticker"
+  ],
+  "id": "A01-kite192",
+  "iteration": "I-build",
+  "state": "backlog",
+  "title": "A user adds Ticker to their phone's home screen and opens it like an app"
+}

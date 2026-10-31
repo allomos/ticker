@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T14:17:14Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A02-bath658",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user follows Tokyo and China A-share stocks, with their data from a second free source"
+    },
+    {
+      "field": "area",
+      "to": "A02"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** A user can search, open and add Tokyo (TSE) and China A-share (Shanghai, Shenzhen) stocks, for example 7203 Toyota or 600519 Kweichow Moutai, and sees their price, day change and chart. Twelve Data's free plan does not cover these exchanges, so a second free data source answers them, while Twelve Data keeps serving everything it covers.\n\n**Done means.**\n- Search finds Japanese and Chinese stocks by code and by name, and they are no longer marked as not on the free plan.\n- The quote and chart pages and the list prices work for them, served from the second source through the same cache.\n- The second source has its own request budget, like Twelve Data's, and the app never exceeds that source's free limits.\n- Tests with a fake second source cover routing by exchange, quote, chart, caching and its budget.\n- Checked against the real service with a local key: one Tokyo and one Shanghai stock.\n\n**Notes.** Open for the approver, before this task is made ready:\n1. **Which source.** Candidates found on 2026-10-31, none verified with a real key yet:\n   - iTick (itick.org): free plan that claims SSE, SZSE and TSE quotes; about 5 REST requests a minute (third-party summary). Most likely fit; check that its free plan really includes these markets and charts, and its terms for a public site.\n   - Alpha Vantage: lists Shanghai, Shenzhen and Tokyo, but the free tier is only 25 requests a day, for non-commercial use.\n   - EODHD (20 a day) and Finnhub (international on paid plans) are unlikely to fit on their free plans.\n   - Unofficial no-key endpoints (Yahoo Finance, Tencent/Sina quotes) work but have no terms of use for this, can be blocked from Cloudflare, and can break without notice.\n2. **A new account and key** for the chosen source (a new Worker secret, locally in `.dev.vars`).\n3. **Delayed or end-of-day data** on a free plan: acceptable, and how to show it to users.\n\nMarket data lives in `src/worker/market/` (Twelve Data client, D1 cache, `api_budget`).\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

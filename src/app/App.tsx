@@ -1,5 +1,6 @@
 import { AuthProvider, useAuth } from "./auth";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { LogoMark } from "./components/Logo";
 import { SearchBox } from "./components/SearchBox";
 import { I18nProvider, useI18n } from "./i18n";
 import { ListsProvider } from "./lists";
@@ -64,7 +65,8 @@ export function App() {
           <div className="app">
             <header className="topbar">
               <Link className="brand" href="/">
-                Ticker
+                <LogoMark />
+                <span className="brand-name">Ticker</span>
               </Link>
               <SearchBox />
               <UserMenu />

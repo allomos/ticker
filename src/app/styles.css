@@ -30,7 +30,8 @@ a { color: var(--accent); text-decoration: none; }
   display: flex; align-items: center; gap: 16px;
   padding: 10px 16px; border-bottom: 1px solid var(--border);
 }
-.brand { font-weight: 700; font-size: 20px; color: var(--text); }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 20px; color: var(--text); flex-shrink: 0; }
+.logo-mark { display: block; flex-shrink: 0; }
 .page { max-width: 1040px; margin: 0 auto; padding: 16px; }
 .muted { color: var(--muted); }
 .small { font-size: 13px; }

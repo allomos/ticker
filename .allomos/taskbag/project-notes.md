@@ -27,7 +27,13 @@ What every session must know, whatever its task. Keep it short, and change lines
 
 Where the code and this taskbag are kept online, one list item each, so an agent working from a
 copy elsewhere (in the cloud, say) can find both: `- Code: https://github.com/<owner>/<repo>`.
-The address only: never a token or a personal detail. None yet.
+The address only: never a token or a personal detail.
+
+- Code: https://github.com/allomos/ticker (private, branch `master`; created 2026-10-31)
+- Taskbag: in the same repository, `.allomos/taskbag/`
+- Pushing: this Mac's default SSH key for `github.com` belongs to another GitHub account, which
+  cannot reach `allomos`. The `origin` remote uses an SSH host alias from `~/.ssh/config` that
+  points to the account with access. Keep it, and use it in new clones too.
 
 ## Where credentials live
 

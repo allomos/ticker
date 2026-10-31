@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A05-cable879",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user adds a ticker to any of their lists from search results or its details page"
+    },
+    {
+      "field": "area",
+      "to": "A05"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** From a search result or a ticker's page, one button shows all the user's lists with a tick on each list that already holds the ticker; ticking or unticking adds or removes it at once.\n\n**Done means.**\n- Locally, adding and removing from both places works and the lists update.\n- Tests pass.\n\n**Notes.** Part of goal A01-teapot655.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

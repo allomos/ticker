@@ -1,0 +1,13 @@
+{
+  "area": "A04",
+  "blocked_by": [
+    "A01-mango189"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A04-goblet948",
+  "iteration": "I-pick",
+  "state": "blocked",
+  "title": "A user signs in with a link sent by email, and signs out"
+}

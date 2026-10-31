@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A02-hen552",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
+    },
+    {
+      "field": "area",
+      "to": "A02"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** `/api/search`, `/api/quote` and `/api/chart` return clean data from Twelve Data; results are cached and shared between users, and the app never sends more than the free plan allows (8 a minute, 800 a day).\n\n**Done means.**\n- Tests with a fake Twelve Data cover search, quote, chart ranges, caching and the request budget.\n- Against the real service with the local key, `curl` returns AAPL's quote and a 1M chart.\n\n**Notes.** Part of goal A01-teapot655. The key is the Worker secret `TWELVE_DATA_API_KEY` (locally in `.dev.vars`).\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

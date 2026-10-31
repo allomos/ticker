@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A05-bird102",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A signed-in user creates, renames and deletes lists, and adds and removes tickers; nobody else can see them"
+    },
+    {
+      "field": "area",
+      "to": "A05"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** The lists API lets a signed-in user create, rename, reorder and delete lists, and add and remove tickers; every list belongs to one user, and other users get nothing.\n\n**Done means.**\n- Tests cover each operation and that a second user can neither see nor change the first user's lists.\n\n**Notes.** Part of goal A01-teapot655.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

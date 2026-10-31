@@ -1,0 +1,13 @@
+{
+  "area": "A02",
+  "blocked_by": [
+    "A01-mascot452"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A02-hen552",
+  "iteration": "I-build",
+  "state": "blocked",
+  "title": "The server answers search, quote and chart requests from Twelve Data, cached and within the free plan's limits"
+}

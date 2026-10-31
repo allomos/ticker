@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "ready",
+  "kind": "task",
+  "id": "A05-cable879",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "backlog",
+      "to": "ready"
+    }
+  ]
+}

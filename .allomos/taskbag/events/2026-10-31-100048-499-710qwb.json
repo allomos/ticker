@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add iteration",
+  "kind": "iteration",
+  "id": "I-pick",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "name",
+      "to": "Accounts and private lists"
+    },
+    {
+      "field": "order",
+      "to": 2
+    },
+    {
+      "field": "release",
+      "to": "v0.2"
+    }
+  ]
+}

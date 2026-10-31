@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A01-mango189",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "v0.1 acceptance check: search and ticker details work end to end on this Mac"
+    },
+    {
+      "field": "area",
+      "to": "A01"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** Release v0.1 is tried against the spec's criteria 1, 6, 7, 9 and 10, and steps are written for the person.\n\n**Done means.**\n- Automated tests and `curl` checks against the local app pass.\n- Steps for the person to try it are written.\n\n**Notes.** Part of goal A01-teapot655.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

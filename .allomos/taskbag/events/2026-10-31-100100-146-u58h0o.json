@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:01:00Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A01-teapot655",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Plan: three releases (v0.1 search and details locally, v0.2 accounts and private lists locally, v0.3 live on ticker.allomos.com), 13 tasks; stack: Cloudflare Worker (TypeScript, Hono) with static assets, React + Vite, D1, lightweight-charts"
+    }
+  ]
+}

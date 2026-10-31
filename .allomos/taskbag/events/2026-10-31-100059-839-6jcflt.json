@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T10:00:59Z",
+  "via": "alm",
+  "command": "block",
+  "kind": "task",
+  "id": "A03-film078",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "ready",
+      "to": "blocked"
+    },
+    {
+      "field": "blocked_by",
+      "to": [
+        "A02-hen552"
+      ]
+    }
+  ]
+}

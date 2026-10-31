@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A03-film078",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user searches by name or ticker and sees matching symbols, with those not on the free plan marked"
+    },
+    {
+      "field": "area",
+      "to": "A03"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** Typing in the search box shows matching stocks, ETFs, currencies and crypto with ticker, name, exchange and type; symbols the free data plan does not cover are marked and cannot be opened.\n\n**Done means.**\n- Searching \"apple\" and \"AAPL\" shows Apple Inc. (NASDAQ) first.\n- Choosing a result opens its details page.\n- Component tests pass.\n\n**Notes.** Part of goal A01-teapot655.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

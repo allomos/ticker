@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A04-goblet948",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user signs in with a link sent by email, and signs out"
+    },
+    {
+      "field": "area",
+      "to": "A04"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** Anyone enters their email address and gets a sign-in link (valid 15 minutes, used once); opening it signs them in, and they can sign out. Accounts and sessions are kept in D1.\n\n**Done means.**\n- Tests cover the link's expiry and single use, sessions, sign-out and request limits per email address.\n- Locally, the link appears in the dev server's log; in production it is sent through Resend.\n\n**Notes.** Part of goal A01-teapot655. Sender: `no-reply@ticker.allomos.com`. The Resend key is the Worker secret `RESEND_API_KEY`.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

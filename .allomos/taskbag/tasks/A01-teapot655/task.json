@@ -1,9 +1,12 @@
 {
   "area": "A01",
+  "blocked_by": [
+    "A01-toy025"
+  ],
   "folders": [
     "ticker"
   ],
   "id": "A01-teapot655",
-  "state": "backlog",
+  "state": "blocked",
   "title": "Goal: Ticker, a stock watchlist web app with search, multiple lists and ticker details"
 }

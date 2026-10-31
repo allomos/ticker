@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add iteration",
+  "kind": "iteration",
+  "id": "I-sweep",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "name",
+      "to": "Live on ticker.allomos.com"
+    },
+    {
+      "field": "order",
+      "to": 3
+    },
+    {
+      "field": "release",
+      "to": "v0.3"
+    }
+  ]
+}

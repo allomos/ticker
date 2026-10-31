@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T10:00:59Z",
+  "via": "alm",
+  "command": "block",
+  "kind": "task",
+  "id": "A01-mango189",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "ready",
+      "to": "blocked"
+    },
+    {
+      "field": "blocked_by",
+      "to": [
+        "A01-mascot452",
+        "A02-hen552",
+        "A03-film078",
+        "A03-statue382"
+      ]
+    }
+  ]
+}

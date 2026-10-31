@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add area",
+  "kind": "area",
+  "id": "A03",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "name",
+      "to": "Search and details"
+    },
+    {
+      "field": "order",
+      "to": 3
+    }
+  ]
+}

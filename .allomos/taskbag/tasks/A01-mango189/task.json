@@ -1,0 +1,16 @@
+{
+  "area": "A01",
+  "blocked_by": [
+    "A01-mascot452",
+    "A02-hen552",
+    "A03-film078",
+    "A03-statue382"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A01-mango189",
+  "iteration": "I-build",
+  "state": "blocked",
+  "title": "v0.1 acceptance check: search and ticker details work end to end on this Mac"
+}

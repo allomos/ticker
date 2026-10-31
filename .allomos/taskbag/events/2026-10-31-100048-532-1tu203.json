@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A01-mascot452",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "App skeleton: the Worker serves the web app locally, with tests and a build"
+    },
+    {
+      "field": "area",
+      "to": "A01"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** `npm run dev` serves the React web app and a `/api/health` endpoint from one Cloudflare Worker on this Mac; `npm test` and `npm run build` pass.\n\n**Done means.**\n- `npm test` passes (Worker tests in the Workers runtime).\n- `npm run build` succeeds.\n- `curl localhost:8787/api/health` answers `{\"ok\":true}` and `/` serves the app.\n\n**Notes.** Part of goal A01-teapot655. Stack: Cloudflare Worker (TypeScript, Hono) with static assets, React + Vite, D1.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

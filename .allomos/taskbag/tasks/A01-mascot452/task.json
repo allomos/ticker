@@ -1,0 +1,10 @@
+{
+  "area": "A01",
+  "folders": [
+    "ticker"
+  ],
+  "id": "A01-mascot452",
+  "iteration": "I-build",
+  "state": "ready",
+  "title": "App skeleton: the Worker serves the web app locally, with tests and a build"
+}

@@ -1,0 +1,13 @@
+{
+  "area": "A06",
+  "blocked_by": [
+    "A01-whale367"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A06-powder407",
+  "iteration": "I-sweep",
+  "state": "blocked",
+  "title": "The app runs on Cloudflare at ticker.allomos.com with its D1 database and secrets"
+}

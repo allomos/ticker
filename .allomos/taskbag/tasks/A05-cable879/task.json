@@ -1,0 +1,13 @@
+{
+  "area": "A05",
+  "blocked_by": [
+    "A05-guide010"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A05-cable879",
+  "iteration": "I-pick",
+  "state": "blocked",
+  "title": "A user adds a ticker to any of their lists from search results or its details page"
+}

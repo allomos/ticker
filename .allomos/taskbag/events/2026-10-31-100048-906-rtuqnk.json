@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A05-guide010",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user sees each of their lists with the latest price and day change, and manages lists on screen"
+    },
+    {
+      "field": "area",
+      "to": "A05"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** The home page shows the user's lists as tabs; each list shows its tickers with name, latest price, its time, and the day's change; the user creates, renames and deletes lists and removes tickers there.\n\n**Done means.**\n- Locally, a signed-in user does all of the above and sees real prices.\n- Prices stay within the data plan's limits: cached prices are shown and the rest fill in later.\n- Tests pass.\n\n**Notes.** Part of goal A01-teapot655.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "area": "A05",
+  "blocked_by": [
+    "A01-mango189",
+    "A04-goblet948"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A05-bird102",
+  "iteration": "I-pick",
+  "state": "blocked",
+  "title": "A signed-in user creates, renames and deletes lists, and adds and removes tickers; nobody else can see them"
+}

@@ -1,0 +1,16 @@
+{
+  "area": "A01",
+  "blocked_by": [
+    "A04-goblet948",
+    "A05-bird102",
+    "A05-guide010",
+    "A05-cable879"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A01-whale367",
+  "iteration": "I-pick",
+  "state": "blocked",
+  "title": "v0.2 acceptance check: accounts and private lists work end to end on this Mac"
+}

@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T10:01:00Z",
+  "via": "alm",
+  "command": "block",
+  "kind": "task",
+  "id": "A01-teapot655",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "ready",
+      "to": "blocked"
+    },
+    {
+      "field": "blocked_by",
+      "to": [
+        "A01-toy025"
+      ]
+    }
+  ]
+}

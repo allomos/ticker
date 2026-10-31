@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T10:00:48Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A03-statue382",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "title",
+      "to": "A user opens a ticker and sees its price, day change, chart with ranges and key figures"
+    },
+    {
+      "field": "area",
+      "to": "A03"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** A ticker's page shows the latest price with its time, the day's change (amount and percent), a price chart with 1D, 5D, 1M, 6M, YTD, 1Y and 5Y ranges, and key figures (open, high, low, previous close, 52-week range, volume, average volume).\n\n**Done means.**\n- `/quote/AAPL` shows all of the above locally with real data.\n- Switching chart ranges loads a new chart.\n- Tests pass.\n\n**Notes.** Part of goal A01-teapot655. Market cap and P/E are not on the free plan's quote; they are left out.\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

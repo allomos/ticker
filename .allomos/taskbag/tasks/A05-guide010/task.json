@@ -1,0 +1,13 @@
+{
+  "area": "A05",
+  "blocked_by": [
+    "A05-bird102"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A05-guide010",
+  "iteration": "I-pick",
+  "state": "blocked",
+  "title": "A user sees each of their lists with the latest price and day change, and manages lists on screen"
+}

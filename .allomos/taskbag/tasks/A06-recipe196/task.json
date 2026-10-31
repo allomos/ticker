@@ -1,0 +1,13 @@
+{
+  "area": "A06",
+  "blocked_by": [
+    "A06-powder407"
+  ],
+  "folders": [
+    "ticker"
+  ],
+  "id": "A06-recipe196",
+  "iteration": "I-sweep",
+  "state": "blocked",
+  "title": "Sign-in emails are sent from no-reply@ticker.allomos.com through Resend in production"
+}

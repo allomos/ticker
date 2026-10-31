@@ -16,5 +16,16 @@
 **Notes.**
 - Idea from the approver on 2026-10-31. Builds on A02-bath658 (Alpha Vantage client, owner-only rule): block on it.
 - Decided by the approver on 2026-10-31: the user chooses where each key is kept, on the server encrypted or only in their browser; the app supports both.
-- Open for the approver, before this task is made ready:
-  1. **Wording and placement** of the "add your own key" prompt, in all four languages.
+- Prompt wording, approved by the approver on 2026-10-31 (English draft; the other three follow it):
+  - Not covered by the free plan:
+    - en: **This stock isn't on the free data plan.** Add your own Twelve Data or Alpha Vantage API key to see it. Your key is used only for you. [Add a key]
+    - zh-Hans: **这只股票不在免费数据套餐内。** 添加你自己的 Twelve Data 或 Alpha Vantage API 密钥即可查看。你的密钥只用于你自己。［添加密钥］
+    - zh-Hant: **這檔股票不在免費資料方案內。** 加入你自己的 Twelve Data 或 Alpha Vantage API 金鑰即可查看。你的金鑰只會用於你自己。［加入金鑰］
+    - ja: **この銘柄は無料データプランの対象外です。** ご自身の Twelve Data または Alpha Vantage の API キーを追加すると表示できます。キーはあなたのためだけに使われます。［キーを追加］
+  - "Busy": the app's existing busy message (`busyPrice`, `busyChart`) stays, followed by one line in the same style:
+    - en: Or add your own Twelve Data or Alpha Vantage API key to skip the wait. [Add a key]
+    - zh-Hans: 也可以添加你自己的 Twelve Data 或 Alpha Vantage API 密钥，无需等待。［添加密钥］
+    - zh-Hant: 也可以加入你自己的 Twelve Data 或 Alpha Vantage API 金鑰，無需等待。［加入金鑰］
+    - ja: ご自身の Twelve Data または Alpha Vantage の API キーを追加すると、待たずに表示できます。［キーを追加］
+  - Signed-out visitors see the same text, with [Add a key] taking them to sign in first.
+  - Placement: under the "not available" or "busy" note on the details page, and once above a list or search results that contain such stocks (not on every row).

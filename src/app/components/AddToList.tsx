@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { InstrumentType } from "../../shared/market";
 import { api } from "../api";
 import { useAuth } from "../auth";
+import { useI18n } from "../i18n";
 import { useLists, type NewItem } from "../lists";
 import { Link } from "../router";
 
@@ -29,6 +30,7 @@ async function resolveType(target: AddTarget): Promise<NewItem> {
 export function AddToList({ target, compact = false }: { target: AddTarget; compact?: boolean }) {
   const { user } = useAuth();
   const { lists, addItem, removeItem, create } = useLists();
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [naming, setNaming] = useState(false);
   const [newName, setNewName] = useState("");
@@ -62,7 +64,7 @@ export function AddToList({ target, compact = false }: { target: AddTarget; comp
     if (user === undefined) return null;
     return (
       <Link className={`button button-small button-quiet${compact ? " compact" : ""}`} href="/signin" onClick={(e) => e.stopPropagation()}>
-        {compact ? "☆" : "☆ Sign in to add to a list"}
+        {compact ? "☆" : t.signInToAdd}
       </Link>
     );
   }
@@ -94,22 +96,22 @@ export function AddToList({ target, compact = false }: { target: AddTarget; comp
     }
   };
 
-  const label = holding.length ? (compact ? "★" : `★ In ${holding.length === 1 ? holding[0].name : `${holding.length} lists`}`) : compact ? "☆" : "☆ Add to list";
+  const label = holding.length ? (compact ? "★" : holding.length === 1 ? t.inList(holding[0].name) : t.inLists(holding.length)) : compact ? "☆" : t.addToList;
   return (
     <div className="add-to-list" ref={box} onClick={(e) => e.stopPropagation()}>
       <button
         className={`button button-small ${holding.length ? "button-on" : "button-quiet"}${compact ? " compact" : ""}`}
         aria-haspopup="true"
         aria-expanded={open}
-        aria-label={compact ? `Add ${target.symbol} to a list` : undefined}
-        title={compact ? (holding.length ? `In ${holding.map((l) => l.name).join(", ")}` : "Add to a list") : undefined}
+        aria-label={compact ? t.addSymbolToAList(target.symbol) : undefined}
+        title={compact ? (holding.length ? t.inListsTitle(holding.map((l) => l.name).join(", ")) : t.addToAList) : undefined}
         onClick={() => setOpen((o) => !o)}
       >
         {label}
       </button>
       {open && (
-        <div className="menu add-menu" role="group" aria-label={`Lists for ${target.symbol}`}>
-          <div className="menu-note">Add {target.symbol} to</div>
+        <div className="menu add-menu" role="group" aria-label={t.listsFor(target.symbol)}>
+          <div className="menu-note">{t.addSymbolTo(target.symbol)}</div>
           {(lists ?? []).map((l) => {
             const inList = ticks[l.id] ?? l.items.some((i) => i.symbol === target.symbol);
             return (
@@ -121,17 +123,17 @@ export function AddToList({ target, compact = false }: { target: AddTarget; comp
           })}
           {naming ? (
             <form className="menu-form" onSubmit={createAndAdd}>
-              <input autoFocus aria-label="New list name" maxLength={60} placeholder="List name" value={newName} onChange={(e) => setNewName(e.target.value)} />
+              <input autoFocus aria-label={t.newListName} maxLength={60} placeholder={t.listName} value={newName} onChange={(e) => setNewName(e.target.value)} />
               <button className="button button-small" type="submit">
-                Add
+                {t.add}
               </button>
             </form>
           ) : (
             <button className="menu-item new" onClick={() => setNaming(true)}>
-              + New list
+              {t.newList}
             </button>
           )}
-          {error && <div className="menu-note error">That did not work. Try again.</div>}
+          {error && <div className="menu-note error">{t.didNotWork}</div>}
         </div>
       )}
     </div>

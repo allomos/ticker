@@ -1,30 +1,26 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { api, ApiError } from "../api";
 import { useAuth } from "../auth";
+import { useI18n } from "../i18n";
 import { navigate } from "../router";
 
 export function SignInPage() {
+  const { t, locale } = useI18n();
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<"badEmail" | "tooMany" | "mailFailed">("mailFailed");
   const [local, setLocal] = useState(false);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setState("sending");
     try {
-      const r = await api.requestLink(email);
+      const r = await api.requestLink(email, locale);
       setLocal(r.local);
       setState("sent");
     } catch (err) {
       const code = err instanceof ApiError ? err.code : "";
-      setMessage(
-        code === "bad_email"
-          ? "That does not look like an email address."
-          : code === "too_many"
-            ? "Too many sign-in emails for now. Use the latest one, or try again in 15 minutes."
-            : "The email could not be sent. Try again in a moment.",
-      );
+      setMessage(code === "bad_email" ? "badEmail" : code === "too_many" ? "tooMany" : "mailFailed");
       setState("error");
     }
   };
@@ -32,14 +28,12 @@ export function SignInPage() {
   if (state === "sent") {
     return (
       <section className="narrow">
-        <h1 className="page-title">Check your email</h1>
-        <p>
-          We sent a sign-in link to <strong>{email}</strong>. Open it on this device within 15 minutes.
-        </p>
-        {local && <p className="notice small">Running on this computer: no email is sent. The link is in the dev server's log.</p>}
+        <h1 className="page-title">{t.checkEmail}</h1>
+        <p>{t.sentTo(<strong>{email}</strong>)}</p>
+        {local && <p className="notice small">{t.localNotice}</p>}
         <p>
           <button className="link-button" onClick={() => setState("idle")}>
-            Use another address
+            {t.useAnother}
           </button>
         </p>
       </section>
@@ -48,15 +42,15 @@ export function SignInPage() {
 
   return (
     <section className="narrow">
-      <h1 className="page-title">Sign in to Ticker</h1>
-      <p className="muted">Enter your email address and we'll send you a link to sign in. No password needed. New here? The same link creates your account.</p>
+      <h1 className="page-title">{t.signInTitle}</h1>
+      <p className="muted">{t.signInIntro}</p>
       <form onSubmit={submit} className="form">
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="email">{t.emailLabel}</label>
         <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <button className="button" type="submit" disabled={state === "sending"}>
-          {state === "sending" ? "Sending…" : "Email me a sign-in link"}
+          {state === "sending" ? t.sending : t.emailMeLink}
         </button>
-        {state === "error" && <p className="error">{message}</p>}
+        {state === "error" && <p className="error">{t[message]}</p>}
       </form>
     </section>
   );
@@ -64,6 +58,7 @@ export function SignInPage() {
 
 export function VerifyPage({ token }: { token: string }) {
   const { setUser } = useAuth();
+  const { t, locale } = useI18n();
   const [state, setState] = useState<"ready" | "working" | "bad">(token ? "ready" : "bad");
   const button = useRef<HTMLButtonElement>(null);
   useEffect(() => button.current?.focus(), []);
@@ -71,7 +66,7 @@ export function VerifyPage({ token }: { token: string }) {
   const finish = async () => {
     setState("working");
     try {
-      setUser(await api.verify(token));
+      setUser(await api.verify(token, locale));
       navigate("/", true);
     } catch {
       setState("bad");
@@ -81,11 +76,11 @@ export function VerifyPage({ token }: { token: string }) {
   if (state === "bad") {
     return (
       <section className="narrow">
-        <h1 className="page-title">This link does not work</h1>
-        <p>Sign-in links work once, for 15 minutes. Ask for a new one.</p>
+        <h1 className="page-title">{t.linkBadTitle}</h1>
+        <p>{t.linkBadText}</p>
         <p>
           <a className="button" href="/signin" onClick={(e) => (e.preventDefault(), navigate("/signin"))}>
-            Get a new link
+            {t.getNewLink}
           </a>
         </p>
       </section>
@@ -93,10 +88,10 @@ export function VerifyPage({ token }: { token: string }) {
   }
   return (
     <section className="narrow">
-      <h1 className="page-title">Sign in to Ticker</h1>
-      <p>One more click to finish signing in.</p>
+      <h1 className="page-title">{t.signInTitle}</h1>
+      <p>{t.oneMoreClick}</p>
       <button ref={button} className="button" onClick={finish} disabled={state === "working"}>
-        {state === "working" ? "Signing in…" : "Sign in"}
+        {state === "working" ? t.signingIn : t.signIn}
       </button>
     </section>
   );

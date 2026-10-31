@@ -57,7 +57,8 @@ signs in and keeps their own lists, private to them. First user: the person them
 ## Open points for discussion
 
 - Email sending for sign-in links: Cloudflare's own email sending (preferred, if the person's
-  account has it) or Resend.
+  account has it) or Resend. Sender address: `no-reply@ticker.allomos.com` (the person's choice,
+  2026-10-31); email sending is set up on the subdomain `ticker.allomos.com`.
 - The person sets up access up front (Cloudflare login with the needed permissions, email
   sending) and approves the outside effects in advance, so the run does not stop to ask.
 

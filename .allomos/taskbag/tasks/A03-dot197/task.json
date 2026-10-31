@@ -3,8 +3,17 @@
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-29ed5bb1",
   "id": "A03-dot197",
   "iteration": "I-build",
-  "state": "ready",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
+    "by": "claude-code-29ed5bb1",
+    "folder": ".",
+    "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "On a ticker's details page, a user sees a Home > list name breadcrumb and clicks it to go back to the home page or that list"
 }

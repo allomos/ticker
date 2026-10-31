@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-31T10:22:55Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "label",
+  "kind": "task",
+  "id": "A05-bird102",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "label",
+      "to": "locally verified"
+    }
+  ]
+}

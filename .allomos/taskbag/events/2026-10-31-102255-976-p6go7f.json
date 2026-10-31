@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-31T10:22:55Z",
+  "by": "claude-code-10e82e40",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A05-bird102",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Done, merged into master. Lists API in src/worker/lists/routes.ts (migration 0003_lists; shared types src/shared/lists.ts). Privacy tested with two users. New accounts get a list named Watchlist. Next: A05-guide010 (lists screen)."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "claude-code-10e82e40"
+    }
+  ]
+}

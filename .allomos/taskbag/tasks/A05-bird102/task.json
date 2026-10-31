@@ -3,9 +3,12 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Done, merged into master. Lists API in src/worker/lists/routes.ts (migration 0003_lists; shared types src/shared/lists.ts). Privacy tested with two users. New accounts get a list named Watchlist. Next: A05-guide010 (lists screen).",
   "holder": "claude-code-10e82e40",
+  "human_check_steps": "This task is the server side of lists; it is tried on screen with A05-guide010. To check it alone,\nin `/Users/wanghui/coding/ticker`: `npm test` and look for `test/worker/lists.test.ts`: creating,\nrenaming, reordering and deleting lists, adding and removing tickers, and a second user who can\nneither see nor change the first user's lists.\n",
   "id": "A05-bird102",
   "iteration": "I-pick",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
@@ -14,6 +17,7 @@
     "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "A signed-in user creates, renames and deletes lists, and adds and removes tickers; nobody else can see them"
+  "state": "done",
+  "title": "A signed-in user creates, renames and deletes lists, and adds and removes tickers; nobody else can see them",
+  "without_human_check": "Goal run"
 }

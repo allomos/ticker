@@ -1,14 +1,19 @@
 {
   "area": "A01",
-  "blocked_by": [
-    "A06-powder407",
-    "A06-recipe196"
-  ],
   "folders": [
     "ticker"
   ],
+  "holder": "claude-code-10e82e40",
   "id": "A01-toy025",
   "iteration": "I-sweep",
-  "state": "blocked",
+  "session": {
+    "agent": "claude-code",
+    "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",
+    "by": "claude-code-10e82e40",
+    "folder": ".",
+    "id": "ae160943-3b73-449e-a3f7-4202d6fe9eb7",
+    "kind": "desktop"
+  },
+  "state": "in_progress",
   "title": "v0.3 acceptance check: the whole app works at ticker.allomos.com"
 }

@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-31T13:49:01Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "claim",
+  "kind": "task",
+  "id": "A01-pearl420",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "ready",
+      "to": "in_progress"
+    },
+    {
+      "field": "holder",
+      "to": "claude-code-29ed5bb1"
+    },
+    {
+      "field": "session",
+      "to": {
+        "agent": "claude-code",
+        "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
+        "by": "claude-code-29ed5bb1",
+        "folder": ".",
+        "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
+        "kind": "desktop"
+      }
+    },
+    {
+      "field": "working_branch",
+      "to": "a01-pearl420-i18n"
+    }
+  ]
+}

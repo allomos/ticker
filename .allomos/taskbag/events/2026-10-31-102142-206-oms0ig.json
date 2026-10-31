@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:21:42Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A04-goblet948",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "The emailed link opens a page with a Sign in button that posts the token, instead of signing in on the GET, so email scanners that open links do not use them up"
+    }
+  ]
+}

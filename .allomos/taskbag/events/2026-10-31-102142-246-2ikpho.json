@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T10:21:42Z",
+  "via": "alm",
+  "command": "unblock",
+  "kind": "task",
+  "id": "A05-bird102",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "state",
+      "from": "blocked",
+      "to": "ready"
+    },
+    {
+      "field": "blocked_by",
+      "from": [
+        "A01-mango189",
+        "A04-goblet948"
+      ]
+    }
+  ]
+}

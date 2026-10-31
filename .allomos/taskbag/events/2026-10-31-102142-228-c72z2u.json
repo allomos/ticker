@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-31T10:21:42Z",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A04-goblet948",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Limits: 3 sign-in emails per address per 15 minutes, 10 a day, 20 per network address an hour; sessions last 30 days and are extended while used; on localhost the link is logged instead of emailed"
+    }
+  ]
+}

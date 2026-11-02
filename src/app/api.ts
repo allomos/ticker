@@ -9,6 +9,8 @@ export class ApiError extends Error {
     readonly code: string,
     readonly retryAfter?: number,
     readonly triesLeft?: number,
+    /** Why a stock is not available: "own_key" when the user's own key's plan does not cover it. */
+    readonly reason?: string,
   ) {
     super(code);
   }
@@ -17,7 +19,7 @@ export class ApiError extends Error {
 export async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   const res = await fetch(path, { signal, headers: { accept: "application/json", ...keyHeaders() } });
   const body: any = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, body.error ?? "error", body.retryAfter);
+  if (!res.ok) throw new ApiError(res.status, body.error ?? "error", body.retryAfter, undefined, body.reason);
   return body as T;
 }
 

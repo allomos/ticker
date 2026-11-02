@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { INTL_TAG } from "../../shared/locale";
-import { END_OF_DAY_RANGES, isEndOfDaySymbol, RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
+import { END_OF_DAY_RANGES, isEndOfDaySymbol, isTokyoSymbol, RANGES, type Cached, type Quote, type Range, type Series } from "../../shared/market";
 import { api, ApiError } from "../api";
 import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { AddToList } from "../components/AddToList";
@@ -9,7 +9,7 @@ import { PriceChart } from "../components/PriceChart";
 import { formatChange, formatCompact, formatPrice, formatTime } from "../format";
 import { useI18n } from "../i18n";
 
-type Load<T> = { state: "loading" } | { state: "ok"; value: T } | { state: "busy"; retryAfter: number } | { state: "unavailable" } | { state: "error" };
+type Load<T> = { state: "loading" } | { state: "ok"; value: T } | { state: "busy"; retryAfter: number } | { state: "unavailable"; ownKey: boolean } | { state: "error" };
 
 /** Loads with `fn`; when the data plan's limit is reached, waits and tries again by itself. */
 function useLoad<T>(key: string, fn: (signal: AbortSignal) => Promise<T>): Load<T> {
@@ -27,7 +27,7 @@ function useLoad<T>(key: string, fn: (signal: AbortSignal) => Promise<T>): Load<
           const retryAfter = e.retryAfter ?? 30;
           setLoad({ state: "busy", retryAfter });
           timer = setTimeout(() => setAttempt((a) => a + 1), retryAfter * 1000);
-        } else if (e instanceof ApiError && e.status === 404) setLoad({ state: "unavailable" });
+        } else if (e instanceof ApiError && e.status === 404) setLoad({ state: "unavailable", ownKey: e.reason === "own_key" });
         else setLoad({ state: "error" });
       });
     return () => {
@@ -110,8 +110,14 @@ function QuoteDetails({ symbol }: { symbol: string }) {
     return (
       <section>
         <h1 className="page-title">{symbol}</h1>
-        <p>{t.notCovered(symbol)}</p>
-        <AddKeyPrompt kind="unavailable" />
+        {quote.ownKey ? (
+          <p className="notice">{t.ownKeyNotCovered}</p>
+        ) : (
+          <>
+            <p>{t.notCovered(symbol)}</p>
+            <AddKeyPrompt kind="unavailable" tokyo={isTokyoSymbol(symbol)} />
+          </>
+        )}
       </section>
     );
   }

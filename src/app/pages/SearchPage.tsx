@@ -1,4 +1,5 @@
 import { AddToList } from "../components/AddToList";
+import { isTokyoSymbol } from "../../shared/market";
 import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { ResultRow, useSearch } from "../components/SearchBox";
 import { useI18n } from "../i18n";
@@ -33,7 +34,7 @@ export function SearchPage({ query }: { query: string }) {
         <>
           <h2 className="section-title">{t.notOnPlanTitle}</h2>
           <p className="muted small">{t.notOnPlanText}</p>
-          <AddKeyPrompt kind="unavailable" />
+          <AddKeyPrompt kind="unavailable" tokyo={others.every((r) => isTokyoSymbol(r.symbol))} />
           <ul className="result-list">
             {others.map((r) => (
               <li key={`${r.symbol}|${r.exchange}`} className="result unavailable">

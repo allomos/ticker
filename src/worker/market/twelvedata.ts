@@ -1,9 +1,16 @@
 // Twelve Data client: turns its responses into the app's shapes (src/shared/market.ts).
-import type { InstrumentType, Quote, Range, SearchResult, Series, SeriesPoint } from "../../shared/market";
+import { isTokyoSymbol, type InstrumentType, type Quote, type Range, type SearchResult, type Series, type SeriesPoint } from "../../shared/market";
 
 const BASE = "https://api.twelvedata.com";
 /** The plan name Twelve Data gives symbols covered by the free plan. */
 const FREE_PLAN = "Basic";
+/** Tokyo's market in Twelve Data: mic XJPX, exchange "JPX". */
+const TOKYO_MIC = "XJPX";
+
+/** What Twelve Data needs to find a symbol: Tokyo's 7203.T is 7203 on JPX. */
+export function requestFor(symbol: string): Record<string, string> {
+  return isTokyoSymbol(symbol) ? { symbol: symbol.slice(0, -2), exchange: "JPX" } : { symbol };
+}
 
 export class TwelveDataError extends Error {
   constructor(
@@ -58,14 +65,16 @@ export async function searchSymbols(fetchFn: Fetch, query: string): Promise<Sear
   const results: SearchResult[] = [];
   for (const d of body.data ?? []) {
     const type = instrumentType(d.instrument_type);
-    const available = d.access?.plan === FREE_PLAN;
+    // Tokyo: the free key answers errors even where search says "Basic", so never on the free plan.
+    const tokyo = d.mic_code === TOKYO_MIC;
+    const available = d.access?.plan === FREE_PLAN && !tokyo;
     // Crypto and currency pairs come once per venue, and US listings once per US exchange:
     // the app quotes plain symbols, so one row per available symbol is enough.
     const key = available ? `${d.symbol}` : `${d.symbol}|${d.mic_code}`;
     if (seen.has(key)) continue;
     seen.add(key);
     results.push({
-      symbol: d.symbol,
+      symbol: tokyo ? `${d.symbol}.T` : d.symbol,
       name: d.instrument_name ?? d.symbol,
       exchange: type === "crypto" ? "Crypto" : type === "currency" ? "Currency" : (d.exchange ?? ""),
       country: d.country ?? "",
@@ -114,9 +123,18 @@ export type QuoteResult = { ok: true; quote: Quote } | { ok: false; code: number
 
 /** One request for several symbols; it costs one credit per symbol. */
 export async function fetchQuotes(fetchFn: Fetch, apiKey: string, symbols: string[]): Promise<Map<string, QuoteResult>> {
+  // Tokyo symbols need their exchange named, so each goes on its own.
+  const tokyo = symbols.filter(isTokyoSymbol);
+  const out = symbols.length > tokyo.length ? await fetchBatch(fetchFn, apiKey, symbols.filter((s) => !isTokyoSymbol(s))) : new Map<string, QuoteResult>();
+  for (const s of tokyo) for (const [k, v] of await fetchBatch(fetchFn, apiKey, [s])) out.set(k, v);
+  return out;
+}
+
+async function fetchBatch(fetchFn: Fetch, apiKey: string, symbols: string[]): Promise<Map<string, QuoteResult>> {
   let body: any;
   try {
-    body = await getJson(fetchFn, "/quote", { symbol: symbols.join(","), apikey: apiKey });
+    const params = symbols.length === 1 ? requestFor(symbols[0]) : { symbol: symbols.join(",") };
+    body = await getJson(fetchFn, "/quote", { ...params, apikey: apiKey });
   } catch (e) {
     // With one symbol, an unknown or uncovered symbol fails the whole request.
     if (symbols.length === 1 && e instanceof TwelveDataError && isNotCovered(e.code)) {
@@ -134,7 +152,8 @@ export async function fetchQuotes(fetchFn: Fetch, apiKey: string, symbols: strin
       continue;
     }
     try {
-      out.set(s, { ok: true, quote: toQuote(q) });
+      // The app's symbol, not Twelve Data's (7203.T, not 7203), so lists keep the right one.
+      out.set(s, { ok: true, quote: { ...toQuote(q), symbol: s } });
     } catch (e) {
       out.set(s, { ok: false, code: 404, message: (e as Error).message });
     }
@@ -200,7 +219,7 @@ export async function fetchSeries(
 ): Promise<Series> {
   const spec = RANGE_SPECS[range];
   const params: Record<string, string> = {
-    symbol,
+    ...requestFor(symbol),
     interval: spec.interval,
     timezone: "UTC",
     order: "asc",

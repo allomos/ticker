@@ -29,7 +29,7 @@ describe("search", () => {
     expect(results.map((r) => [r.symbol, r.exchange, r.available])).toEqual([
       ["AAPL", "NASDAQ", true],
       ["BTC/USD", "Crypto", true],
-      ["7203", "JPX", false],
+      ["7203.T", "JPX", false],
     ]);
     expect(results[1].type).toBe("crypto");
     expect(fake.calls[0].searchParams.has("apikey")).toBe(false);

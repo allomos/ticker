@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { isEndOfDaySymbol, RANGES, type QuotesResponse, type Range } from "../../shared/market";
+import { isEndOfDaySymbol, isTokyoSymbol, RANGES, type QuotesResponse, type Range } from "../../shared/market";
 import type { Context } from "hono";
 import type { AppEnv } from "../auth/session";
 import { userAccess } from "../keys/store";
@@ -33,10 +33,24 @@ market.onError((err, c) => {
     c.header("Retry-After", String(err.retryAfter));
     return c.json({ error: "busy", retryAfter: err.retryAfter }, 503);
   }
-  if (err instanceof UnavailableError) return c.json({ error: "unavailable" }, 404);
+  if (err instanceof UnavailableError) return c.json({ error: "unavailable", ...(err.reason ? { reason: err.reason } : {}) }, 404);
   console.error(err);
   return c.json({ error: "server_error" }, 500);
 });
+
+/**
+ * Tokyo stocks need the user's own Twelve Data key (nothing is asked on the app's); with one, a
+ * "not available" means the key's plan does not cover it, which the app says as such.
+ */
+async function withOwnKey<T>(symbol: string, own: Access | undefined, run: () => Promise<T>): Promise<T> {
+  if (isTokyoSymbol(symbol) && !own) throw new UnavailableError(symbol);
+  try {
+    return await run();
+  } catch (e) {
+    if (own && e instanceof UnavailableError) throw new UnavailableError(symbol, "own_key");
+    throw e;
+  }
+}
 
 market.get("/search", async (c) => {
   const q = (c.req.query("q") ?? "").trim();
@@ -56,7 +70,7 @@ market.get("/quote", async (c) => {
     if (keys.endOfDay === null) throw new UnavailableError(symbol);
     return c.json(await getEndOfDayQuote(c.env, symbol, undefined, keys.endOfDay));
   }
-  return c.json(await getQuote(c.env, symbol, undefined, keys.twelvedata));
+  return c.json(await withOwnKey(symbol, keys.twelvedata, () => getQuote(c.env, symbol, undefined, keys.twelvedata)));
 });
 
 market.get("/quotes", async (c) => {
@@ -66,7 +80,10 @@ market.get("/quotes", async (c) => {
   }
   const keys = await keysFor(c);
   const endOfDay = symbols.filter(isEndOfDaySymbol);
-  const out = await getQuotes(c.env, symbols.filter((s) => !isEndOfDaySymbol(s)), undefined, keys.twelvedata);
+  // Tokyo needs the user's own Twelve Data key: without one, not available, and nothing is asked.
+  const blocked = keys.twelvedata ? [] : symbols.filter(isTokyoSymbol);
+  const out = await getQuotes(c.env, symbols.filter((s) => !isEndOfDaySymbol(s) && !blocked.includes(s)), undefined, keys.twelvedata);
+  out.unavailable.push(...blocked);
   if (endOfDay.length) {
     const eod: QuotesResponse =
       keys.endOfDay === null ? { quotes: {}, pending: [], unavailable: endOfDay } : await getEndOfDayQuotes(c.env, endOfDay, undefined, keys.endOfDay);
@@ -86,5 +103,5 @@ market.get("/chart", async (c) => {
     if (keys.endOfDay === null) throw new UnavailableError(symbol);
     return c.json(await getEndOfDaySeries(c.env, symbol, range, undefined, keys.endOfDay));
   }
-  return c.json(await getSeries(c.env, symbol, range, undefined, keys.twelvedata));
+  return c.json(await withOwnKey(symbol, keys.twelvedata, () => getSeries(c.env, symbol, range, undefined, keys.twelvedata)));
 });

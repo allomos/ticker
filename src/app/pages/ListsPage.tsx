@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { WatchList } from "../../shared/lists";
+import { isTokyoSymbol } from "../../shared/market";
 import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { formatChange, formatPrice, formatTime } from "../format";
 import { useI18n } from "../i18n";
@@ -41,7 +42,7 @@ function ListTable({ list }: { list: WatchList }) {
   const limited = list.items.some((i) => unavailable.has(i.symbol)) ? "unavailable" : list.items.some((i) => pending.has(i.symbol) && !quotes[i.symbol]) ? "busy" : null;
   return (
     <>
-      {limited && <AddKeyPrompt kind={limited} />}
+      {limited && <AddKeyPrompt kind={limited} tokyo={limited === "unavailable" && list.items.filter((i) => unavailable.has(i.symbol)).every((i) => isTokyoSymbol(i.symbol))} />}
       <table className="list-table">
         <thead>
           <tr>

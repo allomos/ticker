@@ -47,6 +47,12 @@ export interface Quote {
 export const RANGES = ["1D", "5D", "1M", "6M", "YTD", "1Y", "5Y", "MAX"] as const;
 export type Range = (typeof RANGES)[number];
 
+/**
+ * Tokyo stocks (Twelve Data's JPX, mic XJPX) in the app's form, 7203.T: off the free plan for
+ * everyone (approver, 2026-11-02); they open only with a user's own Twelve Data key.
+ */
+export const isTokyoSymbol = (symbol: string) => /^\d{4}[A-Z]?\.T$/.test(symbol);
+
 /** Shanghai and Shenzhen stocks in Alpha Vantage's form (600519.SHH, 000002.SHZ): end-of-day prices only. */
 export const isEndOfDaySymbol = (symbol: string) => /^\d{6}\.(SHH|SHZ)$/.test(symbol);
 

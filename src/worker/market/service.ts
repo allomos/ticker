@@ -41,7 +41,15 @@ export class BusyError extends Error {
 }
 
 /** The symbol is not covered by the data plan, or does not exist. */
-export class UnavailableError extends Error {}
+export class UnavailableError extends Error {
+  /** "own_key": the user's own key's plan does not cover it (not the free plan). */
+  constructor(
+    symbol: string,
+    readonly reason?: "own_key",
+  ) {
+    super(symbol);
+  }
+}
 
 const cached = <T>(e: CacheEntry<T>, ttl: number, now: number): Cached<T> => ({
   data: e.value,

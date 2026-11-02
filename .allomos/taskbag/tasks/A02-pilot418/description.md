@@ -15,3 +15,7 @@
 - Check first: an earlier look found no XTKS row in Twelve Data's search for "7203" or "Toyota Motor". If search with `show_plan` still returns none, Tokyo stocks need another way into search (for example, a known `7203.T`-style code typed in), and that is a question for the approver.
 - Today's code: search marks non-free rows `available: false` (src/worker/market/twelvedata.ts); the prompt is src/app/components/AddKeyPrompt.tsx; wording in src/app/i18n/messages.tsx (`promptNotOnPlanText`).
 - China (Shanghai, Shenzhen) is done in A02-bath658.
+
+## Evidence
+
+- 2026-11-02, claude-code-29ed5bb1: 2026-11-02: Twelve Data's free search lists Tokyo as exchange JPX, mic XJPX (7203 Toyota plan Basic; 6758 Sony plan Pro). The app's free key answers code 400 for quote 7203 asked plainly, with mic_code=XJPX and with exchange=JPX (3 requests). Earlier probes filtered on XTKS and so found no Tokyo rows.

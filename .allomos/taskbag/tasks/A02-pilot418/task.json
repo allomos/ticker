@@ -3,9 +3,11 @@
   "folders": [
     "ticker"
   ],
+  "handoff_note": "Run mode: quiet (chosen by the person in this session, 2026-10-31 22:48 JST).\nWhere it stopped: merged into master (pushed). Tokyo rows show as 7203.T, not on the free plan for anyone; without the user's own Twelve Data key, quote, chart and list prices answer not available with no request; with one, Twelve Data is asked for 7203 on JPX; a key that does not cover it answers reason own_key, shown as such. 140 tests pass. Checked locally against the real (free) search in Japanese: 7203.T listed under not on the free plan, its page shows the Tokyo-only prompt. Not checked with a real paid Twelve Data key (none available). Branch merged and removed.\nNot done: production. No migration of its own; it goes out with the next deploy of master (with A02-hen552, A02-bath658, A02-jungle045, which need secrets and migrations 0005-0006). Waits for the approver.\nNext step: once approved and deployed, search 'toyota' on ticker.allomos.com, open 7203.T, label 'deployed and verified', finish with alm done --without-human-check and check steps (a person with a paid Twelve Data key covering Tokyo adds it and opens Toyota).",
   "holder": "claude-code-29ed5bb1",
   "id": "A02-pilot418",
   "iteration": "I-cast",
+  "label": "locally verified",
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",
@@ -14,6 +16,7 @@
     "id": "29ed5bb1-5806-4c23-9b01-b16d87dc29ce",
     "kind": "desktop"
   },
-  "state": "in_progress",
-  "title": "Tokyo stocks prompt every user to add their own Twelve Data key, and open with it"
+  "state": "waiting",
+  "title": "Tokyo stocks prompt every user to add their own Twelve Data key, and open with it",
+  "waiting_on": "Approval to deploy master to ticker.allomos.com (no migration of its own; same deploy as A02-hen552, A02-bath658 and A02-jungle045)"
 }

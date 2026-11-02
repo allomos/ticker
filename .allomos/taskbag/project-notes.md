@@ -10,7 +10,8 @@ What every session must know, whatever its task. Keep it short, and change lines
   Worker version 5d9e3470; remote D1 migrations applied through 0004. Deploy: `npm run build && npx wrangler deploy`; migrations:
   `npx wrangler d1 migrations apply ticker --remote`.
 - Master is ahead of production with A02-hen552 (react to the limit), A02-bath658 (Shanghai and
-  Shenzhen for the owner) and A02-jungle045 (users' own keys): before their deploy, migrations 0005
+  Shenzhen for the owner), A02-jungle045 (users' own keys) and A02-pilot418 (Tokyo by own key only):
+  before their deploy, migrations 0005
   and 0006 applied remotely and the Worker secrets ALPHA_VANTAGE_API_KEY, MARKET_OWNER_EMAIL and
   KEY_ENCRYPTION_KEY set; waits for the approver.
 - The holder of a task does its deploy (two sessions once deployed the same commit 18 s apart).
@@ -33,6 +34,8 @@ What every session must know, whatever its task. Keep it short, and change lines
   (test/worker/fake-twelvedata.ts) and the key `test-key`. Avoid scripts that loop over the real API:
   heavy local use can use up the day's 800 for production too.
 - `@cloudflare/vitest-pool-workers` is deprecated; the project uses `@cloudflare/vitest-plugin`.
+- Twelve Data names Tokyo JPX / mic XJPX (not XTKS); its search may call a Tokyo stock "Basic",
+  but the free key answers 400 for it. The app shows Tokyo stocks as 7203.T.
 - Alpha Vantage's free key: 25 requests a day and one a second; a limit comes back as an
   `Information` note with HTTP 200, not an error. Space probes at least 1.5 s apart.
 - Cookies on `localhost` are shared across ports: a session from one local dev server is sent

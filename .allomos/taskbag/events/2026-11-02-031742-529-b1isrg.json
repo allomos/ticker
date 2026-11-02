@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T03:17:42Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-pilot418",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "With a user's own key, any 'not available' answer (Tokyo or not) comes back with reason own_key, and the ticker page says the key's plan does not cover it instead of offering a key"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T03:17:42Z",
+  "by": "claude-code-29ed5bb1",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A02-pilot418",
+  "agent": "claude",
+  "tool": "claude_app",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Any Twelve Data row on XJPX is marked not on the free plan, even when Twelve Data's search says plan Basic (Toyota), because the free key answers 400 for it"
+    }
+  ]
+}

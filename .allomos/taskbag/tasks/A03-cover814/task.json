@@ -4,8 +4,20 @@
   "folders": [
     "ticker"
   ],
+  "heartbeat": {
+    "at": "2026-11-25T05:55:29Z",
+    "by": "antigravity-A03-cover814"
+  },
+  "holder": "antigravity-A03-cover814",
   "id": "A03-cover814",
   "iteration": "I-cast",
-  "state": "ready",
+  "session": {
+    "agent": "antigravity",
+    "by": "antigravity-A03-cover814",
+    "folder": ".",
+    "id": "9a820ae1-79b3-4d5d-92a6-d3825ed1cb42",
+    "kind": "terminal"
+  },
+  "state": "in_progress",
   "title": "On a ticker's details page, a user clicks a search button to open Google for the latest financial news about that stock"
 }

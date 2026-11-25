@@ -8,7 +8,10 @@
   "human_check_steps": "Run the app (`npm run dev` in `/Users/wanghui/coding/ticker`) and open http://localhost:5173:\n\n1. Type `apple` in the search box: Apple Inc. (NASDAQ) comes first; listings the free data plan\n   does not cover are greyed and marked \"Not on free data\" (at most three in the dropdown).\n2. Type `AAPL`, `bitcoin`, `yen`: Apple, BTC/USD and USD/JPY appear.\n3. Use the arrow keys and Enter, or click: the ticker's page opens (its content comes with the details task).\n4. Type `vanguard` and press Enter: the full results page lists covered symbols first, then the\n   others under \"Not on the free data plan\". Try it at phone width too.\n",
   "id": "A03-film078",
   "iteration": "I-build",
-  "label": "locally verified",
+  "labels": [
+    "locally verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",

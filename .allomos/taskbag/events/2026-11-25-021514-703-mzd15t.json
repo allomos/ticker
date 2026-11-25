@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "project",
+  "id": "ticker",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "format",
+      "from": "allomos/6",
+      "to": "allomos/9"
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": null,
+    "value": "b27e43e337550d87e189f478482376dbb905b3c250ab6be0297f070d67fdc33805e7ba716dd4c980456953da8541485d12eb3e0ab68f4993549b0e5b93d9b004"
+  }
+}

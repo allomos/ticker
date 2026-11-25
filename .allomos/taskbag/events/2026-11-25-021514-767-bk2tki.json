@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A01-mango189",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "c4502610fcd955a4e3e52a9598145f17ca585d407368347d625cd8217582c2bc",
+    "value": "1144c10d57539a7f5e9ba87d4b89a50e38e64753a3b4d915cdf4d5e97dbe27346420d45e490205afa9d242b3a0dbe4f143b9fede5e3ddf317d94948e1d5d5e05"
+  }
+}

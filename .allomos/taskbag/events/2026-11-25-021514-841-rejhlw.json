@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A05-cable879",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "4c909f2912108111da9138acefdbbf3d759f0fc5831068cf31bfcaace353ee65",
+    "value": "2e3c4bc16eafcd64847d42f478c3f4d14e8b425675695c8b5a537fbe4342b0ff3050043b8e0b2adaba65cbdb1467d55c5553f18b1294816be0f64cc6c2359304"
+  }
+}

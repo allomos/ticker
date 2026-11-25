@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A03-film078",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "f706fc059b886d52ad6bab60b1e2f6931488be01adc1fc6e77f53c92d9847580",
+    "value": "2c49c5f5e931296e167e9bd80223d1991603c77a97b8a70ca3460509d31c9e989d31f22ed3e820d4a8394671bd3461cad86c74fe538e20a1d0a778a7c53da904"
+  }
+}

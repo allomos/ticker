@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A02-bath658",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "ed3f60bc12b0acdd34a0f3cb29fa1c14a3be6d821e4d87cf92796e5c23e4f06b",
+    "value": "1e2ba172bb369f2a43c7d6ef27b51c4876bd58bfe2a0e72082c37b1e70887bbdfef16acd696bb51045994264f9fcc4171f9afe850335e1209edae3c975121a02"
+  }
+}

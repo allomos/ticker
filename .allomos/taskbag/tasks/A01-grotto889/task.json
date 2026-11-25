@@ -8,7 +8,10 @@
   "human_check_steps": "# Check: Ticker's logo (ticker.allomos.com)\n\n1. Open https://ticker.allomos.com: the browser tab shows the new icon (teal dots, coral dot, gold star and ball), and the header shows it beside \"Ticker\", in light and dark mode.\n2. Ask for a sign-in email: it opens with the name in the logo's colours (gold star, teal and coral dots, navy \"Ticker\"). Check it in Gmail and in Apple Mail.\n",
   "id": "A01-grotto889",
   "iteration": "I-cast",
-  "label": "deployed and verified",
+  "labels": [
+    "deployed and verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

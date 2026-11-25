@@ -1,0 +1,27 @@
+{
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "at": "2026-11-25T02:15:14Z",
+  "changes": [
+    {
+      "field": "key",
+      "to": {
+        "added": "2026-11-25T02:15:14Z",
+        "algorithm": "ed25519",
+        "key": "k-12fc0202d33e3222",
+        "owner": "p-5ln47q",
+        "public_key": "c2c350bd0e233165030de4162e00be942013625cc4ee3101a52069c4703a0847"
+      }
+    }
+  ],
+  "command": "add key",
+  "id": "ticker",
+  "kind": "project",
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "7181817574d30386edece9ab2899a685eeac5f786484e49435e1dd85d265a84b",
+    "value": "d9dea7144f307e565dbae526e3242796e6db505cf6cd797c1733d89b84087d08834e1a41a791b901a277bcfa452ce537952dc4d454dcc2997b8171db563d9103"
+  },
+  "via": "alm"
+}

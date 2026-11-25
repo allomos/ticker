@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A06-powder407",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "deployed and verified",
+      "to": [
+        "deployed and verified by agent"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "6a8091573b8c35a6a3a7e07695a69a1e13c303474ed7af12443390245fd70ec5",
+    "value": "b72c233d411dbb66b70edba59980e2337a6ac70fa037b9dbeac61800b6be55a4110b7d3c1db09399053483693b847ed1d0b2b854358f357720b60b83b2ed970f"
+  }
+}

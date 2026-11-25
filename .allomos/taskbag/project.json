@@ -1,12 +1,33 @@
 {
-  "format": "allomos/6",
+  "format": "allomos/9",
   "id": "ticker",
   "name": "ticker",
   "labels": [
-    "implemented",
-    "locally verified",
-    "deployed and verified",
-    "human verified"
+    {
+      "name": "locally verified by agent",
+      "meaning": "The agent built it and its checks passed on the computer where it worked.",
+      "built_in": true
+    },
+    {
+      "name": "deployed and verified by agent",
+      "meaning": "The agent deployed it (with the approver's approval) and checked it live.",
+      "built_in": true
+    },
+    {
+      "name": "locally verified by human",
+      "meaning": "A person checked it by hand on their own computer (the human check).",
+      "built_in": true
+    },
+    {
+      "name": "deployed and verified by human",
+      "meaning": "A person checked it by hand in the deployed app (the human check).",
+      "built_in": true
+    },
+    {
+      "name": "AI decisions to review",
+      "meaning": "An agent decided things here that wait for review.",
+      "built_in": true
+    }
   ],
   "project_folders": [
     {

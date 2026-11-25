@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-25T02:15:15Z",
+  "events": 399,
+  "files": 460,
+  "heads": {
+    "k-12fc0202d33e3222": {
+      "file": "events/2026-11-25-021515-019-j3ydpu.json",
+      "fingerprint": "97dd9f69795c4e69b585b562ed73bbed804fd8170a1f6da4bb2c586d92d6ad36"
+    }
+  },
+  "receipts": [],
+  "sha256": "2173a4aabbbbb5c7f6b9a4413bcee1606e9c5241cdc4699dffefa26d87354fc8",
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "value": "5b24c82adedd1fa05aaf45623fff7a0c5bb6a020eee2b5c84cc9c4899a545709a78306e17b48945eb2e586e3d95047e435bd9e33d156199d207717057c81db04"
+  }
+}

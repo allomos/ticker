@@ -8,7 +8,10 @@
   "human_check_steps": "# Check: the app in the Allomos colours (ticker.allomos.com)\n\n1. Sign in at https://ticker.allomos.com and open your lists, a ticker page, the add-to-list menu, the account menu and the search box, first in light mode, then with your device in dark mode.\n2. Everything reads clearly; buttons and links are teal, the page matches www.allomos.com's colours, and rises are still green, falls still red.\n3. Do the same on your phone.\n4. Look at a new sign-in email: navy text and a teal button.\n",
   "id": "A01-sofa728",
   "iteration": "I-cast",
-  "label": "deployed and verified",
+  "labels": [
+    "deployed and verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

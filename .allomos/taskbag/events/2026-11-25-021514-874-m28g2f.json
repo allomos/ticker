@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A01-whale367",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "af804868c4f15d1d83cab63b90929e21587c23aa9c869a62157b4057aedde2ec",
+    "value": "2e2c8de07d43d0692f4b4fe7a459c457e7081f59bfe90457e533da09eabdd80a8ac52e895f98d9a494c2c41c910247e06dae5bb78ea5c2e6c3b7359f6a4c0b04"
+  }
+}

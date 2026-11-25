@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A02-hen552",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "883611088d1d3a06017812d3a4ff805be49c1b509744cdf54cfbe5945295bcee",
+    "value": "c9c98bc7c1e4829e780cd40a3383912249203a1c2cf5c3ba1bb01e9f28ae3e6b9a0597c32a075207cf9b0c3ed2ee7e96e99de9526d232f3bd2fcc445c3f3590a"
+  }
+}

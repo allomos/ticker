@@ -8,7 +8,10 @@
   "human_check_steps": "# Check: Ticker on the phone's home screen (ticker.allomos.com)\n\n1. iPhone, Safari: open https://ticker.allomos.com, tap Share › Add to Home Screen. The name is \"Ticker\" and the icon shows the logo on a light tile.\n2. Open it from the home screen: it opens full screen without Safari's bar; nothing sits under the notch, the status bar or the home indicator (also turn the phone sideways).\n3. In the home-screen app, ask for a sign-in link, copy the code from the email in Mail, come back, paste it and sign in.\n4. Turn on airplane mode and open Ticker from the home screen (or pull a new page): it shows \"You're offline – prices will load when you're back online.\" Turn airplane mode off: the page loads by itself, or with Try again.\n5. Android, Chrome: open the site, menu › Install app (or Add to Home screen). The icon fits the launcher's shape with nothing cut off, and it opens without the browser bar. Repeat step 4.\n6. Optional, on a computer: Chrome › DevTools › Application › Manifest shows no errors or warnings about installability.\n",
   "id": "A01-kite192",
   "iteration": "I-cast",
-  "label": "deployed and verified",
+  "labels": [
+    "deployed and verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:15Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A02-pilot418",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "locally verified",
+      "to": [
+        "locally verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "674f45401472eba927958f2ca11a11cdaaba359d9aba509ea8a44303766cd5de",
+    "value": "edd75f3ab92cedd753d6cf8b533a8e9d97240316148faee4dfa7f0cc256c2fc32c55307c1e4b0c02d13b8ecff712ab386f679a95a7794aa74bfa2a4e8fb8870b"
+  }
+}

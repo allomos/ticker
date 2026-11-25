@@ -8,7 +8,10 @@
   "human_check_steps": "In a terminal, in `/Users/wanghui/coding/ticker`:\n\n1. `npm install`, then `npm test`: every test passes.\n2. `npm run dev`, then open http://localhost:5173: the page shows \"Ticker\" in the top bar.\n3. Open http://localhost:5173/api/health: it shows `{\"ok\":true}`.\n",
   "id": "A01-mascot452",
   "iteration": "I-build",
-  "label": "locally verified",
+  "labels": [
+    "locally verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_10e82e40-c11d-4e3c-9bd8-6d3f223b152f",

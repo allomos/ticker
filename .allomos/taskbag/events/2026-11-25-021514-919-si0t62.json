@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A01-kite192",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "deployed and verified",
+      "to": [
+        "deployed and verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "a03abe22da06d456570c48900cae6dac8cdc5a32e29d5acba4686d3bb0aec129",
+    "value": "a379a2e0a9446db50a5c10aca4add3201f85935d46476ebc0c881883dfcf973fa628dff0ba1ab5bd967f9a9c1ec4fdb405f337446e2ee253aa6baa64b965090b"
+  }
+}

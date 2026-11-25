@@ -8,7 +8,10 @@
   "human_check_steps": "# Check: breadcrumb on ticker pages (ticker.allomos.com)\n\n1. Signed in, open a list (for example \"Tech stocks\") and click a ticker: the page shows \"Home › Tech stocks\". Click \"Tech stocks\": that list is open again.\n2. Search \"apple\" and open AAPL from the results: \"Home › Search: “apple”\". Click it: the results come back.\n3. On a ticker page, reload, and use Back and Forward: the trail stays right. A ticker opened from a shared link shows just \"Home\".\n",
   "id": "A03-dot197",
   "iteration": "I-cast",
-  "label": "deployed and verified",
+  "labels": [
+    "deployed and verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

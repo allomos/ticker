@@ -8,7 +8,10 @@
   "human_check_steps": "# Check: sign in with the code (ticker.allomos.com)\n\n1. On an iPhone, add ticker.allomos.com to the home screen (Share › Add to Home Screen) and open it from there. Ask for a sign-in link.\n2. In Mail, the email shows a large code (like K7QM-4XRP-9TWD-2HNC). Long-press it: the whole code is selected; copy it.\n3. Back in the home-screen app (it may have reloaded): the \"Check your email\" screen still shows the code field. Tap Paste (or paste by hand), then \"Sign in with code\": you are signed in.\n4. Open the same email's link in Safari: it now says the link does not work (the code used it up).\n5. Ask for another link and open it in a browser: the page shows the code with a Copy button; tap Copy and paste somewhere to see it copied. Then \"Sign in\" signs that browser in.\n6. Type a wrong code five times: the request is voided and the right code no longer works.\n",
   "id": "A04-nose857",
   "iteration": "I-cast",
-  "label": "deployed and verified",
+  "labels": [
+    "deployed and verified by agent",
+    "AI decisions to review"
+  ],
   "session": {
     "agent": "claude-code",
     "app_session_id": "local_5cc159c2-5f5a-4ef6-a4d5-b7525528ec32",

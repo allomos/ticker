@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A01-toy025",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "deployed and verified",
+      "to": [
+        "deployed and verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "244db65c0a242a0d91f4263997e9450b5a169a5cd24165df9b2f18c502117d17",
+    "value": "a0d8aa84568c53640a086cbd3ddfcc82c0363e1f3c705b7417dcda8d855c202eca9d9b9a40f742fb287dde4dbdde022f5060f002d635ff3353250f3fed3a1103"
+  }
+}

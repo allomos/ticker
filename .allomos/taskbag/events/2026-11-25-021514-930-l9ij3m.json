@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-25T02:15:14Z",
+  "via": "alm",
+  "command": "upgrade",
+  "kind": "task",
+  "id": "A01-grotto889",
+  "actor": {
+    "person": "p-5ln47q"
+  },
+  "changes": [
+    {
+      "field": "labels",
+      "from": "deployed and verified",
+      "to": [
+        "deployed and verified by agent",
+        "AI decisions to review"
+      ]
+    }
+  ],
+  "sig": {
+    "key": "k-12fc0202d33e3222",
+    "prev": "b2b8648feb6ee73cb46fd6e76d1e6d44f003a87e7dd66684f2e4d3851430715b",
+    "value": "6118113de91bd8c04a6e4f61cb36c4cb1b88c77d46c8ce46dbb98486d3b20e8bbcc4ed2f31b2e3515b6adac9dc58eac452185874981bb3325f7c6e2a7c35ac0c"
+  }
+}

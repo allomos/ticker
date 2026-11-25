@@ -1,6 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "../../src/app/App";
+import { STORAGE_KEY } from "../../src/app/i18n";
+import { googleNewsUrl } from "../../src/app/pages/QuotePage";
 import type { Quote } from "../../src/shared/market";
 
 vi.mock("../../src/app/components/PriceChart", () => ({
@@ -15,6 +17,7 @@ const quote: Quote = {
 
 let quoteStatus = 200;
 beforeEach(() => {
+  localStorage.clear();
   quoteStatus = 200;
   history.replaceState(null, "", "/quote/AAPL");
   vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
@@ -72,5 +75,41 @@ describe("ticker page", () => {
     quoteStatus = 5030;
     render(<App />);
     expect(await screen.findByText(/The free data plan's limit for today is reached\. Prices load again by themselves from .+; prices seen before stay on screen\./)).toBeTruthy();
+  });
+
+  it("shows a button to search Google for the stock's latest financial news", async () => {
+    render(<App />);
+    const link = await screen.findByRole("link", { name: "Search Google for the latest financial news about AAPL" });
+    expect(link.textContent).toBe("Latest news");
+    expect(link.getAttribute("href")).toBe(googleNewsUrl("AAPL", "Apple Inc."));
+    expect(link.getAttribute("target")).toBe("_blank");
+    expect(link.getAttribute("rel")).toBe("noopener noreferrer");
+
+    const parsed = new URL(link.getAttribute("href")!);
+    expect(parsed.origin).toBe("https://www.google.com");
+    expect(parsed.pathname).toBe("/search");
+    expect(parsed.searchParams.get("tbm")).toBe("nws");
+    expect(parsed.searchParams.get("q")).toBe("AAPL Apple Inc. stock financial news");
+  });
+
+  it("localizes the news search button across all supported languages", async () => {
+    const cases = [
+      { locale: "zh-Hans", text: "财经新闻", label: "在 Google 搜索 AAPL 的最新财经新闻" },
+      { locale: "zh-Hant", text: "財經新聞", label: "在 Google 搜尋 AAPL 的最新財經新聞" },
+      { locale: "ja", text: "最新ニュース", label: "AAPL の最新金融ニュースを Google で検索" },
+    ] as const;
+
+    for (const c of cases) {
+      localStorage.setItem(STORAGE_KEY, c.locale);
+      const { unmount } = render(<App />);
+      const link = await screen.findByRole("link", { name: c.label });
+      expect(link.textContent).toBe(c.text);
+      unmount();
+    }
+  });
+
+  it("builds a clean Google News URL without duplicating the symbol", () => {
+    expect(googleNewsUrl("AAPL", "AAPL")).toBe("https://www.google.com/search?q=AAPL+stock+financial+news&tbm=nws");
+    expect(googleNewsUrl("7203.T")).toBe("https://www.google.com/search?q=7203.T+stock+financial+news&tbm=nws");
   });
 });

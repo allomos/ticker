@@ -5,6 +5,7 @@ import { api, ApiError } from "../api";
 import { AddKeyPrompt } from "../components/AddKeyPrompt";
 import { AddToList } from "../components/AddToList";
 import { Breadcrumb } from "../components/Breadcrumb";
+import { SearchIcon } from "../components/Icons";
 import { PriceChart } from "../components/PriceChart";
 import { formatChange, formatCompact, formatPrice, formatTime } from "../format";
 import { useI18n } from "../i18n";
@@ -69,6 +70,16 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
+export function googleNewsUrl(symbol: string, name?: string): string {
+  const cleanSymbol = symbol.trim();
+  const cleanName = name?.trim();
+  const terms = cleanName && cleanName.toLowerCase() !== cleanSymbol.toLowerCase()
+    ? `${cleanSymbol} ${cleanName} stock financial news`
+    : `${cleanSymbol} stock financial news`;
+  const params = new URLSearchParams({ q: terms, tbm: "nws" });
+  return `https://www.google.com/search?${params.toString()}`;
+}
+
 function Header({ cached }: { cached: Cached<Quote> }) {
   const { t, locale } = useI18n();
   const q = cached.data;
@@ -83,7 +94,20 @@ function Header({ cached }: { cached: Cached<Quote> }) {
             {q.currency ? ` · ${q.currency}` : ""}
           </div>
         </div>
-        <AddToList target={{ symbol: q.symbol, name: q.name, exchange: q.exchange }} />
+        <div className="quote-actions">
+          <a
+            className="button button-small button-quiet quote-news"
+            href={googleNewsUrl(q.symbol, q.name)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.searchNewsLabel(q.symbol)}
+            title={t.searchNewsLabel(q.symbol)}
+          >
+            <SearchIcon />
+            <span>{t.searchNews}</span>
+          </a>
+          <AddToList target={{ symbol: q.symbol, name: q.name, exchange: q.exchange }} />
+        </div>
       </div>
       <div className="quote-price">
         <span className="price">{formatPrice(q.price, locale)}</span>

@@ -196,6 +196,10 @@ a { color: var(--accent); text-decoration: none; }
 }
 
 .quote-names { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.quote-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.quote-news { display: inline-flex; align-items: center; gap: 6px; }
+.quote-news svg { width: 15px; height: 15px; flex-shrink: 0; }
+.quote-news:hover { background: color-mix(in srgb, var(--teal) 8%, transparent); }
 .add-to-list { position: relative; }
 .add-menu { right: 0; left: auto; min-width: 240px; }
 .button-on { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border: 1px solid transparent; }

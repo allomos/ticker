@@ -108,6 +108,8 @@ const en = {
   statYearRange: "52-week range",
   statVolume: "Volume",
   statAvgVolume: "Avg. volume",
+  searchNews: "Latest news",
+  searchNewsLabel: (symbol: string) => `Search Google for the latest financial news about ${symbol}`,
 
   badEmail: "That does not look like an email address.",
   tooMany: "Too many sign-in emails for now. Use the latest one, or try again in 15 minutes.",
@@ -275,6 +277,8 @@ const zhHans: Messages = {
   statYearRange: "52周区间",
   statVolume: "成交量",
   statAvgVolume: "平均成交量",
+  searchNews: "财经新闻",
+  searchNewsLabel: (symbol) => `在 Google 搜索 ${symbol} 的最新财经新闻`,
 
   badEmail: "这看起来不是有效的电子邮件地址。",
   tooMany: "登录邮件发送过多。请使用最新的一封，或 15 分钟后再试。",
@@ -440,6 +444,8 @@ const zhHant: Messages = {
   statYearRange: "52週區間",
   statVolume: "成交量",
   statAvgVolume: "平均成交量",
+  searchNews: "財經新聞",
+  searchNewsLabel: (symbol) => `在 Google 搜尋 ${symbol} 的最新財經新聞`,
 
   badEmail: "這看起來不是有效的電子郵件地址。",
   tooMany: "登入郵件寄送次數過多。請使用最新的一封，或 15 分鐘後再試。",
@@ -605,6 +611,8 @@ const ja: Messages = {
   statYearRange: "52週の値幅",
   statVolume: "出来高",
   statAvgVolume: "平均出来高",
+  searchNews: "最新ニュース",
+  searchNewsLabel: (symbol) => `${symbol} の最新金融ニュースを Google で検索`,
 
   badEmail: "メールアドレスの形式が正しくありません。",
   tooMany: "ログインメールの送信回数が多すぎます。最新のメールを使うか、15分後にもう一度お試しください。",

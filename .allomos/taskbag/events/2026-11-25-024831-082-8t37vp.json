@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-25T02:48:31Z",
+  "via": "alm",
+  "command": "plan",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "iteration",
+      "to": "I-cast"
+    }
+  ]
+}

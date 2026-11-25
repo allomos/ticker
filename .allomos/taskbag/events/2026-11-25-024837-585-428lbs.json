@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-25T02:48:37Z",
+  "via": "alm",
+  "command": "ready",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "state",
+      "from": "backlog",
+      "to": "ready"
+    },
+    {
+      "field": "reason",
+      "to": "Requested by the user; no open questions"
+    }
+  ]
+}

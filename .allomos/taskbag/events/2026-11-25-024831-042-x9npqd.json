@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-25T02:48:31Z",
+  "via": "alm",
+  "command": "add task",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "title",
+      "to": "On a ticker's details page, a user clicks a search button to open Google for the latest financial news about that stock"
+    },
+    {
+      "field": "area",
+      "to": "A03"
+    },
+    {
+      "field": "folders",
+      "to": [
+        "ticker"
+      ]
+    },
+    {
+      "field": "difficulty",
+      "to": 2
+    },
+    {
+      "field": "state",
+      "to": "backlog"
+    },
+    {
+      "field": "description",
+      "to": "**Outcome.** Every ticker's details page includes a search button. Clicking it opens Google in the browser to search for the latest financial news about that stock.\n\n**Done means.**\n- A ticker's details page shows a search button for the stock's latest financial news.\n- Clicking the button opens Google in the browser searching for the latest financial news about that stock.\n- Button text and accessible label are localized across all supported languages (English, Simplified Chinese, Traditional Chinese, Japanese).\n- Tests pass; checked locally (`npm run dev`).\n\n**Notes.**\n- Code: `src/app/pages/QuotePage.tsx` (ticker details header, alongside `AddToList`), `src/app/i18n/` (localized strings).\n- Routine choices for the implementer (record with `alm ai-decided`): exact button placement and icon/label, Google search URL parameters (e.g. News tab `tbm=nws` or query terms combining symbol and name), and opening in a new tab (`target=\"_blank\" rel=\"noopener noreferrer\"`).\n"
+    },
+    {
+      "field": "base_branch",
+      "to": "master"
+    }
+  ]
+}

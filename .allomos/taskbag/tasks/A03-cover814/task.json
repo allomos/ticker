@@ -1,0 +1,11 @@
+{
+  "area": "A03",
+  "difficulty": 2,
+  "folders": [
+    "ticker"
+  ],
+  "id": "A03-cover814",
+  "iteration": "I-cast",
+  "state": "ready",
+  "title": "On a ticker's details page, a user clicks a search button to open Google for the latest financial news about that stock"
+}

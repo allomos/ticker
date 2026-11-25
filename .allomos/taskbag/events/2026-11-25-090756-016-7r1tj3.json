@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-25T09:07:56Z",
+  "via": "alm",
+  "command": "checked",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "labels",
+      "from": [
+        "AI decisions to review",
+        "locally verified by agent"
+      ],
+      "to": [
+        "AI decisions to review",
+        "locally verified by agent",
+        "locally verified by human"
+      ]
+    },
+    {
+      "field": "without_human_check",
+      "from": "Quiet mode: all automated tests, typecheck, build, and local dev server check passed; only hands-on browser verification remains."
+    },
+    {
+      "field": "human_check_steps",
+      "from": "About 2 minutes. The most important check is step 2: clicking the news button opens Google News for that stock in a new tab.\n\n1. Start the local app (`npx wrangler d1 migrations apply ticker --local` if needed, then `npm run dev`) and open any ticker's details page (for example `/quote/AAPL`).\n2. Confirm a \"Latest news\" button with a search icon appears next to \"Add to list\", and click it. Verify a new browser tab opens Google News searching for the latest financial news about that stock (`AAPL Apple Inc. stock financial news`).\n3. Switch the language selector in the footer across English, Simplified Chinese (\"财经新闻\"), Traditional Chinese (\"財經新聞\"), and Japanese (\"最新ニュース\"), and confirm the button text updates cleanly and stays aligned next to \"Add to list\" on both desktop and narrow mobile widths.\n\nTechnical details: `src/app/pages/QuotePage.tsx` (`googleNewsUrl`, `Header`), `src/app/i18n/messages.tsx`, `src/app/styles.css`, `test/app/quote.test.tsx`.\n"
+    },
+    {
+      "field": "human_check",
+      "to": {
+        "checker": null,
+        "result": "pass",
+        "steps_sha256": "20beef3a6c87a6c2d398937d11dc044a134708b3d100bd5c6913ca11fe3c81a4",
+        "where": "local",
+        "words": null
+      }
+    },
+    {
+      "field": "reason",
+      "to": "Verified locally in browser and approved by the user"
+    }
+  ]
+}

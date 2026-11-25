@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-25T06:04:49Z",
+  "by": "antigravity-A03-cover814",
+  "via": "alm",
+  "command": "classify",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "risk",
+      "to": "medium"
+    },
+    {
+      "field": "touches",
+      "to": []
+    },
+    {
+      "field": "reason",
+      "to": "M2, M3, M4: adds a localized Google financial news search button to the ticker details header with routine UI and URL choices, finished with --without-human-check."
+    }
+  ]
+}

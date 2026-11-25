@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-25T06:04:50Z",
+  "by": "antigravity-A03-cover814",
+  "via": "alm",
+  "command": "done",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "state",
+      "from": "in_progress",
+      "to": "done"
+    },
+    {
+      "field": "without_human_check",
+      "to": "Quiet mode: all automated tests, typecheck, build, and local dev server check passed; only hands-on browser verification remains."
+    },
+    {
+      "field": "human_check_steps",
+      "to": "About 2 minutes. The most important check is step 2: clicking the news button opens Google News for that stock in a new tab.\n\n1. Start the local app (`npx wrangler d1 migrations apply ticker --local` if needed, then `npm run dev`) and open any ticker's details page (for example `/quote/AAPL`).\n2. Confirm a \"Latest news\" button with a search icon appears next to \"Add to list\", and click it. Verify a new browser tab opens Google News searching for the latest financial news about that stock (`AAPL Apple Inc. stock financial news`).\n3. Switch the language selector in the footer across English, Simplified Chinese (\"财经新闻\"), Traditional Chinese (\"財經新聞\"), and Japanese (\"最新ニュース\"), and confirm the button text updates cleanly and stays aligned next to \"Add to list\" on both desktop and narrow mobile widths.\n\nTechnical details: `src/app/pages/QuotePage.tsx` (`googleNewsUrl`, `Header`), `src/app/i18n/messages.tsx`, `src/app/styles.css`, `test/app/quote.test.tsx`.\n"
+    },
+    {
+      "field": "exception",
+      "to": {
+        "id": "ex-iv1pbr",
+        "kind": "without_human_check",
+        "why": "Quiet mode: all automated tests, typecheck, build, and local dev server check passed; only hands-on browser verification remains."
+      }
+    },
+    {
+      "field": "reason",
+      "to": "Quiet mode: all automated tests, typecheck, build, and local dev server check passed; only hands-on browser verification remains."
+    }
+  ]
+}

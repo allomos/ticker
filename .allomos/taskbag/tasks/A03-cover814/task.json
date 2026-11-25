@@ -4,13 +4,15 @@
   "folders": [
     "ticker"
   ],
-  "heartbeat": {
-    "at": "2026-11-25T05:55:29Z",
-    "by": "antigravity-A03-cover814"
-  },
+  "handoff_note": "Every ticker's details page now includes a localized search button next to Add to list that opens Google News in a new tab for the stock's latest financial news, and the change is merged into master. Please do the 2-minute hands-on check in the browser when convenient and review the wording/placement AI decision before release. Run mode: quiet (chosen by the user who started the watcher, 2026-11-25). Technical: merged commit c121d77 onto master (src/app/pages/QuotePage.tsx, src/app/i18n/messages.tsx, src/app/styles.css, test/app/quote.test.tsx); npm run typecheck, npm test (25 files, 143 tests), npm run build, and local vite dev check all passed; finished with --without-human-check.",
   "holder": "antigravity-A03-cover814",
+  "human_check_steps": "About 2 minutes. The most important check is step 2: clicking the news button opens Google News for that stock in a new tab.\n\n1. Start the local app (`npx wrangler d1 migrations apply ticker --local` if needed, then `npm run dev`) and open any ticker's details page (for example `/quote/AAPL`).\n2. Confirm a \"Latest news\" button with a search icon appears next to \"Add to list\", and click it. Verify a new browser tab opens Google News searching for the latest financial news about that stock (`AAPL Apple Inc. stock financial news`).\n3. Switch the language selector in the footer across English, Simplified Chinese (\"财经新闻\"), Traditional Chinese (\"財經新聞\"), and Japanese (\"最新ニュース\"), and confirm the button text updates cleanly and stays aligned next to \"Add to list\" on both desktop and narrow mobile widths.\n\nTechnical details: `src/app/pages/QuotePage.tsx` (`googleNewsUrl`, `Header`), `src/app/i18n/messages.tsx`, `src/app/styles.css`, `test/app/quote.test.tsx`.\n",
   "id": "A03-cover814",
   "iteration": "I-cast",
+  "labels": [
+    "AI decisions to review",
+    "locally verified by agent"
+  ],
   "session": {
     "agent": "antigravity",
     "by": "antigravity-A03-cover814",
@@ -18,6 +20,7 @@
     "id": "9a820ae1-79b3-4d5d-92a6-d3825ed1cb42",
     "kind": "terminal"
   },
-  "state": "in_progress",
-  "title": "On a ticker's details page, a user clicks a search button to open Google for the latest financial news about that stock"
+  "state": "done",
+  "title": "On a ticker's details page, a user clicks a search button to open Google for the latest financial news about that stock",
+  "without_human_check": "Quiet mode: all automated tests, typecheck, build, and local dev server check passed; only hands-on browser verification remains."
 }

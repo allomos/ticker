@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-25T06:04:49Z",
+  "by": "antigravity-A03-cover814",
+  "via": "alm",
+  "command": "handoff",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "handoff_note",
+      "to": "Every ticker's details page now includes a localized search button next to Add to list that opens Google News in a new tab for the stock's latest financial news, and the change is merged into master. Please do the 2-minute hands-on check in the browser when convenient and review the wording/placement AI decision before release. Run mode: quiet (chosen by the user who started the watcher, 2026-11-25). Technical: merged commit c121d77 onto master (src/app/pages/QuotePage.tsx, src/app/i18n/messages.tsx, src/app/styles.css, test/app/quote.test.tsx); npm run typecheck, npm test (25 files, 143 tests), npm run build, and local vite dev check all passed; finished with --without-human-check."
+    },
+    {
+      "field": "handed_off_by",
+      "to": "antigravity-A03-cover814"
+    }
+  ]
+}

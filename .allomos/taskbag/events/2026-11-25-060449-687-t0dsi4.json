@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-25T06:04:49Z",
+  "by": "antigravity-A03-cover814",
+  "via": "alm",
+  "command": "ai-decided",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "ai_decision",
+      "to": "Placed a 'Latest news' link styled as a quiet pill button with a search icon to the left of 'Add to list' in the ticker details header, opening Google News in a new tab for the stock's latest financial news. Review the wording and placement before release; reopen this task if you want changes. Technical: renders an <a target=\"_blank\" rel=\"noopener noreferrer\"> in src/app/pages/QuotePage.tsx using googleNewsUrl() (https://www.google.com/search?q=<symbol>+<name>+stock+financial+news&tbm=nws, deduplicating name if identical to symbol), with localized strings in src/app/i18n/messages.tsx (en: 'Latest news', zh-Hans: '财经新闻', zh-Hant: '財經新聞', ja: '最新ニュース') and styles in src/app/styles.css."
+    },
+    {
+      "field": "labels",
+      "to": [
+        "AI decisions to review"
+      ]
+    }
+  ]
+}

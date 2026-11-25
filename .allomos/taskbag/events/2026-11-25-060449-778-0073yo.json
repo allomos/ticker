@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-25T06:04:49Z",
+  "by": "antigravity-A03-cover814",
+  "via": "alm",
+  "command": "label",
+  "kind": "task",
+  "id": "A03-cover814",
+  "changes": [
+    {
+      "field": "labels",
+      "from": [
+        "AI decisions to review"
+      ],
+      "to": [
+        "AI decisions to review",
+        "locally verified by agent"
+      ]
+    }
+  ]
+}
